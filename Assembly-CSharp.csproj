@@ -60,8 +60,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Items\Armor.cs" />
+    <Compile Include="Assets\Scripts\Items\ArmorChest.cs" />
+    <Compile Include="Assets\Scripts\Items\ArmorHead.cs" />
+    <Compile Include="Assets\Scripts\Items\ArmorLegs.cs" />
+    <Compile Include="Assets\Scripts\Items\Bow.cs" />
+    <Compile Include="Assets\Scripts\Items\Item.cs" />
+    <Compile Include="Assets\Scripts\Items\Sword.cs" />
+    <Compile Include="Assets\Scripts\Items\Weapon.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\UI\In Game Menu Scripts\DragAndDropManager.cs" />
+    <Compile Include="Assets\Scripts\UI\In Game Menu Scripts\InGameMenu.cs" />
+    <Compile Include="Assets\Scripts\UI\In Game Menu Scripts\UIItemElement.cs" />
     <Compile Include="Assets\Scripts\ValueDisplayBar.cs" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />
