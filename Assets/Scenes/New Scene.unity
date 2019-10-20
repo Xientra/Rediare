@@ -246,6 +246,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: In Game UI
       objectReference: {fileID: 0}
+    - target: {fileID: 2616141642181742467, guid: 38eafeb387df2da48a89ccd8e489e11c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2616141642181742471, guid: 38eafeb387df2da48a89ccd8e489e11c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -354,32 +359,32 @@ PrefabInstance:
     - target: {fileID: 2616141640595167791, guid: 38eafeb387df2da48a89ccd8e489e11c,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2616141640595167791, guid: 38eafeb387df2da48a89ccd8e489e11c,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7241772277880039009, guid: 38eafeb387df2da48a89ccd8e489e11c,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7241772277880039009, guid: 38eafeb387df2da48a89ccd8e489e11c,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7241772278780199214, guid: 38eafeb387df2da48a89ccd8e489e11c,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7241772278780199214, guid: 38eafeb387df2da48a89ccd8e489e11c,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 38eafeb387df2da48a89ccd8e489e11c, type: 3}
@@ -831,7 +836,7 @@ PrefabInstance:
     - target: {fileID: 973902650193979695, guid: e269bcfff60ecee4098cc6e0216eac06,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -1.265
       objectReference: {fileID: 0}
     - target: {fileID: 973902650193979695, guid: e269bcfff60ecee4098cc6e0216eac06,
         type: 3}
@@ -895,6 +900,10 @@ PrefabInstance:
     - target: {fileID: 1522479091963076, guid: 29603953e9914124dbc69c33a21a7735, type: 3}
       propertyPath: m_Name
       value: In Game Menu
+      objectReference: {fileID: 0}
+    - target: {fileID: 1522479091963076, guid: 29603953e9914124dbc69c33a21a7735, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4949690701064009322, guid: 29603953e9914124dbc69c33a21a7735,
         type: 3}
