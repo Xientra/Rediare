@@ -3,7 +3,12 @@ guid: 5f139e14ae05e474e85d47323988c55e
 ModelImporter:
   serializedVersion: 27
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: DaggerMat
+    second: {fileID: 2100000, guid: 74730f7e7ef61d24d9fccd22896c5ae5, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

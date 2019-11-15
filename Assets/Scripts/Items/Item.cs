@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class Item : MonoBehaviour {
+[CreateAssetMenu(fileName = "New Item", menuName = "Items/Item")]
+public class Item : ScriptableObject {
 
-    public new string name;
+    public new string name = "Item";
+    public Sprite image;
     public float value = 10;
+
 
 }
