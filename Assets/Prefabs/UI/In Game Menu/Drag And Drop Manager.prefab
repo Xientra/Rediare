@@ -43,6 +43,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 630fc843cf065b147986ecccb2149c6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dragGraphicPrefab: {fileID: 9119423004023427049, guid: a30bdbbc9ebdbbe47ac1e8ed8bb30fb6,
+  draggerAlphaValue: 0.75
+  draggerGraphicPrefab: {fileID: 2581793788390492085, guid: 8da32a2b5cdc3bb489772817f6046397,
     type: 3}
-  selectedUIItemElement: {fileID: 0}
