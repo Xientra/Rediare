@@ -123,12 +123,12 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
-          m_MethodName: OnBeginDrag
-          m_Mode: 2
+        - m_Target: {fileID: 7872270109114174829}
+          m_MethodName: OnBeginDragTrigger
+          m_Mode: 1
           m_Arguments:
-            m_ObjectArgument: {fileID: 1547234340899245421}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
@@ -140,8 +140,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
-          m_MethodName: OnDrag
+        - m_Target: {fileID: 7872270109114174829}
+          m_MethodName: OnDragTrigger
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -157,8 +157,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
-          m_MethodName: OnEndDrag
+        - m_Target: {fileID: 7872270109114174829}
+          m_MethodName: OnEndDragTrigger
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}

@@ -22,7 +22,7 @@ public class UIItemElement : MonoBehaviour {
             UpdateValues();
         }
         else {
-            //text.text = "";
+			Empty();
         }
     }
 
@@ -33,6 +33,18 @@ public class UIItemElement : MonoBehaviour {
             UpdateValues();
         }
     }
+
+	public void OnDragTrigger() {
+		DragAndDropManager.instance.OnDrag();
+	}
+
+	public void OnBeginDragTrigger() {
+		DragAndDropManager.instance.OnBeginDrag(this.gameObject);
+	}
+
+	public void OnEndDragTrigger() {
+		DragAndDropManager.instance.OnEndDrag();
+	}
 
     #region OnDrop for the acual moving version
     /*
@@ -69,7 +81,6 @@ public class UIItemElement : MonoBehaviour {
         else {
             Empty();
         }
-        
     }
 
     public void OnValidate() {

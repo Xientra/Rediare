@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 8071127575402192512}
   - component: {fileID: 7286348817075720797}
   - component: {fileID: 1458523281202149931}
-  - component: {fileID: 5747998260368588393}
+  - component: {fileID: -4326046922645289326}
   m_Layer: 5
-  m_Name: DraggerImage
+  m_Name: DraggerGraphic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,7 +76,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!225 &5747998260368588393
+--- !u!225 &-4326046922645289326
 CanvasGroup:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -86,5 +86,5 @@ CanvasGroup:
   m_Enabled: 1
   m_Alpha: 1
   m_Interactable: 1
-  m_BlocksRaycasts: 1
+  m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
