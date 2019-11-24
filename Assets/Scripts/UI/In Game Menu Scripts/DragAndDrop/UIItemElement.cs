@@ -42,14 +42,14 @@ public class UIItemElement : MonoBehaviour {
 	}
 
 	public void OnDrop() { // is called whenever i release the mouse button over the game object (i think)
-		Item itemToDrop = DragAndDropManager.itemDragger;
+		Item itemToDrop = DragAndDropManager.instance.itemDragger;
 
 		if (CheckIfItemIsAcceptable(itemToDrop)) {
 
-			DragAndDropManager.itemElementOrigin.SetItem(item); //swaps items in the slots
+			DragAndDropManager.instance.itemElementOrigin.SetItem(item); //swaps items in the slots
 			this.SetItem(itemToDrop);
 
-			DragAndDropManager.itemDragger = null; // this tells the DragAndDropManager the Drag was successfull
+			DragAndDropManager.instance.itemDragger = null; // this tells the DragAndDropManager the Drag was successfull
 
 			UpdateValues();
 		}
@@ -84,7 +84,6 @@ public class UIItemElement : MonoBehaviour {
 		return result;
 	}
 	
-
     public void SetItem(Item item) {
         this.item = item;
         UpdateValues();

@@ -13,6 +13,7 @@ public class InGameMenu : MonoBehaviour {
     private void Awake() {
         if (instance == null) {
             instance = this;
+			gameObject.SetActive(false);
         }
         else {
             Destroy(this.gameObject);

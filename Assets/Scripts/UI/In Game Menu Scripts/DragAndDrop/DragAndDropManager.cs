@@ -7,17 +7,18 @@ public class DragAndDropManager : MonoBehaviour {
 
 	public static DragAndDropManager instance;
 
-    //the dragger is the object being dragged
-    public static GameObject objectDragger;
-    public static UIItemElement itemElementOrigin;
-    public static Item itemDragger; 
+    public UIItemElement itemElementOrigin;
+    public Item itemDragger;
 
 
-    [Range(0, 1)]
+	public GameObject draggerGraphicPrefab;
+	GameObject draggerGraphic;
+	[Range(0, 1)]
     public float draggerAlphaValue = 0.75f;
 	public float draggerScale = 0.2f;
 
-    public GameObject draggerGraphicPrefab;
+	bool dragging = false;
+
 
 	private void Awake() {
 		if (instance == null) {
@@ -30,10 +31,6 @@ public class DragAndDropManager : MonoBehaviour {
 	}
 
 	#region this is the version where just a visual copy of the item is created 
-
-	bool dragging = false;
-    CanvasGroup draggerGraphicCanvasGroup;
-    GameObject draggerGraphic;
 
     public void OnBeginDrag(GameObject toDrag) {
 
@@ -72,46 +69,4 @@ public class DragAndDropManager : MonoBehaviour {
 		}
     }
 #endregion
-
-    #region this is the version that drags an acual object and resets it's psoition if it can't drop anywhere
-
-    /*
-    Vector3 startPosition;
-    Transform startParent;
-    CanvasGroup canvasGroup;
-
-    public void OnBeginDrag(GameObject toDrag) {
-
-        startPosition = toDrag.transform.position;
-        startParent = toDrag.transform.parent;
-        canvasGroup = toDrag.GetComponent<CanvasGroup>();
-        canvasGroup.blocksRaycasts = false;
-        canvasGroup.alpha = draggerAlphaValue;
-
-        objectDragger = toDrag;
-        itemDragger = toDrag.GetComponent<UIItemElement>().item;
-    }
-
-    // called every frame something is being dragged
-    public void OnDrag(GameObject toDrag) { 
-        toDrag.transform.position = Input.mousePosition;
-    }
-
-    // called when the drag ends but not if it's dropped
-    public void OnEndDrag(GameObject toDrag) {
-
-
-        if (toDrag.transform.parent == startParent) {
-            toDrag.transform.position = startPosition;
-        }
-
-        canvasGroup.blocksRaycasts = true;
-        canvasGroup.alpha = 1f;
-
-        objectDragger = null;
-        itemDragger = null;
-    }
-    */
-
-    #endregion
 }

@@ -69,13 +69,14 @@
     <Compile Include="Assets\Scripts\Items\Staff.cs" />
     <Compile Include="Assets\Scripts\Items\Sword.cs" />
     <Compile Include="Assets\Scripts\Items\Weapon.cs" />
-    <Compile Include="Assets\Scripts\Player.cs" />
-    <Compile Include="Assets\Scripts\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\Player\Player.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerStats.cs" />
     <Compile Include="Assets\Scripts\UI\In Game Menu Scripts\DragAndDrop\DragAndDropManager.cs" />
     <Compile Include="Assets\Scripts\UI\In Game Menu Scripts\DragAndDrop\UIItemElement.cs" />
     <Compile Include="Assets\Scripts\UI\In Game Menu Scripts\EquipmentWindow.cs" />
     <Compile Include="Assets\Scripts\UI\In Game Menu Scripts\InGameMenu.cs" />
-    <Compile Include="Assets\Scripts\ValueDisplayBar.cs" />
+    <Compile Include="Assets\Scripts\UI\ValueDisplayBar.cs" />
     <Compile Include="Assets\Z_NotUsed\DragHandler.cs" />
     <Compile Include="Assets\Z_NotUsed\Slot.cs" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />

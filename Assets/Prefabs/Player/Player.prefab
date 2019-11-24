@@ -228,7 +228,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSettings:
-    sensetivity: 1
+    sensetivity: 1.2
     sensetivityAxisMultiplier: {x: 1, y: 1}
     cameraYRotMax: 80
     cameraYRotMin: 5
@@ -244,11 +244,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 973902650193979695}
     m_Modifications:
-    - target: {fileID: 6285807233471740329, guid: 19e709944ba77734eaa5fa60b966df3e,
-        type: 3}
-      propertyPath: m_Name
-      value: Person
-      objectReference: {fileID: 0}
     - target: {fileID: 6285807233471740330, guid: 19e709944ba77734eaa5fa60b966df3e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -303,6 +298,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6285807233471740329, guid: 19e709944ba77734eaa5fa60b966df3e,
+        type: 3}
+      propertyPath: m_Name
+      value: Person
       objectReference: {fileID: 0}
     - target: {fileID: 1476392273369129819, guid: 19e709944ba77734eaa5fa60b966df3e,
         type: 3}
