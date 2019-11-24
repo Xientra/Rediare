@@ -29,8 +29,6 @@ public class DragAndDropManager : MonoBehaviour {
 		}
 	}
 
-
-
 	#region this is the version where just a visual copy of the item is created 
 
 	bool dragging = false;
@@ -49,10 +47,6 @@ public class DragAndDropManager : MonoBehaviour {
 			draggerImage.sprite = itemDragger.image;
 			draggerImage.color = new Color(draggerImage.color.r, draggerImage.color.g, draggerImage.color.b, draggerAlphaValue);
 			draggerGraphic.transform.localScale = new Vector3(draggerScale, draggerScale, draggerScale);
-			
-            // makes the dragger not hittable by raycast so we can detect whats below it
-            // draggerGraphicCanvasGroup = draggerGraphic.GetComponent<CanvasGroup>();
-            // draggerGraphicCanvasGroup.blocksRaycasts = false;
 
 			dragging = true;
         }
@@ -70,11 +64,8 @@ public class DragAndDropManager : MonoBehaviour {
 
 		if (dragging == true) {
 			if (itemDragger == null) { //if the drag was successfull
-				itemElementOrigin.Empty();
+				itemElementOrigin.UpdateValues();
 			}
-
-			//draggerGraphicCanvasGroup.blocksRaycasts = true;
-			//draggerGraphicCanvasGroup.alpha = 1f;
 
 			Destroy(draggerGraphic);
 			dragging = false;

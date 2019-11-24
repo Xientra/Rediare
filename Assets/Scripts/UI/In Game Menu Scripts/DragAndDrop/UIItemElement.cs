@@ -3,10 +3,10 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.EventSystems;
 
-//[RequireComponent(typeof(EventTrigger))]
+[RequireComponent(typeof(EventTrigger))]
 public class UIItemElement : MonoBehaviour {
 
-    public const string EMPTY_TEXT = "[Empty]";
+	public const string EMPTY_TEXT = "[Empty]";
 
     public Item item;
 
@@ -15,7 +15,9 @@ public class UIItemElement : MonoBehaviour {
     public TextMeshProUGUI text;
     public Image image;
 
-    //[Space(5)]
+	//[Space(5)]
+
+	public AcceptableItems acceptableItems;
 
     private void Start() {
         if (item != null) {
@@ -26,13 +28,6 @@ public class UIItemElement : MonoBehaviour {
         }
     }
 
-    public void OnDrop() { // is called whenever i release the mouse button over the game object (i think)
-        if (item == null) {
-            item = DragAndDropManager.itemDragger;
-            DragAndDropManager.itemDragger = null; // this tells the DragAndDropManager the Drag was successfull
-            UpdateValues();
-        }
-    }
 
 	public void OnDragTrigger() {
 		DragAndDropManager.instance.OnDrag();
@@ -46,25 +41,49 @@ public class UIItemElement : MonoBehaviour {
 		DragAndDropManager.instance.OnEndDrag();
 	}
 
-    #region OnDrop for the acual moving version
-    /*
-    public void OnDrop() { // is called whenever i release the mouse button over the game object (i think)
-        if (item == null) {
-            DragAndDropManager.objectDragger.transform.SetParent(transform);
-            item = DragAndDropManager.itemDragger;
-            UpdateValues();
-        }
-    }
-    */
-    #endregion
+	public void OnDrop() { // is called whenever i release the mouse button over the game object (i think)
+		Item itemToDrop = DragAndDropManager.itemDragger;
 
-    public void Empty() {
-        item = null;
+		if (CheckIfItemIsAcceptable(itemToDrop)) {
 
-        text.text = EMPTY_TEXT;
-        image.enabled = false;
-        image.sprite = null;
-    }
+			DragAndDropManager.itemElementOrigin.SetItem(item); //swaps items in the slots
+			this.SetItem(itemToDrop);
+
+			DragAndDropManager.itemDragger = null; // this tells the DragAndDropManager the Drag was successfull
+
+			UpdateValues();
+		}
+	}
+
+	
+	private bool CheckIfItemIsAcceptable(Item item) {
+		bool result = false;
+
+		//check armor
+		if ((item is HeadArmor && acceptableItems.headSlot == true) ||
+			(item is ChestArmor && acceptableItems.chestSlot == true) ||
+			(item is LegArmor && acceptableItems.legSlot == true)) {
+
+			result = true;
+		}
+
+		/*
+		//check weapons
+		if ((item is Sword && acceptableItems.swordSlot == true) ||
+			(item is Bow && acceptableItems.bowSlot == true) ||
+			(item is Staff && acceptableItems.staffSlot == true)) {
+
+			result = true;
+		}
+		*/
+		if ((item is Weapon && acceptableItems.weaponSlot == true)) {
+
+			result = true;
+		}
+
+		return result;
+	}
+	
 
     public void SetItem(Item item) {
         this.item = item;
@@ -83,7 +102,45 @@ public class UIItemElement : MonoBehaviour {
         }
     }
 
-    public void OnValidate() {
+	private void Empty() {
+		item = null;
+
+		text.text = EMPTY_TEXT;
+		image.enabled = false;
+		image.sprite = null;
+	}
+
+	public void OnValidate() {
         UpdateValues();
     }
+}
+
+[System.Serializable]
+public class AcceptableItems {
+
+	[Header("Armor: ")]
+	public bool headSlot = true;
+	public bool chestSlot = true;
+	public bool legSlot = true;
+
+	[Header("Weapons: ")]
+	/*
+	public bool swordSlot = true;
+	public bool bowSlot = true;
+	public bool staffSlot = true;
+	*/
+
+	public bool weaponSlot = false;
+
+	public AcceptableItems() {
+		headSlot = true;
+		chestSlot = true;
+		legSlot = true;
+
+		weaponSlot = true;
+
+		//swordSlot = true;
+		//bowSlot = true;
+		//staffSlot = true;
+	}
 }

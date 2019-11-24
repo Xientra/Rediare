@@ -61,11 +61,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Items\Armor.cs" />
-    <Compile Include="Assets\Scripts\Items\ArmorChest.cs" />
-    <Compile Include="Assets\Scripts\Items\ArmorHead.cs" />
-    <Compile Include="Assets\Scripts\Items\ArmorLegs.cs" />
     <Compile Include="Assets\Scripts\Items\Bow.cs" />
+    <Compile Include="Assets\Scripts\Items\ChestArmor.cs" />
+    <Compile Include="Assets\Scripts\Items\HeadArmor.cs" />
     <Compile Include="Assets\Scripts\Items\Item.cs" />
+    <Compile Include="Assets\Scripts\Items\LegArmor.cs" />
     <Compile Include="Assets\Scripts\Items\Staff.cs" />
     <Compile Include="Assets\Scripts\Items\Sword.cs" />
     <Compile Include="Assets\Scripts\Items\Weapon.cs" />

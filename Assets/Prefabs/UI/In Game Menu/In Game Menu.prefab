@@ -2469,6 +2469,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chest Slot Item
       objectReference: {fileID: 0}
+    - target: {fileID: 7872270109114174829, guid: cbb04e5e27564f040a292755e6b1e303,
+        type: 3}
+      propertyPath: acceptableItems.headSlot
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7872270109114174829, guid: cbb04e5e27564f040a292755e6b1e303,
+        type: 3}
+      propertyPath: acceptableItems.weaponSlot
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7872270109114174829, guid: cbb04e5e27564f040a292755e6b1e303,
+        type: 3}
+      propertyPath: acceptableItems.legSlot
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cbb04e5e27564f040a292755e6b1e303, type: 3}
 --- !u!224 &3082060986239164953 stripped
@@ -2764,6 +2779,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Head Slot Item
       objectReference: {fileID: 0}
+    - target: {fileID: 7872270109114174829, guid: cbb04e5e27564f040a292755e6b1e303,
+        type: 3}
+      propertyPath: acceptableItems.chestSlot
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7872270109114174829, guid: cbb04e5e27564f040a292755e6b1e303,
+        type: 3}
+      propertyPath: acceptableItems.legSlot
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7872270109114174829, guid: cbb04e5e27564f040a292755e6b1e303,
+        type: 3}
+      propertyPath: acceptableItems.weaponSlot
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cbb04e5e27564f040a292755e6b1e303, type: 3}
 --- !u!224 &5750180221569324880 stripped
@@ -2888,6 +2918,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Leg Slot Item
+      objectReference: {fileID: 0}
+    - target: {fileID: 7872270109114174829, guid: cbb04e5e27564f040a292755e6b1e303,
+        type: 3}
+      propertyPath: acceptableItems.chestSlot
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7872270109114174829, guid: cbb04e5e27564f040a292755e6b1e303,
+        type: 3}
+      propertyPath: acceptableItems.headSlot
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7872270109114174829, guid: cbb04e5e27564f040a292755e6b1e303,
+        type: 3}
+      propertyPath: acceptableItems.weaponSlot
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cbb04e5e27564f040a292755e6b1e303, type: 3}
@@ -3353,6 +3398,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Weapon Slot Item
+      objectReference: {fileID: 0}
+    - target: {fileID: 7872270109114174829, guid: cbb04e5e27564f040a292755e6b1e303,
+        type: 3}
+      propertyPath: acceptableItems.headSlot
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7872270109114174829, guid: cbb04e5e27564f040a292755e6b1e303,
+        type: 3}
+      propertyPath: acceptableItems.legSlot
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7872270109114174829, guid: cbb04e5e27564f040a292755e6b1e303,
+        type: 3}
+      propertyPath: acceptableItems.chestSlot
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cbb04e5e27564f040a292755e6b1e303, type: 3}

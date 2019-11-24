@@ -4,12 +4,5 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Bow", menuName = "Items/Weapons/Bow")]
 public class Bow : Weapon {
-
-    void Start() {
-
-    }
-
-    void Update() {
-
-    }
+	
 }
