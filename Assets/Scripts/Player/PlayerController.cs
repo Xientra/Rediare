@@ -3,15 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+[RequireComponent(typeof(Rigidbody))]
 public class PlayerController : MonoBehaviour {
 
     public PlayerSettings playerSettings;
-    //public GameObject player; //this
-    public Rigidbody rb;
+    public GameObject playerGfx;
+    private Rigidbody rb;
 
-    private Transform cameraAnchor;
-    public Camera playerCamera;
+	public Camera playerCamera;
+	private Transform cameraAnchor;
     private Vector3 cameraAnchorRotation;
+	private Vector3 cameraAnchorOffset;
 
     private NavMeshAgent navMeshAgent;
     public GameObject clickEffect;
@@ -19,11 +21,18 @@ public class PlayerController : MonoBehaviour {
 	//private Vector3 previousMousePos;
 
     void Start() {
-        cameraAnchor = playerCamera.transform.parent;
+		rb = GetComponent<Rigidbody>();
+
+        cameraAnchor = playerCamera.transform.parent; // gets cameraAnchor through the assinged camera
+		// sets initial rotation
         cameraAnchorRotation.x = cameraAnchor.localRotation.eulerAngles.x;
         cameraAnchorRotation.y = cameraAnchor.localRotation.eulerAngles.y;
+		// stores original offset
+		cameraAnchorOffset = cameraAnchor.localPosition;
+		cameraAnchor.SetParent(null);
 
-        navMeshAgent = GetComponent<NavMeshAgent>();
+
+		navMeshAgent = GetComponent<NavMeshAgent>();
     }
 
     void Update() {
@@ -31,9 +40,15 @@ public class PlayerController : MonoBehaviour {
 
 		//PathfinderMovement();
 		KeybordMovement();
+
+		cameraAnchor.transform.position = transform.position;
 	}
 
-    private void LateUpdate() {
+	private void FixedUpdate() {
+		cameraAnchor.transform.position = transform.position + cameraAnchorOffset;
+	}
+
+	private void LateUpdate() {
     }
 
 	private void PathfinderMovement() {
@@ -51,11 +66,10 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	private void KeybordMovement() {
-		//different types of wasd movement
+		transform.position += transform.forward * Input.GetAxis("Vertical") * playerSettings.movementSpeed + transform.right * Input.GetAxis("Horizontal") * playerSettings.movementSpeed;
+		//rb.MovePosition((transform.position + transform.forward * Input.GetAxis("Vertical") + transform.right * Input.GetAxis("Horizontal")) * Time.deltaTime);
+		//rb.AddForce(transform.forward * Input.GetAxis("Vertical") * playerSettings.movementSpeed + transform.right * Input.GetAxis("Horizontal") * playerSettings.movementSpeed);
 
-		//transform.position += transform.forward * Input.GetAxis("Vertical") * slower + transform.right * Input.GetAxis("Horizontal") * slower;
-		rb.MovePosition((transform.position + transform.forward * Input.GetAxis("Vertical") + transform.right * Input.GetAxis("Horizontal")) * Time.deltaTime);
-		//rb.AddForce(transform.forward * Input.GetAxis("Vertical") * faster + transform.right * Input.GetAxis("Horizontal") * faster);
 	}
 
 	private void CameraMovement() {
@@ -63,32 +77,42 @@ public class PlayerController : MonoBehaviour {
 			Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
 
-
-
-            //y is left and right, x is up and down, cus unity is stupid
-            cameraAnchorRotation.x += -Input.GetAxisRaw("Mouse Y") * playerSettings.sensetivity * playerSettings.sensetivityAxisMultiplier.x;
+			//cameraAnchor.rotation *= Quaternion.AngleAxis(playerSettings.sensetivity * Input.GetAxisRaw("Mouse X") * Time.deltaTime, transform.up);
+			//cameraAnchor.rotation *= Quaternion.AngleAxis(playerSettings.sensetivity * -Input.GetAxisRaw("Mouse Y") * Time.deltaTime, transform.right);
+			
+			cameraAnchorRotation.x += -Input.GetAxisRaw("Mouse Y") * playerSettings.sensetivity;
             cameraAnchorRotation.x = Mathf.Clamp(cameraAnchorRotation.x, playerSettings.cameraYRotMin, playerSettings.cameraYRotMax);
-            cameraAnchorRotation.y += Input.GetAxisRaw("Mouse X") * playerSettings.sensetivity * playerSettings.sensetivityAxisMultiplier.y;
-
-
-        }
-        else {
+            cameraAnchorRotation.y += Input.GetAxisRaw("Mouse X") * playerSettings.sensetivity;
+			
+		}
+		else {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
         }
 
-        cameraAnchor.localRotation = Quaternion.Euler(cameraAnchorRotation.x - transform.localRotation.eulerAngles.x, cameraAnchorRotation.y - transform.localRotation.eulerAngles.y, 0);
-        //cameraAnchor.localRotation = Quaternion.Euler(cameraAnchorRotation.x, 0, 0);
-        //transform.rotation = Quaternion.Euler(0, cameraAnchorRotation.y, 0);
-    }
+		// rotates the cameraAnchor as if it is not the child of the player Object even if that is the case
+		//cameraAnchor.localRotation = Quaternion.Euler(cameraAnchorRotation.x - transform.localRotation.eulerAngles.x, cameraAnchorRotation.y - transform.localRotation.eulerAngles.y, 0);
+
+		cameraAnchor.localRotation = Quaternion.Euler(cameraAnchorRotation.x, cameraAnchorRotation.y, 0);
+
+		// rotates the player itself around the y axis
+		transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(transform.rotation.x, cameraAnchor.rotation.eulerAngles.y, playerGfx.transform.rotation.z), playerSettings.playerGfxRotationSpeed);
+	}
 }
 
 [System.Serializable]
 public class PlayerSettings {
+
+	[Header("Keybord:")]
+
+	public float movementSpeed = 1f;
+
+	[Header("Mouse:")]
     public float sensetivity = 1f;
     public Vector2 sensetivityAxisMultiplier = new Vector2(1f, 1f);
     public float cameraYRotMax = 80f;
     public float cameraYRotMin = 5f;
     public float scrollSpeed = 1f;
 
+	public float playerGfxRotationSpeed = 0.1f;
 }

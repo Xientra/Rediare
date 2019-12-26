@@ -228,11 +228,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSettings:
+    movementSpeed: 1
     sensetivity: 1.2
     sensetivityAxisMultiplier: {x: 1, y: 1}
     cameraYRotMax: 80
     cameraYRotMin: 5
     scrollSpeed: 1
+    playerGfxRotationSpeed: 0.1
+  playerGfx: {fileID: 6537066310746715705}
   rb: {fileID: 973902650193979692}
   playerCamera: {fileID: 973902649783373607}
   clickEffect: {fileID: 1738562611984373050, guid: e67be974ff78b0547b919f35d6b405d9,
@@ -311,6 +314,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 19e709944ba77734eaa5fa60b966df3e, type: 3}
+--- !u!1 &6537066310746715705 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6285807233471740329, guid: 19e709944ba77734eaa5fa60b966df3e,
+    type: 3}
+  m_PrefabInstance: {fileID: 973902649287167888}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6537066310746715706 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6285807233471740330, guid: 19e709944ba77734eaa5fa60b966df3e,
