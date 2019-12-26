@@ -28,37 +28,37 @@ public class PlayerController : MonoBehaviour {
 
     void Update() {
         CameraMovement();
-        PlayerMovement();
-    }
+
+		//PathfinderMovement();
+		KeybordMovement();
+	}
 
     private void LateUpdate() {
     }
 
-    private void PlayerMovement() {
+	private void PathfinderMovement() {
+		if (Input.GetMouseButtonDown(0)) {
+			Ray ray = playerCamera.ScreenPointToRay(Input.mousePosition);
 
-        if (Input.GetMouseButtonDown(0)) {
-            
+			RaycastHit[] rayHits = Physics.RaycastAll(ray, 100, LayerMask.GetMask("Ground"));
 
-            Ray ray = playerCamera.ScreenPointToRay(Input.mousePosition);
+			foreach (RaycastHit rh in rayHits) {
+				navMeshAgent.destination = rh.point;
+				GameObject _ffx = Instantiate(clickEffect, rh.point + new Vector3(0, 0.1f, 0), Quaternion.identity);
+				Destroy(_ffx, 2f);
+			}
+		}
+	}
 
-            RaycastHit[] rayHits = Physics.RaycastAll(ray, 100, LayerMask.GetMask("Ground"));
+	private void KeybordMovement() {
+		//different types of wasd movement
 
-            foreach (RaycastHit rh in rayHits) {
-                navMeshAgent.destination = rh.point;
-                GameObject _ffx = Instantiate(clickEffect, rh.point + new Vector3(0, 0.1f, 0), Quaternion.identity);
-                Destroy(_ffx, 2f);
-            }
-            
-        }
+		//transform.position += transform.forward * Input.GetAxis("Vertical") * slower + transform.right * Input.GetAxis("Horizontal") * slower;
+		rb.MovePosition((transform.position + transform.forward * Input.GetAxis("Vertical") + transform.right * Input.GetAxis("Horizontal")) * Time.deltaTime);
+		//rb.AddForce(transform.forward * Input.GetAxis("Vertical") * faster + transform.right * Input.GetAxis("Horizontal") * faster);
+	}
 
-        //different types of wasd movement
-
-        //transform.position += transform.forward * Input.GetAxis("Vertical") * slower + transform.right * Input.GetAxis("Horizontal") * slower;
-        rb.MovePosition((transform.position + transform.forward * Input.GetAxis("Vertical") + transform.right * Input.GetAxis("Horizontal")) * Time.deltaTime);
-        //rb.AddForce(transform.forward * Input.GetAxis("Vertical") * faster + transform.right * Input.GetAxis("Horizontal") * faster);
-    }
-
-    private void CameraMovement() {
+	private void CameraMovement() {
         if (Input.GetMouseButton(1)) {
 			Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;

@@ -1,0 +1,11 @@
+﻿What next:
+
+- stuff that changes hp and mp
+=> magic
+- stuff that changes exp and lvl 
+=> enemies, combat
+
+- stuf that changes stats 
+=> items, weapons, gear
+
+- how about wasd movement for the player...?! how about NOMEGALUL
