@@ -10,10 +10,15 @@ public class PlayerController : MonoBehaviour {
     public GameObject playerGfx;
     private Rigidbody rb;
 
+	private Vector3 keybordInput;
+	private Vector3 velocity;
+
 	public Camera playerCamera;
 	private Transform cameraAnchor;
     private Vector3 cameraAnchorRotation;
 	private Vector3 cameraAnchorOffset;
+
+	private Vector3 forward;
 
     private NavMeshAgent navMeshAgent;
     public GameObject clickEffect;
@@ -38,13 +43,25 @@ public class PlayerController : MonoBehaviour {
     void Update() {
         CameraMovement();
 
-		//PathfinderMovement();
-		KeybordMovement();
+		Debug.Log(forward);
+		Debug.DrawLine(cameraAnchor.transform.position, cameraAnchor.transform.position + forward, Color.red);
 
-		cameraAnchor.transform.position = transform.position;
+		//PathfinderMovement();
+		KeybordInput();
 	}
 
 	private void FixedUpdate() {
+		forward = Vector3.ProjectOnPlane(cameraAnchor.forward, Vector3.up).normalized;
+
+
+
+		
+
+		KeybordMovement();
+		//Debug.Log(velocity);
+		//rb.velocity = velocity;
+		//Debug.Log(rb.velocity);
+
 		cameraAnchor.transform.position = transform.position + cameraAnchorOffset;
 	}
 
@@ -65,11 +82,15 @@ public class PlayerController : MonoBehaviour {
 		}
 	}
 
-	private void KeybordMovement() {
-		transform.position += transform.forward * Input.GetAxis("Vertical") * playerSettings.movementSpeed + transform.right * Input.GetAxis("Horizontal") * playerSettings.movementSpeed;
-		//rb.MovePosition((transform.position + transform.forward * Input.GetAxis("Vertical") + transform.right * Input.GetAxis("Horizontal")) * Time.deltaTime);
-		//rb.AddForce(transform.forward * Input.GetAxis("Vertical") * playerSettings.movementSpeed + transform.right * Input.GetAxis("Horizontal") * playerSettings.movementSpeed);
+	private void KeybordInput() {
+		keybordInput = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Jump"), Input.GetAxis("Vertical"));
+	}
 
+	private void KeybordMovement() {
+		//rb.velocity = transform.forward * Input.GetAxis("Vertical") * playerSettings.movementSpeed + transform.right * Input.GetAxis("Horizontal") * playerSettings.movementSpeed;
+		
+		rb.MovePosition(transform.position + (transform.right * keybordInput.x * playerSettings.movementSpeed + forward * keybordInput.z * playerSettings.movementSpeed));
+		//rb.AddForce(transform.forward * Input.GetAxis("Vertical") * playerSettings.movementSpeed + transform.right * Input.GetAxis("Horizontal") * playerSettings.movementSpeed);
 	}
 
 	private void CameraMovement() {

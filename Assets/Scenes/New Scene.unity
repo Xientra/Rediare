@@ -789,10 +789,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 973902650193979692, guid: e269bcfff60ecee4098cc6e0216eac06,
+    - target: {fileID: 973902650193979694, guid: e269bcfff60ecee4098cc6e0216eac06,
         type: 3}
-      propertyPath: m_Constraints
-      value: 14
+      propertyPath: playerSettings.movementSpeed
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 973902650193979695, guid: e269bcfff60ecee4098cc6e0216eac06,
         type: 3}
