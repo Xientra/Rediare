@@ -9,6 +9,10 @@ public class Player : MonoBehaviour {
 
 	public PlayerItems playerItems = new PlayerItems(10);
 
+	private void Start() {
+		
+	}
+
 	private void Update() {
 		if (Input.GetKeyDown(KeyCode.Escape)) {
 			InGameMenu.instance.gameObject.SetActive(!InGameMenu.instance.gameObject.activeSelf);

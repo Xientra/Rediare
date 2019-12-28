@@ -46,7 +46,8 @@ public class UIItemElement : MonoBehaviour {
 
 		if (CheckIfItemIsAcceptable(itemToDrop)) {
 
-			DragAndDropManager.instance.itemElementOrigin.SetItem(item); //swaps items in the slots
+			//swaps items in the slots
+			DragAndDropManager.instance.itemElementOrigin.SetItem(item); 
 			this.SetItem(itemToDrop);
 
 			DragAndDropManager.instance.itemDragger = null; // this tells the DragAndDropManager the Drag was successfull

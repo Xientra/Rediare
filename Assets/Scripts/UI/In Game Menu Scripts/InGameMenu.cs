@@ -6,13 +6,17 @@ public class InGameMenu : MonoBehaviour {
 
     public static InGameMenu instance;
 
-    [Space(5)]
+	public Player player;
+
+	[Space(5)]
 
     public DragAndDropManager dragAndDropManager;
 
-	public EquipmentWindow equipmentWindow;
+	[Space(5)]
 
+	public EquipmentWindow equipmentWindow;
 	public InventoryWindow inventoryWindow;
+	//public StatsWindow statsWindow;
 
     private void Awake() {
         if (instance == null) {
@@ -25,6 +29,12 @@ public class InGameMenu : MonoBehaviour {
     }
 
 	private void Start() {
-		//gameObject.SetActive(false);
+		UpdateWholeUI();
+
+		gameObject.SetActive(false);
+	}
+
+	public void UpdateWholeUI() {
+
 	}
 }

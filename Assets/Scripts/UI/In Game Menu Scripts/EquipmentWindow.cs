@@ -8,4 +8,6 @@ public class EquipmentWindow : MonoBehaviour {
 	public UIItemElement chestSlot;
 	public UIItemElement legsSlot;
 	public UIItemElement weaponSlot;
+
+
 }

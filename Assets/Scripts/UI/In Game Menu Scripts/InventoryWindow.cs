@@ -2,19 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.UIElements;
 
 public class InventoryWindow : MonoBehaviour {
 
 	public GameObject itemElementPrefab;
 	public GameObject content;
-	private LayoutGroup contentLayoutGroup;
 
 	public UIItemElement[] itemElements;
 
 	private void Start() {
-		contentLayoutGroup = content.GetComponent<LayoutGroup>();
-
 		SetItemElementsSize(10);
 		CreateUIItemElementObjects();
 	}

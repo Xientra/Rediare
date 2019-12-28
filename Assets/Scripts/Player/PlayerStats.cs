@@ -7,54 +7,74 @@ using System;
 [Serializable]
 public class PlayerStats {
 
-	public int LVL { get; private set; }
-	private int LevelUp() {
-		LVL++;
-		return LVL;
+	[SerializeField]
+	private int lvl;
+	public int LVL { get => lvl; }
+	public int LevelUp() {
+		lvl++;
+		return lvl;
 	}
 
-	public float EXP { get; private set; }
-	public float AddEXP(float amount) {
-		EXP += amount;
-		return EXP;
+	[SerializeField]
+	private float exp;
+	public float EXP { get => exp; }
+	public float AddExp(float amount) {
+		exp += amount;
+		return exp;
 	}
 
-	public float HP { get; private set; }
+	[SerializeField]
+	private float hp;
+	public float HP { get => hp; }
 	public float ChangeHealth(float amount) {
-		HP += amount;
-		return HP;
+		hp += amount;
+		return hp;
 	}
 
-	public float maxHP { get; private set; }
+	[SerializeField]
+	private float maxHP;
+	public float MaxHP { get => maxHP; }
 	public void UpdateMaxHP(int newMaxHp) {
 		maxHP = newMaxHp;
-		HP = maxHP;
+		hp = maxHP;
 	}
 
-	public float MP { get; private set; }
+	[SerializeField]
+	private float mp;
+	public float MP { get => mp; }
 	public float ChangeMP(float amount) {
-		MP += amount;
-		return MP;
+		mp += amount;
+		return mp;
 	}
 
-	public float maxMP { get; private set; }
-	public void UpdateMaxMP(int newMaxMP) {
-		maxMP = newMaxMP;
+	[SerializeField]
+	private float maxMP;
+	public float MaxMP { get => maxMP; }
+	public void UpdateMaxMP(int newMaxMp) {
+		maxMP = newMaxMp;
+		mp = maxMP;
 	}
 
-	public int STR { get; private set; }
-	public int DEX { get; private set; }
-	public int INT { get; private set; }
-	
+	[SerializeField]
+	private int str;
+	public int STR { get => str; }
+	[SerializeField]
+	private int dex;
+	public int DEX { get => dex; }
+	[SerializeField]
+	private int Int;
+	public int INT { get => Int; }
+
+
 	public PlayerStats() {
-		LVL = 1;
-		EXP = 0;
+		lvl = 1;
+		exp = 0;
 		maxHP = 100f;
-		HP = maxHP;
+		hp = maxHP;
 		maxMP = 100f;
-		MP = maxMP;
-		STR = 5;
-		DEX = 5;
-		INT = 5;
+		mp = maxMP;
+		str = 5;
+		dex = 5;
+		Int = 5;
 	}
 }
