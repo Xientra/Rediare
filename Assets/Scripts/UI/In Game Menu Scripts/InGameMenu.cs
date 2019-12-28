@@ -10,14 +10,21 @@ public class InGameMenu : MonoBehaviour {
 
     public DragAndDropManager dragAndDropManager;
 
+	public EquipmentWindow equipmentWindow;
+
+	public InventoryWindow inventoryWindow;
+
     private void Awake() {
         if (instance == null) {
             instance = this;
-			gameObject.SetActive(false);
         }
         else {
             Destroy(this.gameObject);
             Debug.LogError("Destroyed " + gameObject.name + " because another instance of InGameMenu allready exists.");
         }
     }
+
+	private void Start() {
+		//gameObject.SetActive(false);
+	}
 }

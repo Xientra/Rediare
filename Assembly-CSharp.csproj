@@ -74,11 +74,13 @@
     <Compile Include="Assets\Scripts\Items\Weapon.cs" />
     <Compile Include="Assets\Scripts\Player\Player.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerItems.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerStats.cs" />
     <Compile Include="Assets\Scripts\UI\In Game Menu Scripts\DragAndDrop\DragAndDropManager.cs" />
     <Compile Include="Assets\Scripts\UI\In Game Menu Scripts\DragAndDrop\UIItemElement.cs" />
     <Compile Include="Assets\Scripts\UI\In Game Menu Scripts\EquipmentWindow.cs" />
     <Compile Include="Assets\Scripts\UI\In Game Menu Scripts\InGameMenu.cs" />
+    <Compile Include="Assets\Scripts\UI\In Game Menu Scripts\InventoryWindow.cs" />
     <Compile Include="Assets\Scripts\UI\ValueDisplayBar.cs" />
     <Compile Include="Assets\Z_NotUsed\DragHandler.cs" />
     <Compile Include="Assets\Z_NotUsed\Slot.cs" />

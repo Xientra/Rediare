@@ -30,9 +30,9 @@ public class DragAndDropManager : MonoBehaviour {
 		}
 	}
 
-	#region this is the version where just a visual copy of the item is created 
+	#region this is the version where a visual copy of the item is created (the one that is used)
 
-    public void OnBeginDrag(GameObject toDrag) {
+	public void OnBeginDrag(GameObject toDrag) {
 
         itemElementOrigin = toDrag.GetComponent<UIItemElement>();
         itemDragger = toDrag.GetComponent<UIItemElement>().item;

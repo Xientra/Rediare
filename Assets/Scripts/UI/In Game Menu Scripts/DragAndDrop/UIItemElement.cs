@@ -8,25 +8,25 @@ public class UIItemElement : MonoBehaviour {
 
 	public const string EMPTY_TEXT = "[Empty]";
 
-    public Item item;
+	public Item item;
 
-    [Space(5)]
+	[Space(5)]
 
-    public TextMeshProUGUI text;
-    public Image image;
+	public TextMeshProUGUI text;
+	public Image image;
 
 	//[Space(5)]
 
 	public AcceptableItems acceptableItems;
 
-    private void Start() {
-        if (item != null) {
-            UpdateValues();
-        }
-        else {
+	private void Start() {
+		if (item != null) {
+			UpdateValues();
+		}
+		else {
 			Empty();
-        }
-    }
+		}
+	}
 
 
 	public void OnDragTrigger() {
@@ -55,7 +55,7 @@ public class UIItemElement : MonoBehaviour {
 		}
 	}
 
-	
+
 	private bool CheckIfItemIsAcceptable(Item item) {
 		bool result = false;
 
@@ -67,8 +67,8 @@ public class UIItemElement : MonoBehaviour {
 			result = true;
 		}
 
-		/*
 		//check weapons
+		/*
 		if ((item is Sword && acceptableItems.swordSlot == true) ||
 			(item is Bow && acceptableItems.bowSlot == true) ||
 			(item is Staff && acceptableItems.staffSlot == true)) {
@@ -76,30 +76,30 @@ public class UIItemElement : MonoBehaviour {
 			result = true;
 		}
 		*/
-		if ((item is Weapon && acceptableItems.weaponSlot == true)) {
+		if (item is Weapon && acceptableItems.weaponSlot == true) {
 
 			result = true;
 		}
 
 		return result;
 	}
-	
-    public void SetItem(Item item) {
-        this.item = item;
-        UpdateValues();
-    }
 
-    public void UpdateValues() {
-        
-        if (item != null) {
-            text.text = item.name;
-            image.enabled = true;
-            image.sprite = item.image;
-        }
-        else {
-            Empty();
-        }
-    }
+	public void SetItem(Item item) {
+		this.item = item;
+		UpdateValues();
+	}
+
+	public void UpdateValues() {
+
+		if (item != null) {
+			text.text = item.name;
+			image.enabled = true;
+			image.sprite = item.image;
+		}
+		else {
+			Empty();
+		}
+	}
 
 	private void Empty() {
 		item = null;
@@ -107,6 +107,24 @@ public class UIItemElement : MonoBehaviour {
 		text.text = EMPTY_TEXT;
 		image.enabled = false;
 		image.sprite = null;
+	}
+
+	/*
+	public static UIItemElement[] ConvertItemsToUIItemElements(Item[] items) {
+		UIItemElement[] result = new UIItemElement[items.Length];
+		for (int i = 0; i < result.Length; i++) {
+			UIItemElement newElement = new UIItemElement();
+			newElement.item = items[i];
+			result[i] = newElement;
+		}
+
+		return result;
+	}
+	*/
+
+	public void CloneValues(UIItemElement values) {
+		acceptableItems = values.acceptableItems;
+		item = values.item;
 	}
 
 	public void OnValidate() {

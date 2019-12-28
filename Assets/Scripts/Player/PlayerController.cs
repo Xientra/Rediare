@@ -6,67 +6,67 @@ using UnityEngine.AI;
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerController : MonoBehaviour {
 
-    public PlayerSettings playerSettings;
-    public GameObject playerGfx;
-    private Rigidbody rb;
+	public PlayerSettings playerSettings;
+	public GameObject playerGfx;
+	private Rigidbody rb;
 
-	private Vector3 keybordInput;
+	private Vector3 movementInput;
 	private Vector3 velocity;
 
 	public Camera playerCamera;
 	private Transform cameraAnchor;
-    private Vector3 cameraAnchorRotation;
+	private Vector3 cameraAnchorRotation;
 	private Vector3 cameraAnchorOffset;
 
 	private Vector3 forward;
 
-    private NavMeshAgent navMeshAgent;
-    public GameObject clickEffect;
+	private NavMeshAgent navMeshAgent;
+	public GameObject clickEffect;
 
 	//private Vector3 previousMousePos;
 
-    void Start() {
+	void Start() {
 		rb = GetComponent<Rigidbody>();
 
-        cameraAnchor = playerCamera.transform.parent; // gets cameraAnchor through the assinged camera
+		// gets cameraAnchor through the assinged camera
+		cameraAnchor = playerCamera.transform.parent;
 		// sets initial rotation
-        cameraAnchorRotation.x = cameraAnchor.localRotation.eulerAngles.x;
-        cameraAnchorRotation.y = cameraAnchor.localRotation.eulerAngles.y;
+		cameraAnchorRotation.x = cameraAnchor.localRotation.eulerAngles.x;
+		cameraAnchorRotation.y = cameraAnchor.localRotation.eulerAngles.y;
 		// stores original offset
 		cameraAnchorOffset = cameraAnchor.localPosition;
 		cameraAnchor.SetParent(null);
 
 
 		navMeshAgent = GetComponent<NavMeshAgent>();
-    }
+	}
 
-    void Update() {
-        CameraMovement();
-
-		Debug.Log(forward);
-		Debug.DrawLine(cameraAnchor.transform.position, cameraAnchor.transform.position + forward, Color.red);
+	void Update() {
 
 		//PathfinderMovement();
-		KeybordInput();
+		MovementInput();
+
+
+	}
+
+	private void MovementInput() {
+		movementInput = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Jump"), Input.GetAxis("Vertical"));
+		if (Input.GetMouseButton(0) && Input.GetMouseButton(1)) {
+			movementInput = new Vector3(movementInput.x, movementInput.y, 1);
+		}
 	}
 
 	private void FixedUpdate() {
 		forward = Vector3.ProjectOnPlane(cameraAnchor.forward, Vector3.up).normalized;
 
-
-
-		
-
-		KeybordMovement();
-		//Debug.Log(velocity);
-		//rb.velocity = velocity;
-		//Debug.Log(rb.velocity);
-
 		cameraAnchor.transform.position = transform.position + cameraAnchorOffset;
+
+		CameraRotation();
+		WASDMovement();
 	}
 
 	private void LateUpdate() {
-    }
+	}
 
 	private void PathfinderMovement() {
 		if (Input.GetMouseButtonDown(0)) {
@@ -82,18 +82,14 @@ public class PlayerController : MonoBehaviour {
 		}
 	}
 
-	private void KeybordInput() {
-		keybordInput = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Jump"), Input.GetAxis("Vertical"));
-	}
-
-	private void KeybordMovement() {
-		//rb.velocity = transform.forward * Input.GetAxis("Vertical") * playerSettings.movementSpeed + transform.right * Input.GetAxis("Horizontal") * playerSettings.movementSpeed;
+	private void WASDMovement() {
 		
-		rb.MovePosition(transform.position + (transform.right * keybordInput.x * playerSettings.movementSpeed + forward * keybordInput.z * playerSettings.movementSpeed));
-		//rb.AddForce(transform.forward * Input.GetAxis("Vertical") * playerSettings.movementSpeed + transform.right * Input.GetAxis("Horizontal") * playerSettings.movementSpeed);
+		//rb.velocity = transform.right * movementInput.x * playerSettings.movementSpeed + forward * movementInput.z * playerSettings.movementSpeed;
+
+		rb.MovePosition(transform.position + (transform.right * movementInput.x * playerSettings.movementSpeed + forward * movementInput.z * playerSettings.movementSpeed));
 	}
 
-	private void CameraMovement() {
+	private void CameraRotation() {
         if (Input.GetMouseButton(1)) {
 			Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
@@ -104,7 +100,9 @@ public class PlayerController : MonoBehaviour {
 			cameraAnchorRotation.x += -Input.GetAxisRaw("Mouse Y") * playerSettings.sensetivity;
             cameraAnchorRotation.x = Mathf.Clamp(cameraAnchorRotation.x, playerSettings.cameraYRotMin, playerSettings.cameraYRotMax);
             cameraAnchorRotation.y += Input.GetAxisRaw("Mouse X") * playerSettings.sensetivity;
-			
+
+			cameraAnchor.localRotation = Quaternion.Euler(cameraAnchorRotation.x, cameraAnchorRotation.y, 0);
+
 		}
 		else {
             Cursor.lockState = CursorLockMode.None;
@@ -114,7 +112,6 @@ public class PlayerController : MonoBehaviour {
 		// rotates the cameraAnchor as if it is not the child of the player Object even if that is the case
 		//cameraAnchor.localRotation = Quaternion.Euler(cameraAnchorRotation.x - transform.localRotation.eulerAngles.x, cameraAnchorRotation.y - transform.localRotation.eulerAngles.y, 0);
 
-		cameraAnchor.localRotation = Quaternion.Euler(cameraAnchorRotation.x, cameraAnchorRotation.y, 0);
 
 		// rotates the player itself around the y axis
 		transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(transform.rotation.x, cameraAnchor.rotation.eulerAngles.y, playerGfx.transform.rotation.z), playerSettings.playerGfxRotationSpeed);
