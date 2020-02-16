@@ -10,9 +10,17 @@ public class InventoryWindow : MonoBehaviour {
 
 	public UIItemElement[] itemElements;
 
+	private PlayerItems playersItems;
+
 	private void Start() {
-		SetItemElementsSize(10);
+		playersItems = InGameMenu.instance.player.playerItems;
+
+
+		SetItemElementsSize(playersItems.inventorySize);
+
 		CreateUIItemElementObjects();
+
+		UpdateUI();
 	}
 
 	public void CreateUIItemElementObjects() {
@@ -48,4 +56,26 @@ public class InventoryWindow : MonoBehaviour {
 			Destroy(t.gameObject);
 		}
 	}
+
+	public void UpdateUI() {
+		for (int i = 0; i < itemElements.Length; i++) {
+			itemElements[i].SetItem(playersItems.GetItem(i));
+		}
+	}
+
+
+	/*
+	public bool AddItem(Item item) {
+		for (int i = 0; i < itemElements.Length; i++) {
+			UIItemElement ie = itemElements[i];
+
+			if (ie.item == null && ie.CheckIfItemIsAcceptable(item)) {
+				ie.SetItem(item);
+				return true;
+			}
+		}
+
+		return false;
+	}
+	*/
 }

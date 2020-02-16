@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 973902650193979694}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -215,6 +215,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f74b4894f6c54c849bd1f2db21154e1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerStats:
+    lvl: 1
+    exp: 0
+    hp: 100
+    maxHP: 100
+    mp: 100
+    maxMP: 100
+    str: 5
+    dex: 5
+    Int: 5
+  playerItems:
+    headItem: {fileID: 0}
+    chestItem: {fileID: 0}
+    legsItem: {fileID: 0}
+    weapon: {fileID: 0}
+    inventory:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
 --- !u!114 &973902650193979694
 MonoBehaviour:
   m_ObjectHideFlags: 0

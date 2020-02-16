@@ -57,7 +57,7 @@ public class UIItemElement : MonoBehaviour {
 	}
 
 
-	private bool CheckIfItemIsAcceptable(Item item) {
+	public bool CheckIfItemIsAcceptable(Item item) {
 		bool result = false;
 
 		//check armor

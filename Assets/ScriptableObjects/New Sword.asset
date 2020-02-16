@@ -15,4 +15,5 @@ MonoBehaviour:
   name: Sword
   image: {fileID: 21300000, guid: e96716f14acd83a40beffa53d63c451a, type: 3}
   value: 100
+  graphic: {fileID: 7027055911350662863, guid: eb734c722a744d448af8f183f3674dae, type: 3}
   damage: 10

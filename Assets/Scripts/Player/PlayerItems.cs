@@ -7,7 +7,8 @@ using UnityEngine;
 [System.Serializable]
 public class PlayerItems {
 
-	private int inventorySize;
+	public readonly int inventorySize;
+	//public int InventorySize { get => inventorySize; }
 
 	[SerializeField]
 	private Item headItem;
@@ -34,9 +35,14 @@ public class PlayerItems {
 	public bool AddToInventory(Item item, int position) {
 		if (inventory[position] == null) {
 			inventory[position] = item;
+			InGameMenu.instance.inventoryWindow.UpdateUI(); // <----------------------------------------------------------------------------- pls think of a better interconnection
 			return true;
 		}
 		return false;
+	}
+
+	public Item GetItem(int position) {
+		return inventory[position];
 	}
 
 	public Item RemoveFromInventory(int position) {
@@ -45,4 +51,12 @@ public class PlayerItems {
 		return item;
 	}
 
+	public int GetFreeInventorySlot() {
+		for (int i = 0; i < inventory.Length; i++) {
+			if (inventory[i] == null) {
+				return i;
+			}
+		}
+		return -1;
+	}
 }
