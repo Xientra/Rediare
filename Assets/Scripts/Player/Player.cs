@@ -7,7 +7,7 @@ public class Player : MonoBehaviour {
 
 	public PlayerStats playerStats;
 
-	public PlayerItems playerItems = new PlayerItems(10);
+	public PlayerEquipment playerItems = new PlayerEquipment(10);
 
 	private void Start() {
 		
