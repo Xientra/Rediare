@@ -10,53 +10,99 @@ public class PlayerEquipment {
 	public readonly int inventorySize;
 	//public int InventorySize { get => inventorySize; }
 
+	#region head, chest, legs, weapon slots
 	[SerializeField]
-	private Item headItem;
-	[SerializeField]
-	private Item chestItem;
-	[SerializeField]
-	private Item legsItem;
-	[SerializeField]
-	private Item weapon;
+	private ItemSlot headSlot;
+	public ItemSlot HeadSlot { get => headSlot; }
 
 	[SerializeField]
-	private Item[] inventory;
+	private ItemSlot chestSlot;
+	public ItemSlot ChestSlot { get => chestSlot; }
+
+	[SerializeField]
+	private ItemSlot legsSlot;
+	public ItemSlot LegsSlot { get => legsSlot; }
+
+	[SerializeField]
+	private ItemSlot weaponSlot;
+	public ItemSlot WeaponSlot { get => weaponSlot; }
+	#endregion
+
+	[SerializeField]
+	private ItemSlot[] inventory;
 
 	public PlayerEquipment(int inventorySize) {
 		this.inventorySize = inventorySize;
-		inventory = new Item[inventorySize];
-	}
 
-	public Item HeadItem { get => headItem; set => headItem = value; }
-	public Item ChestItem { get => chestItem; set => chestItem = value; }
-	public Item LegsItem { get => legsItem; set => legsItem = value; }
-	public Item Weapon { get => weapon; set => weapon = value; }
+		// ------------------------------------------------------------------------------------------pls think of a way so that the editor is not ignored and overwritten
 
-	public bool AddToInventory(Item item, int position) {
-		if (inventory[position] == null) {
-			inventory[position] = item;
-			InGameMenu.instance.inventoryWindow.UpdateUI(); // <----------------------------------------------------------------------------- pls think of a better interconnection
-			return true;
-		}
-		return false;
-	}
+		headSlot = new ItemSlot();
+		chestSlot = new ItemSlot();
+		legsSlot = new ItemSlot();
+		weaponSlot = new ItemSlot();
 
-	public Item GetItem(int position) {
-		return inventory[position];
-	}
+		inventory = new ItemSlot[inventorySize];
 
-	public Item RemoveFromInventory(int position) {
-		Item item = inventory[position];
-		inventory[position] = null;
-		return item;
-	}
-
-	public int GetFreeInventorySlot() {
 		for (int i = 0; i < inventory.Length; i++) {
-			if (inventory[i] == null) {
-				return i;
+			inventory[i] = new ItemSlot();
+		}
+	}
+
+	private void SetSlot(Item item, int position) { 
+	
+	}
+
+	public ItemSlot GetItemSlot(int i) {
+		return inventory[i];
+	}
+
+	public ItemSlot GetFreeInventorySlot() {
+		for (int i = 0; i < inventory.Length; i++) {
+			if (inventory[i].IsEmpty()) {
+				return inventory[i];
 			}
 		}
-		return -1;
+		return null;
+	}
+
+	/// <summary>
+	/// Adds the item to the first empty slot in the inventroy.
+	/// </summary>
+	public bool AddToInventory(Item item) {
+		ItemSlot slot = GetFreeInventorySlot();
+		if (slot == null)
+			return false;
+
+		slot.SetItem(item);
+		return true;
+	}
+
+	public Item RemoveFromInventory(int index) {
+		return inventory[index].ClearItem();
+	}
+
+	// will probably change to just UpdateInventroySize(), getting the size from the playerStats
+	public void SetInventorySize(int size) {
+		if (size == inventory.Length) return;
+		if (size < inventory.Length) {
+			Debug.LogError("Making the Inventoy smaller is not (yet?) supported.");
+			return;
+		}
+
+		ItemSlot[] newInventory = new ItemSlot[size];
+
+		for (int i = 0; i < newInventory.Length; i++) {
+			if (i < inventory.Length) {
+				newInventory[i] = inventory[i];
+			}
+			else {
+				newInventory[i] = new ItemSlot();
+			}
+		}
+
+		inventory = newInventory;
+
+		// update whole inventory
+		InGameMenu.instance.inventoryWindow.UpdateUI();
 	}
 }

@@ -51,7 +51,6 @@ public class ItemPickup : MonoBehaviour {
 	}
 
 	private void OnTriggerEnter(Collider other) {
-		Debug.Log(other + " " + other.tag);
 		if (other.CompareTag("Player")) {
 			other.GetComponent<Player>().PickupItem(PickUpItem());
 		}

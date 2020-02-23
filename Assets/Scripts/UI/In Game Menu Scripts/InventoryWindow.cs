@@ -13,10 +13,7 @@ public class InventoryWindow : MonoBehaviour {
 	private PlayerEquipment playersItems;
 
 	private void Start() {
-		playersItems = InGameMenu.instance.player.playerItems;
-
-
-		SetItemElementsSize(playersItems.inventorySize);
+		playersItems = InGameMenu.instance.player.playerEquipment;
 
 		CreateUIItemElementObjects();
 
@@ -26,12 +23,19 @@ public class InventoryWindow : MonoBehaviour {
 	public void CreateUIItemElementObjects() {
 		ClearItemElementObjects();
 
+		itemElements = new UIItemElement[playersItems.inventorySize];
+
 		for (int i = 0; i < itemElements.Length; i++) {
 			UIItemElement newElement = Instantiate(itemElementPrefab, content.transform).GetComponent<UIItemElement>();
-			if (itemElements[i] != null) {
-				newElement.CloneValues(itemElements[i]);
-			}
+			newElement.ItemSlot = playersItems.GetItemSlot(i);
+
 			itemElements[i] = newElement;
+		}
+	}
+
+	public void UpdateUI() {
+		for (int i = 0; i < itemElements.Length; i++) {
+			itemElements[i].UpdateValues();
 		}
 	}
 
@@ -42,7 +46,7 @@ public class InventoryWindow : MonoBehaviour {
 			return;
 		}
 
-		UIItemElement[] newItemElements = new UIItemElement[size];
+		UIItemElement[] newItemElements = new UIItemElement[size]; // TO SORT OUT ----------------------------------------------------------
 
 		for (int i = 0; i < itemElements.Length; i++) {
 			newItemElements[i] = itemElements[i];
@@ -56,26 +60,4 @@ public class InventoryWindow : MonoBehaviour {
 			Destroy(t.gameObject);
 		}
 	}
-
-	public void UpdateUI() {
-		for (int i = 0; i < itemElements.Length; i++) {
-			itemElements[i].SetItem(playersItems.GetItem(i));
-		}
-	}
-
-
-	/*
-	public bool AddItem(Item item) {
-		for (int i = 0; i < itemElements.Length; i++) {
-			UIItemElement ie = itemElements[i];
-
-			if (ie.item == null && ie.CheckIfItemIsAcceptable(item)) {
-				ie.SetItem(item);
-				return true;
-			}
-		}
-
-		return false;
-	}
-	*/
 }

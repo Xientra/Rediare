@@ -71,6 +71,7 @@
     <Compile Include="Assets\Scripts\Items\Staff.cs" />
     <Compile Include="Assets\Scripts\Items\Sword.cs" />
     <Compile Include="Assets\Scripts\Items\Weapon.cs" />
+    <Compile Include="Assets\Scripts\Player\ItemSlot.cs" />
     <Compile Include="Assets\Scripts\Player\Player.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerEquipment.cs" />

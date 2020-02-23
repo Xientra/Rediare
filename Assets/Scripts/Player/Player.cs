@@ -7,7 +7,11 @@ public class Player : MonoBehaviour {
 
 	public PlayerStats playerStats;
 
-	public PlayerEquipment playerItems = new PlayerEquipment(10);
+	public PlayerEquipment playerEquipment = new PlayerEquipment(10);
+
+	private void Awake() {
+		playerEquipment = new PlayerEquipment(10);
+	}
 
 	private void Start() {
 		
@@ -20,10 +24,6 @@ public class Player : MonoBehaviour {
 	}
 
 	public void PickupItem(Item item) {
-		int index = playerItems.GetFreeInventorySlot();
-		if (index == -1)
-			return;
-
-		playerItems.AddToInventory(item, index);
+		playerEquipment.AddToInventory(item);
 	}
 }
