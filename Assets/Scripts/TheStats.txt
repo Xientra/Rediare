@@ -1,0 +1,29 @@
+
+== LEVEL STATS ==
+lvl
+exp
+hp
+mp
+
+== ATTRIBUTES ==
+str
+dex
+int
+
+== CALCULATED STATS ==
+atk
+def
+crit chance
+crit multiplier
+hp recovery
+resistances (fire, ice, etc.)
+inventory size
+
+== BASE STATS ==
+atk
+def
+crit chance
+crit multiplier
+hp recovery
+resistances (fire, ice, etc.)
+inventory size

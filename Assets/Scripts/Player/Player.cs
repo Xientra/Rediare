@@ -5,12 +5,14 @@ using UnityEditor;
 
 public class Player : MonoBehaviour {
 
-	public PlayerStats playerStats;
+	public PlayerStats baseStats;
+	public Stats itemStats;
+	public PlayerStats fullStats;
 
-	public PlayerEquipment playerEquipment = new PlayerEquipment(10);
+	public PlayerEquipment equipment = new PlayerEquipment(10);
 
 	private void Awake() {
-		playerEquipment = new PlayerEquipment(10);
+		equipment = new PlayerEquipment(10);
 	}
 
 	private void Start() {
@@ -24,6 +26,6 @@ public class Player : MonoBehaviour {
 	}
 
 	public void PickupItem(Item item) {
-		playerEquipment.AddToInventory(item);
+		equipment.AddToInventory(item);
 	}
 }

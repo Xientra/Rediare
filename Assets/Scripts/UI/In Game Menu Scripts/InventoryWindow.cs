@@ -13,7 +13,7 @@ public class InventoryWindow : MonoBehaviour {
 	private PlayerEquipment playersItems;
 
 	private void Start() {
-		playersItems = InGameMenu.instance.player.playerEquipment;
+		playersItems = InGameMenu.instance.player.equipment;
 
 		CreateUIItemElementObjects();
 

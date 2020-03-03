@@ -34,7 +34,7 @@ public class PlayerEquipment {
 	public PlayerEquipment(int inventorySize) {
 		this.inventorySize = inventorySize;
 
-		// ------------------------------------------------------------------------------------------pls think of a way so that the editor is not ignored and overwritten
+		// --------------------------------pls think of a way so that the editor is not ignored and overwritten (i don't think there is a way, i'll just have to save them myself PepeHands)
 
 		headSlot = new ItemSlot();
 		chestSlot = new ItemSlot();

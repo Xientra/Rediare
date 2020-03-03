@@ -9,4 +9,10 @@ public abstract class Armor : Item {
 
     public float defence = 1f;
 
+
+	[Header("Requirements:")]
+	public float requiredLevel = 0;
+	public float requiredStrength = 0;
+	public float requiredDexterity = 0;
+	public float requiredIntelligence = 0;
 }

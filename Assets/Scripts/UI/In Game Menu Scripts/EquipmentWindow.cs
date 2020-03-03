@@ -12,7 +12,7 @@ public class EquipmentWindow : MonoBehaviour {
 	PlayerEquipment playerEquipment;
 
 	private void Start() {
-		playerEquipment = InGameMenu.instance.player.playerEquipment;
+		playerEquipment = InGameMenu.instance.player.equipment;
 
 		headSlot.ItemSlot = playerEquipment.HeadSlot;
 		chestSlot.ItemSlot = playerEquipment.ChestSlot;
