@@ -6,17 +6,28 @@ using UnityEditor;
 public class Player : MonoBehaviour {
 
 	public PlayerStats baseStats;
-	public Stats itemStats;
+	public ModifiableStats itemStats;
 	public PlayerStats fullStats;
 
 	public PlayerEquipment equipment = new PlayerEquipment(10);
 
 	private void Awake() {
-		equipment = new PlayerEquipment(10);
+
+		baseStats = PlayerStats.Default;
+		itemStats = ModifiableStats.Zero;
+		itemStats.SetBasedOnEquipment();
+		fullStats = PlayerStats.CalculateFullStats(baseStats, itemStats);
+
+
+		equipment = new PlayerEquipment(fullStats.InventorySize);
 	}
 
 	private void Start() {
+
+
+
 		
+
 	}
 
 	private void Update() {

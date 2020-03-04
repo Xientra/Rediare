@@ -5,88 +5,149 @@ using UnityEditor;
 using System;
 
 [Serializable]
-public class PlayerStats : Stats{
+public class PlayerStats : ModifiableStats{
 
 	[SerializeField]
-	private int lvl;
-	public int LVL { get => lvl; }
+	private int level;
+	public int Level { get => level; }
 	public int LevelUp() {
-		lvl++;
-		return lvl;
+		level++;
+		return level;
 	}
 
 	[SerializeField]
-	private float exp;
-	public float EXP { get => exp; }
+	private float experience;
+	public float Experience { get => experience; }
 	public float AddExp(float amount) {
-		exp += amount;
-		return exp;
+		experience += amount;
+		return experience;
 	}
 
+
 	[SerializeField]
-	private float hp;
-	public float HP { get => hp; }
+	private float healthPoints;
+	public float HealthPoints { get => healthPoints; }
 	public float ChangeHealth(float amount) {
-		hp += amount;
-		return hp;
+		healthPoints += amount;
+		return healthPoints;
 	}
 
-
-
 	[SerializeField]
-	private float mp;
-	public float MP { get => mp; }
+	private float magicPoints;
+	public float MagicPoints { get => magicPoints; }
 	public float ChangeMP(float amount) {
-		mp += amount;
-		return mp;
+		magicPoints += amount;
+		return magicPoints;
 	}
 
 
+	[SerializeField]
+	private int strength;
+	public int Strength { get => strength; }
 
 	[SerializeField]
-	private int str;
-	public int STR { get => str; }
+	private int dexterity;
+	public int Dexterity { get => dexterity; }
 
 	[SerializeField]
-	private int dex;
-	public int DEX { get => dex; }
-
-	[SerializeField]
-	private int Int;
-	public int INT { get => Int; }
+	private int intelligence;
+	public int Intelligence { get => intelligence; }
 
 
 
 	// ----------------------------------------------------------------- the maxHp here might ignore the ones forom items, maybe
 	public override void UpdateMaxHP(int newMaxHp) {
 		maxHP = newMaxHp;
-		hp = maxHP;
+		healthPoints = maxHP;
 	}
 
 	public override void UpdateMaxMP(int newMaxMp) {
 		maxMP = newMaxMp;
-		mp = maxMP;
+		magicPoints = maxMP;
 	}
 
 
-	public PlayerStats() : base() {
+	private PlayerStats() : base() {
 
-		maxHP = 100f;
-		maxMP = 100f;
+		level = 0;
+		experience = 0;
+		healthPoints = 0;
+		magicPoints = 0;
+		strength = 0;
+		dexterity = 0;
+		intelligence = 0;
+	}
 
-		attack = 10;
-		defence = 0;
-		hpRecovery = 0.01f;
-		criticalHitChance = 0.1f;
-		criticalHitMulipier = 1.5f;
-		inventorySize = 10;
+	private PlayerStats(int level, float experience, int strength, int dexterity, int intelligence,
+		float maxHP, float maxMP, float attack, float defence, float hpRecovery, float criticalHitChance, float criticalHitMulipier, int inventorySize)
+		//: base(maxHP, maxMP, attack, defence, hpRecovery, criticalHitChance, criticalHitMulipier, inventorySize) {
+		{
 
-		lvl = 1;
-		exp = 0;
-		hp = maxHP;
-		mp = maxMP;
-		str = 5;
-		dex = 5;
-		Int = 5;
+		this.level = level;
+		this.experience = experience;
+
+		this.strength = strength;
+		this.dexterity = dexterity;
+		this.intelligence = intelligence;
+
+		this.maxHP = maxHP;
+		this.maxMP = maxMP;
+		healthPoints = maxHP;
+		magicPoints = maxMP;
+
+		this.attack = attack;
+		this.defence = defence;
+		this.hpRecovery = hpRecovery;
+		this.criticalHitChance = criticalHitChance;
+		this.criticalHitMulipier = criticalHitMulipier;
+		this.inventorySize = inventorySize;
+	}
+
+	/// <summary>
+	/// Returns a PlayerStats Object with the default starting values.
+	/// </summary>
+	public static PlayerStats Default {
+
+		get {
+			int level = 1;
+			float experience = 0;
+			float maxHP = 100f;
+			float maxMP = 100f;
+			int strength = 5;
+			int dexterity = 5;
+			int intelligence = 5;
+
+			float attack = 10;
+			float defence = 0;
+			float hpRecovery = 0.01f;
+			float criticalHitChance = 0.1f;
+			float criticalHitMulipier = 1.5f;
+			int inventorySize = 10;
+
+			return new PlayerStats(level, experience, strength, dexterity, intelligence, maxHP, maxMP, attack, defence, hpRecovery, criticalHitChance, criticalHitMulipier, inventorySize);
+		}
+	}
+
+	/// <summary>
+	/// Combines the players base stats and the additional stats given by the equipment he wear and returns it as a new PlayerStats object.
+	/// </summary>
+	public static PlayerStats CalculateFullStats(PlayerStats baseStats, ModifiableStats itemStats) {
+
+		int level = baseStats.Level;
+		float experience = baseStats.Experience;
+		float maxHP = baseStats.MaxHP + itemStats.MaxHP;
+		float maxMP = baseStats.MaxMP + itemStats.MaxMP;
+		int strength = baseStats.Strength;
+		int dexterity = baseStats.Dexterity;
+		int intelligence = baseStats.Intelligence;
+
+		float attack = baseStats.Attack + itemStats.Attack;
+		float defence = baseStats.Defence + itemStats.Attack;
+		float hpRecovery = baseStats.HPRecovery + itemStats.HPRecovery;
+		float criticalHitChance = baseStats.CriticalHitChance + itemStats.CriticalHitChance;
+		float criticalHitMulipier = baseStats.CriticalHitMulipier + itemStats.CriticalHitMulipier;
+		int inventorySize = baseStats.InventorySize + itemStats.InventorySize;
+
+		return new PlayerStats(level, experience, strength, dexterity, intelligence, maxHP, maxMP, attack, defence, hpRecovery, criticalHitChance, criticalHitMulipier, inventorySize);
 	}
 }

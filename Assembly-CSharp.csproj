@@ -63,21 +63,22 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\Items\Armor.cs" />
-    <Compile Include="Assets\Scripts\Items\Bow.cs" />
-    <Compile Include="Assets\Scripts\Items\ChestArmor.cs" />
-    <Compile Include="Assets\Scripts\Items\HeadArmor.cs" />
-    <Compile Include="Assets\Scripts\Items\Item.cs" />
-    <Compile Include="Assets\Scripts\Items\LegArmor.cs" />
-    <Compile Include="Assets\Scripts\Items\Staff.cs" />
-    <Compile Include="Assets\Scripts\Items\Sword.cs" />
-    <Compile Include="Assets\Scripts\Items\Weapon.cs" />
+    <Compile Include="Assets\Scripts\Items\ItemModifier.cs" />
+    <Compile Include="Assets\Scripts\Items\ScriptableObjects\Armor.cs" />
+    <Compile Include="Assets\Scripts\Items\ScriptableObjects\Bow.cs" />
+    <Compile Include="Assets\Scripts\Items\ScriptableObjects\ChestArmor.cs" />
+    <Compile Include="Assets\Scripts\Items\ScriptableObjects\HeadArmor.cs" />
+    <Compile Include="Assets\Scripts\Items\ScriptableObjects\Item.cs" />
+    <Compile Include="Assets\Scripts\Items\ScriptableObjects\LegArmor.cs" />
+    <Compile Include="Assets\Scripts\Items\ScriptableObjects\Staff.cs" />
+    <Compile Include="Assets\Scripts\Items\ScriptableObjects\Sword.cs" />
+    <Compile Include="Assets\Scripts\Items\ScriptableObjects\Weapon.cs" />
     <Compile Include="Assets\Scripts\Player\ItemSlot.cs" />
+    <Compile Include="Assets\Scripts\Player\ModifiableStats.cs" />
     <Compile Include="Assets\Scripts\Player\Player.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerEquipment.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerStats.cs" />
-    <Compile Include="Assets\Scripts\Player\Stats.cs" />
     <Compile Include="Assets\Scripts\UI\In Game Menu Scripts\DragAndDrop\DragAndDropManager.cs" />
     <Compile Include="Assets\Scripts\UI\In Game Menu Scripts\DragAndDrop\UIItemElement.cs" />
     <Compile Include="Assets\Scripts\UI\In Game Menu Scripts\EquipmentWindow.cs" />
@@ -104,6 +105,7 @@
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF Overlay.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
+    <None Include="Assets\Scripts\TheStats.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Sprite.shader" />
     <Reference Include="Unity.Timeline.Editor">
