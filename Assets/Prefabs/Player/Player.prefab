@@ -215,17 +215,48 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f74b4894f6c54c849bd1f2db21154e1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerStats:
-    lvl: 1
-    exp: 0
-    hp: 100
-    maxHP: 100
-    mp: 100
-    maxMP: 100
-    str: 5
-    dex: 5
-    Int: 5
-  playerEquipment:
+  baseStats:
+    maxHP: 0
+    maxMP: 0
+    attack: 0
+    defence: 0
+    hpRecovery: 0
+    criticalHitChance: 0
+    criticalHitMulipier: 0
+    inventorySize: 0
+    level: 0
+    experience: 0
+    healthPoints: 0
+    magicPoints: 0
+    strength: 0
+    dexterity: 0
+    intelligence: 0
+  itemStats:
+    maxHP: 0
+    maxMP: 0
+    attack: 0
+    defence: 0
+    hpRecovery: 0
+    criticalHitChance: 0
+    criticalHitMulipier: 0
+    inventorySize: 0
+  fullStats:
+    maxHP: 0
+    maxMP: 0
+    attack: 0
+    defence: 0
+    hpRecovery: 0
+    criticalHitChance: 0
+    criticalHitMulipier: 0
+    inventorySize: 0
+    level: 0
+    experience: 0
+    healthPoints: 0
+    magicPoints: 0
+    strength: 0
+    dexterity: 0
+    intelligence: 0
+  equipment:
     headSlot:
       item: {fileID: 0}
       acceptableItems:

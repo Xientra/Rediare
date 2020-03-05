@@ -10,6 +10,7 @@ public class Player : MonoBehaviour {
 	public PlayerStats fullStats;
 
 	public PlayerEquipment equipment = new PlayerEquipment(10);
+	public GenericPlayerEquipment gEquipment = new GenericPlayerEquipment(10);
 
 	private void Awake() {
 
@@ -19,14 +20,16 @@ public class Player : MonoBehaviour {
 		fullStats = PlayerStats.CalculateFullStats(baseStats, itemStats);
 
 
-		equipment = new PlayerEquipment(fullStats.InventorySize);
+		equipment.SetInventorySize(fullStats.InventorySize); // equipment is serialized, that means that it allready exists in the instector
+		gEquipment.SetInventorySize(fullStats.InventorySize);
+
+		gEquipment.WeaponSlot.Accepts(equipment.GetItemSlot(0).Item);
+		gEquipment.WeaponSlot.Accepts(equipment.GetItemSlot(1).Item);
+
+		gEquipment.GetItemSlot(0).Accepts(equipment.GetItemSlot(1).Item);
 	}
 
 	private void Start() {
-
-
-
-		
 
 	}
 

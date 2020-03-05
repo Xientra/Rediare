@@ -41,8 +41,6 @@ public class ItemSlot {
 
 	public bool Accepts(Item item) {
 
-		return true; //TODO <------------------------------------------------------------------------
-
 		bool result = false;
 
 		//check armor
@@ -53,15 +51,6 @@ public class ItemSlot {
 			result = true;
 		}
 
-		//check weapons
-		/*
-		if ((item is Sword && acceptableItems.swordSlot == true) ||
-			(item is Bow && acceptableItems.bowSlot == true) ||
-			(item is Staff && acceptableItems.staffSlot == true)) {
-
-			result = true;
-		}
-		*/
 		if (item is Weapon && acceptableItems.weapon == true) {
 
 			result = true;

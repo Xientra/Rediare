@@ -34,8 +34,9 @@ public class PlayerEquipment {
 	public PlayerEquipment(int inventorySize) {
 		this.inventorySize = inventorySize;
 
-		// --------------------------------pls think of a way so that the editor is not ignored and overwritten (i don't think there is a way, i'll just have to save them myself PepeHands)
+		// -------------------------------- pls think of a way so that the editor is not ignored and overwritten (i don't think there is a way, i'll just have to save them myself PepeHands)
 
+		
 		headSlot = new ItemSlot();
 		chestSlot = new ItemSlot();
 		legsSlot = new ItemSlot();
@@ -46,6 +47,7 @@ public class PlayerEquipment {
 		for (int i = 0; i < inventory.Length; i++) {
 			inventory[i] = new ItemSlot();
 		}
+		
 	}
 
 	private void SetSlot(Item item, int position) { 
