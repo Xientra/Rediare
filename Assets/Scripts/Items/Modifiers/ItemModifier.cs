@@ -14,7 +14,7 @@ public class ItemModifier {
 		this.value = value;
 	}
 
-	public ItemModifiers.Types modifierType = ItemModifiers.Types.maxHP;
+	public ItemModifiers.Types type = ItemModifiers.Types.maxHP;
 
 	public enum CalculationMethods { additive, multiplicative, multiplicativePercent }
 	public CalculationMethods calculationMethod = CalculationMethods.additive;

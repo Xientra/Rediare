@@ -5,7 +5,7 @@ using UnityEditor;
 using System;
 
 [Serializable]
-public class PlayerStats : ModifiableStats{
+public class PlayerStats : ModifiableStats {
 
 	[SerializeField]
 	private int level;
@@ -41,32 +41,6 @@ public class PlayerStats : ModifiableStats{
 	}
 
 
-	[SerializeField]
-	private int strength;
-	public int Strength { get => strength; }
-
-	[SerializeField]
-	private int dexterity;
-	public int Dexterity { get => dexterity; }
-
-	[SerializeField]
-	private int intelligence;
-	public int Intelligence { get => intelligence; }
-
-
-
-	// ----------------------------------------------------------------- the maxHp here might ignore the ones forom items, maybe
-	public override void UpdateMaxHP(int newMaxHp) {
-		maxHP = newMaxHp;
-		healthPoints = maxHP;
-	}
-
-	public override void UpdateMaxMP(int newMaxMp) {
-		maxMP = newMaxMp;
-		magicPoints = maxMP;
-	}
-
-
 	private PlayerStats() : base() {
 
 		level = 0;
@@ -78,8 +52,8 @@ public class PlayerStats : ModifiableStats{
 		intelligence = 0;
 	}
 
-	private PlayerStats(int level, float experience, int strength, int dexterity, int intelligence,
-		float maxHP, float maxMP, float attack, float defence, float hpRecovery, float criticalHitChance, float criticalHitMulipier, int inventorySize)
+	private PlayerStats(int level, float experience, float maxHP, float maxMP, int strength, int dexterity, int intelligence,
+		 float attack, float defence, float hpRecovery, float criticalHitChance, float criticalHitMulipier, int inventorySize)
 		//: base(maxHP, maxMP, attack, defence, hpRecovery, criticalHitChance, criticalHitMulipier, inventorySize) {
 		{
 
@@ -124,7 +98,7 @@ public class PlayerStats : ModifiableStats{
 			float criticalHitMulipier = 1.5f;
 			int inventorySize = 10;
 
-			return new PlayerStats(level, experience, strength, dexterity, intelligence, maxHP, maxMP, attack, defence, hpRecovery, criticalHitChance, criticalHitMulipier, inventorySize);
+			return new PlayerStats(level, experience, maxHP, maxMP, strength, dexterity, intelligence, attack, defence, hpRecovery, criticalHitChance, criticalHitMulipier, inventorySize);
 		}
 	}
 
@@ -148,6 +122,6 @@ public class PlayerStats : ModifiableStats{
 		float criticalHitMulipier = baseStats.CriticalHitMulipier + itemStats.CriticalHitMulipier;
 		int inventorySize = baseStats.InventorySize + itemStats.InventorySize;
 
-		return new PlayerStats(level, experience, strength, dexterity, intelligence, maxHP, maxMP, attack, defence, hpRecovery, criticalHitChance, criticalHitMulipier, inventorySize);
+		return new PlayerStats(level, experience, maxHP, maxMP, strength, dexterity, intelligence, attack, defence, hpRecovery, criticalHitChance, criticalHitMulipier, inventorySize);
 	}
 }

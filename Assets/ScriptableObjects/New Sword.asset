@@ -23,11 +23,11 @@ MonoBehaviour:
   requiredIntelligence: 0
   modifiers:
   - value: 20
-    modifierType: 0
+    type: 0
     calculationMethod: 0
   - value: 5
-    modifierType: 2
+    type: 0
     calculationMethod: 0
-  - value: 1.5
-    modifierType: 7
-    calculationMethod: 1
+  - value: 4
+    type: 4
+    calculationMethod: 0

@@ -51,7 +51,7 @@ public class PlayerEquipment {
 	}
 
 	private void SetSlot(Item item, int position) { 
-	
+		
 	}
 
 	public ItemSlot GetItemSlot(int i) {
@@ -106,5 +106,9 @@ public class PlayerEquipment {
 
 		// update whole inventory
 		InGameMenu.instance.inventoryWindow.UpdateUI();
+	}
+
+	public ItemModifier[] GetAllModifiers() {
+		throw new System.NotImplementedException("GetAllModifiers is not implemented yet.");
 	}
 }

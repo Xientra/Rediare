@@ -74,6 +74,7 @@
     <Compile Include="Assets\Scripts\Items\ScriptableObjects\Staff.cs" />
     <Compile Include="Assets\Scripts\Items\ScriptableObjects\Sword.cs" />
     <Compile Include="Assets\Scripts\Items\ScriptableObjects\Weapon.cs" />
+    <Compile Include="Assets\Scripts\Player\CombatStats.cs" />
     <Compile Include="Assets\Scripts\Player\ItemSlot.cs" />
     <Compile Include="Assets\Scripts\Player\ModifiableStats.cs" />
     <Compile Include="Assets\Scripts\Player\Player.cs" />
