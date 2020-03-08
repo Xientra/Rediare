@@ -67,6 +67,8 @@ public class UIItemElement : MonoBehaviour {
 		if (DragAndDropManager.instance.dragging == true) {
 			UIItemElement itemElementOrigin = DragAndDropManager.instance.itemElementOrigin;
 
+			Debug.Log(itemSlot.Accepts(itemElementOrigin.itemSlot.Item));
+
 			if (itemSlot.Accepts(itemElementOrigin.itemSlot.Item)) {
 
 				//swaps items in this UIItemElements slot and the DragAndDrop origin UIItemElement

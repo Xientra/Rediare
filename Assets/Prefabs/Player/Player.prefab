@@ -259,107 +259,51 @@ MonoBehaviour:
   equipment:
     headSlot:
       item: {fileID: 0}
-      acceptableItems:
-        head: 1
-        chest: 0
-        leg: 0
-        weapon: 0
       uiElement: {fileID: 0}
+      slotType: 1
     chestSlot:
       item: {fileID: 0}
-      acceptableItems:
-        head: 0
-        chest: 1
-        leg: 0
-        weapon: 0
       uiElement: {fileID: 0}
+      slotType: 2
     legsSlot:
       item: {fileID: 0}
-      acceptableItems:
-        head: 0
-        chest: 0
-        leg: 1
-        weapon: 0
       uiElement: {fileID: 0}
+      slotType: 3
     weaponSlot:
       item: {fileID: 0}
-      acceptableItems:
-        head: 0
-        chest: 0
-        leg: 0
-        weapon: 1
       uiElement: {fileID: 0}
+      slotType: 4
     inventory:
     - item: {fileID: 0}
-      acceptableItems:
-        head: 1
-        chest: 1
-        leg: 1
-        weapon: 1
       uiElement: {fileID: 0}
+      slotType: 0
     - item: {fileID: 0}
-      acceptableItems:
-        head: 1
-        chest: 1
-        leg: 1
-        weapon: 1
       uiElement: {fileID: 0}
+      slotType: 0
     - item: {fileID: 0}
-      acceptableItems:
-        head: 1
-        chest: 1
-        leg: 1
-        weapon: 1
       uiElement: {fileID: 0}
+      slotType: 0
     - item: {fileID: 0}
-      acceptableItems:
-        head: 1
-        chest: 1
-        leg: 1
-        weapon: 1
       uiElement: {fileID: 0}
+      slotType: 0
     - item: {fileID: 0}
-      acceptableItems:
-        head: 1
-        chest: 1
-        leg: 1
-        weapon: 1
       uiElement: {fileID: 0}
+      slotType: 0
     - item: {fileID: 0}
-      acceptableItems:
-        head: 1
-        chest: 1
-        leg: 1
-        weapon: 1
       uiElement: {fileID: 0}
+      slotType: 0
     - item: {fileID: 0}
-      acceptableItems:
-        head: 1
-        chest: 1
-        leg: 1
-        weapon: 1
       uiElement: {fileID: 0}
+      slotType: 0
     - item: {fileID: 0}
-      acceptableItems:
-        head: 1
-        chest: 1
-        leg: 1
-        weapon: 1
       uiElement: {fileID: 0}
+      slotType: 0
     - item: {fileID: 0}
-      acceptableItems:
-        head: 1
-        chest: 1
-        leg: 1
-        weapon: 1
       uiElement: {fileID: 0}
+      slotType: 0
     - item: {fileID: 0}
-      acceptableItems:
-        head: 1
-        chest: 1
-        leg: 1
-        weapon: 1
       uiElement: {fileID: 0}
+      slotType: 0
 --- !u!114 &973902650193979694
 MonoBehaviour:
   m_ObjectHideFlags: 0

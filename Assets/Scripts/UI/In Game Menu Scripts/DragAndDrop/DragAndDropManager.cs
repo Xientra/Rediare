@@ -61,6 +61,7 @@ public class DragAndDropManager : MonoBehaviour {
 			Destroy(draggerGraphic);
 			dragging = false;
 		}
+		itemElementOrigin = null;
     }
 #endregion
 }

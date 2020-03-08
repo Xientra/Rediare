@@ -2,28 +2,29 @@
 == LEVEL STATS ==
 lvl
 exp
-hp
-mp
+hp - healthPoints
+mp - magicPoints
 
 == ATTRIBUTES ==
-str
-dex
-int
+strength
+dexterity
+intelligence
 
 == CALCULATED STATS ==
-atk
-def
-crit chance
-crit multiplier
-hp recovery
+attack
+defence
+crit chance - criticalHitChance
+crit multiplier - criticalHitMulipier
+hp recovery - hpRecovery
+inventory size - inventorySize
+
 resistances (fire, ice, etc.)
-inventory size
 
 == BASE STATS ==
-atk
-def
+attack
+defence
 crit chance
 crit multiplier
 hp recovery
-resistances (fire, ice, etc.)
 inventory size
+resistances (fire, ice, etc.)

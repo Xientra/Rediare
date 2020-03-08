@@ -16,7 +16,7 @@ public class InGameMenu : MonoBehaviour {
 
 	public EquipmentWindow equipmentWindow;
 	public InventoryWindow inventoryWindow;
-	//public StatsWindow statsWindow;
+	public StatsWindow statsWindow;
 
     private void Awake() {
         if (instance == null) {

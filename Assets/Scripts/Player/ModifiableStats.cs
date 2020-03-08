@@ -80,6 +80,6 @@ public class ModifiableStats {
 	}
 
 	public void SetBasedOnEquipment() { 
-	
+		
 	}
 }

@@ -1,18 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
-[System.Serializable]
+[Serializable]
 public class ItemSlot {
 
 	[SerializeField]
 	private Item item;
 	public Item Item { get => item; }
 
-	public AcceptableItems acceptableItems;
+	//public AcceptableItems acceptableItems;
 
 	public UIItemElement uiElement;
 
+	public enum SlotTypes { inventory, head, chest, legs, weapon }
+	public SlotTypes slotType = SlotTypes.inventory;
 
 	public ItemSlot() {
 	}
@@ -41,6 +44,31 @@ public class ItemSlot {
 
 	public bool Accepts(Item item) {
 
+		// if you wanna put nothing in here that still works (think of item swapping)
+		if (item == null)
+			return true;
+
+		switch (slotType) {
+			case SlotTypes.inventory:
+				return true;
+
+			case SlotTypes.head:
+				return (item is HeadArmor);
+			case SlotTypes.chest:
+				return (item is ChestArmor);
+			case SlotTypes.legs:
+				return (item is LegArmor);
+
+			case SlotTypes.weapon:
+				return (item is Weapon);
+
+			default:
+				return false;
+		}
+	}
+	/*
+	public bool Accepts(Item item) {
+
 		bool result = false;
 
 		//check armor
@@ -58,6 +86,7 @@ public class ItemSlot {
 
 		return result;
 	}
+	*/
 
 	private void UpdateUIRepresentation() {
 		if (uiElement != null) {
@@ -83,10 +112,6 @@ public class ItemSlot {
 		}
 	}
 }
-
-
-
-
 
 [System.Serializable]
 public class AcceptableItems {

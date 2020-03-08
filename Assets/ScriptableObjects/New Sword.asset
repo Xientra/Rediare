@@ -17,3 +17,17 @@ MonoBehaviour:
   value: 100
   graphic: {fileID: 7027055911350662863, guid: eb734c722a744d448af8f183f3674dae, type: 3}
   damage: 10
+  requiredLevel: 0
+  requiredStrength: 0
+  requiredDexterity: 0
+  requiredIntelligence: 0
+  modifiers:
+  - value: 20
+    modifierType: 0
+    calculationMethod: 0
+  - value: 5
+    modifierType: 2
+    calculationMethod: 0
+  - value: 1.5
+    modifierType: 7
+    calculationMethod: 1
