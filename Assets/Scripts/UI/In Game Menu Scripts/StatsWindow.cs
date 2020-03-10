@@ -33,7 +33,7 @@ public class StatsWindow : MonoBehaviour {
 
 	void Start() {
 		playerStats = InGameMenu.instance.player.fullStats;
-
+		InventoryEventSystem.OnStatsChanged += UpdateUI;
 
 		healthPointsText = healthPointsLabel.text;
 		magicPointsText = magicPointsLabel.text;
@@ -49,20 +49,14 @@ public class StatsWindow : MonoBehaviour {
 		UpdateUI();
 	}
 
-	private void OnEnable() {
-		UpdateUI();
-	}
-
 	public void UpdateUI() {
-
-		Debug.Log("Stats updated.");
-
 		healthPointsLabel.text = healthPointsText + playerStats.HealthPoints + "/" + playerStats.MaxHP;
-
 		magicPointsLabel.text = magicPointsText + playerStats.MagicPoints + "/" + playerStats.MaxMP;
+
 		strengthLabel.text = strengthText + playerStats.Strength;
 		dexterityLabel.text = dexterityText + playerStats.Dexterity;
 		intelligenceLabel.text = intelligenceText + playerStats.Intelligence;
+
 		attackLabel.text = attackText + playerStats.Attack;
 		defenceLabel.text = defenceText + playerStats.Defence;
 		criticalHitChanceLabel.text = criticalHitChanceText + playerStats.CriticalHitChance;

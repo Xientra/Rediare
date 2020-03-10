@@ -8,7 +8,7 @@ public class InventoryWindow : MonoBehaviour {
 	public GameObject itemElementPrefab;
 	public GameObject content;
 
-	public UIItemElement[] itemElements;
+	public UIItemSlot[] itemElements;
 
 	private PlayerEquipment playersItems;
 
@@ -23,10 +23,10 @@ public class InventoryWindow : MonoBehaviour {
 	public void CreateUIItemElementObjects() {
 		ClearItemElementObjects();
 
-		itemElements = new UIItemElement[playersItems.inventorySize];
+		itemElements = new UIItemSlot[playersItems.inventorySize];
 
 		for (int i = 0; i < itemElements.Length; i++) {
-			UIItemElement newElement = Instantiate(itemElementPrefab, content.transform).GetComponent<UIItemElement>();
+			UIItemSlot newElement = Instantiate(itemElementPrefab, content.transform).GetComponent<UIItemSlot>();
 			newElement.ItemSlot = playersItems.GetItemSlot(i);
 
 			itemElements[i] = newElement;
@@ -46,7 +46,7 @@ public class InventoryWindow : MonoBehaviour {
 			return;
 		}
 
-		UIItemElement[] newItemElements = new UIItemElement[size]; // TO SORT OUT ----------------------------------------------------------
+		UIItemSlot[] newItemElements = new UIItemSlot[size]; // TO SORT OUT ----------------------------------------------------------
 
 		for (int i = 0; i < itemElements.Length; i++) {
 			newItemElements[i] = itemElements[i];

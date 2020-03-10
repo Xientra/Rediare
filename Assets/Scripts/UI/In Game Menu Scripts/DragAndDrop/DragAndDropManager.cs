@@ -7,7 +7,7 @@ public class DragAndDropManager : MonoBehaviour {
 
 	public static DragAndDropManager instance;
 
-	public UIItemElement itemElementOrigin;
+	public UIItemSlot itemElementOrigin;
 
 
 	public GameObject draggerGraphicPrefab;
@@ -32,7 +32,7 @@ public class DragAndDropManager : MonoBehaviour {
 
 	public void OnBeginDrag(GameObject toDrag) {
 
-        itemElementOrigin = toDrag.GetComponent<UIItemElement>();
+        itemElementOrigin = toDrag.GetComponent<UIItemSlot>();
 
         if (itemElementOrigin.ItemSlot.IsEmpty() == false) {
 

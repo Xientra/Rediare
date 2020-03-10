@@ -186,17 +186,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1547234340899245421}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4356cb68fb030a4cb7587452dec9180, type: 3}
+  m_Script: {fileID: 11500000, guid: c3becab28c6aa2e4bb7a563b104e9725, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 0}
+  itemSlot:
+    item: {fileID: 0}
+    uiElement: {fileID: 0}
+    slotType: 0
   text: {fileID: 1674436348750304884}
   image: {fileID: 1975602156520681481}
-  acceptableItems:
-    headSlot: 1
-    chestSlot: 1
-    legSlot: 1
-    weaponSlot: 1
 --- !u!1 &6830040222454571019
 GameObject:
   m_ObjectHideFlags: 0
@@ -488,7 +486,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1

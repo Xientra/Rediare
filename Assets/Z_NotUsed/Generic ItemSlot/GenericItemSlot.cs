@@ -8,9 +8,7 @@ public class GenericItemSlot<T> where T : Item {
 	private T item;
 	public T Item { get => item; }
 
-	public AcceptableItems acceptableItems;
-
-	public UIItemElement uiElement;
+	public UIItemSlot uiElement;
 
 
 	public GenericItemSlot() { 
