@@ -68,6 +68,7 @@
     <Compile Include="Assets\Scripts\Items\ScriptableObjects\Armor.cs" />
     <Compile Include="Assets\Scripts\Items\ScriptableObjects\Bow.cs" />
     <Compile Include="Assets\Scripts\Items\ScriptableObjects\ChestArmor.cs" />
+    <Compile Include="Assets\Scripts\Items\ScriptableObjects\EquippableItem.cs" />
     <Compile Include="Assets\Scripts\Items\ScriptableObjects\HeadArmor.cs" />
     <Compile Include="Assets\Scripts\Items\ScriptableObjects\Item.cs" />
     <Compile Include="Assets\Scripts\Items\ScriptableObjects\LegArmor.cs" />
@@ -86,6 +87,7 @@
     <Compile Include="Assets\Scripts\UI\In Game Menu Scripts\EquipmentWindow.cs" />
     <Compile Include="Assets\Scripts\UI\In Game Menu Scripts\InGameMenu.cs" />
     <Compile Include="Assets\Scripts\UI\In Game Menu Scripts\InventoryWindow.cs" />
+    <Compile Include="Assets\Scripts\UI\In Game Menu Scripts\ItemInfoPanel.cs" />
     <Compile Include="Assets\Scripts\UI\In Game Menu Scripts\StatsWindow.cs" />
     <Compile Include="Assets\Scripts\UI\ValueDisplayBar.cs" />
     <Compile Include="Assets\Scripts\WorldObjects\ItemPickup.cs" />

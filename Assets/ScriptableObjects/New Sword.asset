@@ -25,9 +25,9 @@ MonoBehaviour:
   - value: 20
     type: 0
     calculationMethod: 0
-  - value: 5
-    type: 0
-    calculationMethod: 0
   - value: 4
     type: 4
+    calculationMethod: 0
+  - value: 5
+    type: 3
     calculationMethod: 0

@@ -7,8 +7,9 @@ public class DragAndDropManager : MonoBehaviour {
 
 	public static DragAndDropManager instance;
 
+	[Header("Drag And Drop:")]
+	[Tooltip("The UIItemSlot where the Drag was initiated from.")]
 	public UIItemSlot itemElementOrigin;
-
 
 	public GameObject draggerGraphicPrefab;
 	private GameObject draggerGraphic;
@@ -28,13 +29,13 @@ public class DragAndDropManager : MonoBehaviour {
 		}
 	}
 
-	#region this is the version where a visual copy of the item is created (this one is used)
+	#region Drag And Drop
 
 	public void OnBeginDrag(GameObject toDrag) {
 
-        itemElementOrigin = toDrag.GetComponent<UIItemSlot>();
+		itemElementOrigin = toDrag.GetComponent<UIItemSlot>();
 
-        if (itemElementOrigin.ItemSlot.IsEmpty() == false) {
+		if (itemElementOrigin.ItemSlot.IsEmpty() == false) {
 
 			// create dragger graphic
 			draggerGraphic = Instantiate(draggerGraphicPrefab, InGameMenu.instance.transform);
@@ -46,22 +47,33 @@ public class DragAndDropManager : MonoBehaviour {
 
 			dragging = true;
 		}
-    }
+	}
 
-    // called every frame something is being dragged
-    public void OnDrag() {
+	// called every frame something is being dragged
+	public void OnDrag() {
 		if (dragging == true) {
 			draggerGraphic.transform.position = Input.mousePosition;
 		}
 	}
 
-    // this is called, after drop for this dragger has been called (i think)
-    public void OnEndDrag() {
+	// this is called, after drop for this dragger has been called (i think)
+	public void OnEndDrag() {
 		if (dragging == true) {
 			Destroy(draggerGraphic);
 			dragging = false;
 		}
 		itemElementOrigin = null;
-    }
-#endregion
+	}
+	#endregion
+
+	#region Hover Event
+
+	public void OnPointerEnter() { 
+	
+	}
+
+	public void OnPointerExit() {
+		
+	}
+	#endregion
 }

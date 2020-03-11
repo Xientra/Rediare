@@ -70,6 +70,16 @@ public class UIItemSlot : MonoBehaviour {
 		DragAndDropManager.instance.OnEndDrag();
 	}
 
+	public void OnPointerEnter() {
+		if (itemSlot.IsEmpty() == false)
+			InGameMenu.instance.itemInfoPanel.Enable(itemSlot.Item, image.GetComponent<RectTransform>().position);
+	}
+
+	public void OnPointerExit() {
+		if (itemSlot.IsEmpty() == false)
+			InGameMenu.instance.itemInfoPanel.Disable();
+	}
+
 	// is called whenever the mouse button is released over the game object (i think)
 	public void OnDrop() {
 		if (DragAndDropManager.instance.dragging == true) {

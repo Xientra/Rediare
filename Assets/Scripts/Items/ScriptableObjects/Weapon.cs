@@ -3,17 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //[CreateAssetMenu(fileName = "New Weapon", menuName = "Items/Weapons/Weapon")]
-public abstract class Weapon : Item {
+public abstract class Weapon : EquippableItem {
 	
 	[Header("Weapon:")]
 
     public float damage = 10f;
-
-	[Header("Requirements:")]
-	public float requiredLevel = 0;
-	public float requiredStrength = 0;
-	public float requiredDexterity = 0;
-	public float requiredIntelligence = 0;
 
 	[Header("Modifiers:")]
 	[SerializeField]

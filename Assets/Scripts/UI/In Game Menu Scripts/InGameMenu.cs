@@ -18,6 +18,9 @@ public class InGameMenu : MonoBehaviour {
 	public InventoryWindow inventoryWindow;
 	public StatsWindow statsWindow;
 
+	[Space(3)]
+	public ItemInfoPanel itemInfoPanel;
+
     private void Awake() {
         if (instance == null) {
             instance = this;

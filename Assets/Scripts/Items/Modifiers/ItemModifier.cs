@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.ComponentModel;
 
 [System.Serializable]
 public class ItemModifier {
@@ -18,6 +19,15 @@ public class ItemModifier {
 
 	public enum CalculationMethods { additive, multiplicative, multiplicativePercent }
 	public CalculationMethods calculationMethod = CalculationMethods.additive;
+
+	public static string CalculationMethodToString(CalculationMethods calculationMethod) {
+		switch (calculationMethod) {
+			case CalculationMethods.additive:
+				return "+";
+			default:
+				return "*";
+		}
+	}
 
 	//public Func<float, float, float> calculationMethod = (x, y) => x + y;
 

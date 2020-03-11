@@ -12,5 +12,9 @@ public class Item : ScriptableObject {
     public Sprite image;
     public float value = 10;
 
+	public string description = "";
+
+
 	public GameObject graphic;
+
 }
