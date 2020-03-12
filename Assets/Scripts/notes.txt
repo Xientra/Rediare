@@ -8,4 +8,6 @@
 - stuf that changes stats 
 => items, weapons, gear
 
-- how about wasd movement for the player...?! how about NOMEGALUL
+- how about wasd movement for the player...?!
+
+-a random loot system (drops, chests)

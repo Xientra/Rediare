@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6285807233471740330}
-  - component: {fileID: 7901513598210819074}
   m_Layer: 0
   m_Name: Person
   m_TagString: Untagged
@@ -32,20 +31,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &7901513598210819074
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6285807233471740329}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.39524627
-  m_Height: 2.2549894
-  m_Direction: 1
-  m_Center: {x: 0, y: 1.1375457, z: 0}
 --- !u!1001 &6218494615541312482
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -53,11 +38,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6285807233471740330}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: 54410c9f4e0848542b3380d94ee85dde,
-        type: 3}
-      propertyPath: m_Name
-      value: Prisoner
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 54410c9f4e0848542b3380d94ee85dde,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -112,6 +92,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 54410c9f4e0848542b3380d94ee85dde,
+        type: 3}
+      propertyPath: m_Name
+      value: Prisoner
       objectReference: {fileID: 0}
     - target: {fileID: 3444106177201620088, guid: 54410c9f4e0848542b3380d94ee85dde,
         type: 3}

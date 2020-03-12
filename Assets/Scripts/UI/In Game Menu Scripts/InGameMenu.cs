@@ -32,12 +32,20 @@ public class InGameMenu : MonoBehaviour {
     }
 
 	private void Start() {
-		UpdateWholeUI();
+		UpdateUI();
 
 		gameObject.SetActive(false);
 	}
 
-	public void UpdateWholeUI() {
+	private void Update() {
+		if (Input.GetKeyDown(KeyCode.Escape)) {
+			InGameMenu.instance.gameObject.SetActive(!InGameMenu.instance.gameObject.activeSelf);
+		}
+	}
 
+	public void UpdateUI() {
+		equipmentWindow.UpdateUI();
+		inventoryWindow.UpdateUI();
+		statsWindow.UpdateUI();
 	}
 }

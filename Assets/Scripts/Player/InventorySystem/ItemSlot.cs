@@ -10,8 +10,6 @@ public class ItemSlot {
 	private Item item;
 	public Item Item { get => item; }
 
-	public UIItemSlot uiElement;
-
 	public enum SlotTypes { inventory, head, chest, legs, weapon }
 	public SlotTypes slotType = SlotTypes.inventory;
 
@@ -62,12 +60,6 @@ public class ItemSlot {
 
 			default:
 				return false;
-		}
-	}
-
-	private void UpdateUIRepresentation() {
-		if (uiElement != null) {
-			uiElement.UpdateValues();
 		}
 	}
 

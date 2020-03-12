@@ -78,9 +78,9 @@
     <Compile Include="Assets\Scripts\Player\InventorySystem\InventoryEventSystem.cs" />
     <Compile Include="Assets\Scripts\Player\InventorySystem\ItemSlot.cs" />
     <Compile Include="Assets\Scripts\Player\InventorySystem\ModifiableStats.cs" />
-    <Compile Include="Assets\Scripts\Player\InventorySystem\Player.cs" />
     <Compile Include="Assets\Scripts\Player\InventorySystem\PlayerEquipment.cs" />
     <Compile Include="Assets\Scripts\Player\InventorySystem\PlayerStats.cs" />
+    <Compile Include="Assets\Scripts\Player\Player.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
     <Compile Include="Assets\Scripts\UI\In Game Menu Scripts\DragAndDrop\DragAndDropManager.cs" />
     <Compile Include="Assets\Scripts\UI\In Game Menu Scripts\DragAndDrop\UIItemSlot.cs" />

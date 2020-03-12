@@ -29,7 +29,7 @@ Transform:
   m_Children:
   - {fileID: 973902649783373606}
   m_Father: {fileID: 973902650193979695}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 10, y: 0, z: 0}
 --- !u!1 &973902649783373601
 GameObject:
@@ -123,9 +123,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 973902650193979695}
+  - component: {fileID: 973902650193979692}
   - component: {fileID: 973902650193979688}
   - component: {fileID: 973902650193979689}
-  - component: {fileID: 973902650193979692}
   - component: {fileID: 973902650193979693}
   - component: {fileID: 973902650193979694}
   m_Layer: 0
@@ -146,11 +146,27 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 6537066310746715706}
   - {fileID: 973902648902978502}
+  - {fileID: 6537066310746715706}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &973902650193979692
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 973902650193979690}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 1
+  m_Constraints: 112
+  m_CollisionDetection: 0
 --- !u!136 &973902650193979688
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -161,10 +177,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 1.8
+  m_Radius: 0.4
+  m_Height: 2.25
   m_Direction: 1
-  m_Center: {x: 0, y: 1, z: 0}
+  m_Center: {x: 0, y: 1.12, z: 0}
 --- !u!195 &973902650193979689
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -172,7 +188,7 @@ NavMeshAgent:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 973902650193979690}
-  m_Enabled: 1
+  m_Enabled: 0
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 3.5
@@ -187,22 +203,6 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!54 &973902650193979692
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 973902650193979690}
-  serializedVersion: 2
-  m_Mass: 0.37
-  m_Drag: 1
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 1
-  m_Constraints: 116
-  m_CollisionDetection: 0
 --- !u!114 &973902650193979693
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -218,6 +218,9 @@ MonoBehaviour:
   baseStats:
     maxHP: 0
     maxMP: 0
+    strength: 0
+    dexterity: 0
+    intelligence: 0
     attack: 0
     defence: 0
     hpRecovery: 0
@@ -228,12 +231,12 @@ MonoBehaviour:
     experience: 0
     healthPoints: 0
     magicPoints: 0
-    strength: 0
-    dexterity: 0
-    intelligence: 0
   itemStats:
     maxHP: 0
     maxMP: 0
+    strength: 0
+    dexterity: 0
+    intelligence: 0
     attack: 0
     defence: 0
     hpRecovery: 0
@@ -243,6 +246,9 @@ MonoBehaviour:
   fullStats:
     maxHP: 0
     maxMP: 0
+    strength: 0
+    dexterity: 0
+    intelligence: 0
     attack: 0
     defence: 0
     hpRecovery: 0
@@ -253,56 +259,39 @@ MonoBehaviour:
     experience: 0
     healthPoints: 0
     magicPoints: 0
-    strength: 0
-    dexterity: 0
-    intelligence: 0
   equipment:
     headSlot:
       item: {fileID: 0}
-      uiElement: {fileID: 0}
       slotType: 1
     chestSlot:
       item: {fileID: 0}
-      uiElement: {fileID: 0}
       slotType: 2
     legsSlot:
       item: {fileID: 0}
-      uiElement: {fileID: 0}
       slotType: 3
     weaponSlot:
       item: {fileID: 0}
-      uiElement: {fileID: 0}
       slotType: 4
     inventory:
     - item: {fileID: 0}
-      uiElement: {fileID: 0}
       slotType: 0
     - item: {fileID: 0}
-      uiElement: {fileID: 0}
       slotType: 0
     - item: {fileID: 0}
-      uiElement: {fileID: 0}
       slotType: 0
     - item: {fileID: 0}
-      uiElement: {fileID: 0}
       slotType: 0
     - item: {fileID: 0}
-      uiElement: {fileID: 0}
       slotType: 0
     - item: {fileID: 0}
-      uiElement: {fileID: 0}
       slotType: 0
     - item: {fileID: 0}
-      uiElement: {fileID: 0}
       slotType: 0
     - item: {fileID: 0}
-      uiElement: {fileID: 0}
       slotType: 0
     - item: {fileID: 0}
-      uiElement: {fileID: 0}
       slotType: 0
     - item: {fileID: 0}
-      uiElement: {fileID: 0}
       slotType: 0
 --- !u!114 &973902650193979694
 MonoBehaviour:
@@ -316,18 +305,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a99e1fb14c5e77947b902ba92d983cc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerGfx: {fileID: 6537066310746715705}
+  playerCamera: {fileID: 973902649783373607}
+  clickEffect: {fileID: 1738562611984373050, guid: e67be974ff78b0547b919f35d6b405d9,
+    type: 3}
+  showCursor: 0
   playerSettings:
-    movementSpeed: 1
+    movementSpeed: 0.5
+    accelerationSpeed: 0.2
     sensetivity: 1.2
     sensetivityAxisMultiplier: {x: 1, y: 1}
     cameraYRotMax: 80
     cameraYRotMin: 5
     scrollSpeed: 1
     playerGfxRotationSpeed: 0.1
-  playerGfx: {fileID: 6537066310746715705}
-  playerCamera: {fileID: 973902649783373607}
-  clickEffect: {fileID: 1738562611984373050, guid: e67be974ff78b0547b919f35d6b405d9,
-    type: 3}
 --- !u!1001 &973902649287167888
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -343,7 +334,7 @@ PrefabInstance:
     - target: {fileID: 6285807233471740329, guid: 19e709944ba77734eaa5fa60b966df3e,
         type: 3}
       propertyPath: m_Name
-      value: Person
+      value: Player Gfx
       objectReference: {fileID: 0}
     - target: {fileID: 6285807233471740330, guid: 19e709944ba77734eaa5fa60b966df3e,
         type: 3}
@@ -383,7 +374,7 @@ PrefabInstance:
     - target: {fileID: 6285807233471740330, guid: 19e709944ba77734eaa5fa60b966df3e,
         type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6285807233471740330, guid: 19e709944ba77734eaa5fa60b966df3e,
         type: 3}

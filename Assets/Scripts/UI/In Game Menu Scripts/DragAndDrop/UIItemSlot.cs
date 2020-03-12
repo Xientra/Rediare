@@ -15,7 +15,6 @@ public class UIItemSlot : MonoBehaviour {
 		get => itemSlot;
 		set {
 			itemSlot = value;
-			value.uiElement = this;
 		}
 	}
 
