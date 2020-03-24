@@ -23,13 +23,17 @@ public class PlayerController : MonoBehaviour {
 
 	[Header("Movement:")]
 	private Vector3 movementInput;
-	private Vector3 velocity;
 
 	[Header("Rotation:")]
 	private Vector3 rotationInput;
 	private Vector3 rotation;
 
 	private Quaternion playerGfxRotation;
+
+
+	[Header("DEBUG:")]
+	public Vector3 velocity;
+
 	void Start() {
 		rb = GetComponent<Rigidbody>();
 		navMeshAgent = GetComponent<NavMeshAgent>();
@@ -68,10 +72,12 @@ public class PlayerController : MonoBehaviour {
 
 	private void GetInput() {
 		// Movement Input
-		movementInput = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Jump"), Input.GetAxis("Vertical"));
+		movementInput = new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Jump"), Input.GetAxisRaw("Vertical"));
+		/*
 		if (Input.GetMouseButton(0) && Input.GetMouseButton(1)) {
 			movementInput = new Vector3(movementInput.x, movementInput.y, 1);
 		}
+		*/
 
 		// Rotation Input
 		rotationInput = new Vector3(-Input.GetAxisRaw("Mouse Y"), Input.GetAxisRaw("Mouse X"), 0);
@@ -96,6 +102,9 @@ public class PlayerController : MonoBehaviour {
 
 		WASDMovement();
 
+		// DEBUG
+		velocity = rb.velocity;
+
 		//cameraAnchor.transform.position = transform.position + cameraAnchorOffset;
 	}
 
@@ -118,14 +127,65 @@ public class PlayerController : MonoBehaviour {
 
 	private void WASDMovement() {
 
-		float velX = movementInput.x * playerSettings.movementSpeed;
-		float velZ = movementInput.z * playerSettings.movementSpeed;
+		Vector3 rbLocalVelocity = transform.InverseTransformDirection(rb.velocity);
 
-		rb.velocity += transform.right * velX + transform.forward * velZ;
+		float velX = rbLocalVelocity.x;
+		float velZ = rbLocalVelocity.z;
 
-		//rb.MovePosition(transform.position + (transform.right * velX + transform.forward * velZ));
+		float acc = playerSettings.acceleration + playerSettings.deceleration; // the acc has to first overcome the dec, so it's added
+		float dec = playerSettings.deceleration;
+		//float acc = (playerSettings.maxVelocity / playerSettings.accelerationTime) * Time.fixedDeltaTime;
+		//float dec = (playerSettings.maxVelocity / playerSettings.decelerationTime) * Time.fixedDeltaTime;
 
-		//rb.velocity = new 
+		/* =:=:=:=:= velX =:=:=:=:= */
+		if (movementInput.x > 0)
+			velX += acc;
+		else if (movementInput.x < 0)
+			velX -= acc;
+
+		// X deceleration
+		if (velX > 0) {
+			velX -= dec;
+			if (velX < 0) velX = 0;
+		}
+		else if (velX < 0) {
+			velX += dec;
+			if (velX > 0) velX = 0;
+		}
+
+		// clamp X
+		velX = Mathf.Clamp(velX, -playerSettings.maxVelocity, playerSettings.maxVelocity);
+
+		/* =:=:=:=:= velZ =:=:=:=:= */
+		if (movementInput.z > 0)
+			velZ += acc;
+		else if (movementInput.z < 0)
+			velZ -= acc;
+
+		// Z deceleration
+		if (velZ > 0) {
+			velZ -= dec;
+			if (velZ < 0) velZ = 0;
+		}
+		else if (velZ < 0) {
+			velZ += dec;
+			if (velZ > 0) velZ = 0;
+		}
+		// clamp Z
+		velZ = Mathf.Clamp(velZ, -playerSettings.maxVelocity, playerSettings.maxVelocity);
+
+
+		// v = s / t
+		// a = v / t
+
+		//Mathf.SmoothDamp();
+
+		// apply velocitys (and clamp strave jumping)
+		rbLocalVelocity = new Vector3(velX, rbLocalVelocity.y, velZ);
+		float velMag = rbLocalVelocity.magnitude;
+		velMag = Mathf.Clamp(velMag, -playerSettings.maxVelocity, playerSettings.maxVelocity);
+		rbLocalVelocity = rbLocalVelocity.normalized * velMag;
+		rb.velocity = transform.TransformDirection(rbLocalVelocity);
 	}
 
 	private void CameraRotation() {
@@ -157,7 +217,15 @@ public class PlayerSettings {
 	[Header("Movement:")]
 
 	public float movementSpeed = 1f;
-	public float accelerationSpeed = 0.2f;
+	public float maxVelocity = 10f;
+
+	public float acceleration = 0.25f;
+	//[Tooltip("How long it takes to accelerate to full speed.")]
+	//public float accelerationTime = 0.5f;
+
+	public float deceleration = 0.5f;
+	//[Tooltip("How long it takes to decelerate from full speed to zero.")]
+	//public float decelerationTime = 0.2f;
 
 	[Header("Rotation:")]
 	public float sensetivity = 1f;

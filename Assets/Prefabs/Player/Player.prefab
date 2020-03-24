@@ -312,13 +312,16 @@ MonoBehaviour:
   showCursor: 0
   playerSettings:
     movementSpeed: 0.5
-    accelerationSpeed: 0.2
+    maxVelocity: 10
+    acceleration: 0.25
+    deceleration: 0.5
     sensetivity: 1.2
     sensetivityAxisMultiplier: {x: 1, y: 1}
     cameraYRotMax: 80
     cameraYRotMin: 5
     scrollSpeed: 1
     playerGfxRotationSpeed: 0.1
+  velocity: {x: 0, y: 0, z: 0}
 --- !u!1001 &973902649287167888
 PrefabInstance:
   m_ObjectHideFlags: 0
