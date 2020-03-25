@@ -81,7 +81,11 @@
     <Compile Include="Assets\Scripts\Player\InventorySystem\PlayerEquipment.cs" />
     <Compile Include="Assets\Scripts\Player\InventorySystem\PlayerStats.cs" />
     <Compile Include="Assets\Scripts\Player\Player.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerAttackManager.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerSkills.cs" />
+    <Compile Include="Assets\Scripts\Skills\MeleeSkill.cs" />
+    <Compile Include="Assets\Scripts\Skills\Skill.cs" />
     <Compile Include="Assets\Scripts\UI\In Game Menu Scripts\DragAndDrop\DragAndDropManager.cs" />
     <Compile Include="Assets\Scripts\UI\In Game Menu Scripts\DragAndDrop\UIItemSlot.cs" />
     <Compile Include="Assets\Scripts\UI\In Game Menu Scripts\EquipmentWindow.cs" />

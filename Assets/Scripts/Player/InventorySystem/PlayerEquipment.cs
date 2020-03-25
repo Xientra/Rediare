@@ -111,4 +111,8 @@ public class PlayerEquipment {
 	public ItemModifier[] GetAllModifiers() {
 		throw new System.NotImplementedException("GetAllModifiers is not implemented yet.");
 	}
+
+	public List<Skill> GetAllSkills() {
+		throw new System.NotImplementedException("GetAllSkills is not implemented yet.");
+	}
 }

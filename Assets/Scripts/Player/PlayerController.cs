@@ -39,6 +39,16 @@ public class PlayerController : MonoBehaviour {
 		navMeshAgent = GetComponent<NavMeshAgent>();
 
 		UnparentPlayerGfxStart();
+
+		// hide mouse if
+		if (showCursor == true) {
+			Cursor.lockState = CursorLockMode.Locked;
+			Cursor.visible = false;
+		}
+		else {
+			Cursor.lockState = CursorLockMode.None;
+			Cursor.visible = true;
+		}
 	}
 
 	private void UnparentPlayerGfxStart() {

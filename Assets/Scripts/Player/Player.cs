@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
+//[RequireComponent(typeof(PlayerAttackManager))]
 public class Player : MonoBehaviour {
 
 	public PlayerStats baseStats;
@@ -10,8 +11,8 @@ public class Player : MonoBehaviour {
 	public PlayerStats fullStats;
 
 	public PlayerEquipment equipment = new PlayerEquipment(10);
-	//public GenericPlayerEquipment genericEquipment = new GenericPlayerEquipment(10);
 
+	public PlayerSkills skills;
 
 	private void Awake() {
 
@@ -32,8 +33,12 @@ public class Player : MonoBehaviour {
 	/// Is called by InventorySystemEvents whenever an Item in an ItemSlot changed to update itemStats and then fullStats
 	/// </summary>
 	private void UpdateStats(ItemSlot itemSlot) {
+		// update stats
 		itemStats.SetBasedOnEquipment(equipment);
 		fullStats.UpdateFullStats(baseStats, itemStats);
+		// update skills
+		skills.equipmentSkills = equipment.GetAllSkills();
+
 		InventoryEventSystem.StatsChanged();
 	}
 

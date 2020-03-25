@@ -11,3 +11,10 @@
 - how about wasd movement for the player...?!
 
 -a random loot system (drops, chests)
+
+
+Primary Gameplay Loop:
+[X] player with stats and equipment 
+[O] player ability to attack (magic and melee)
+[O] enemies to attack
+[O] loots system to drop loot from enemies and chests
