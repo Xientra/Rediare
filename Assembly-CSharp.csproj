@@ -76,7 +76,7 @@
     <Compile Include="Assets\Scripts\Items\ScriptableObjects\Sword.cs" />
     <Compile Include="Assets\Scripts\Items\ScriptableObjects\Weapon.cs" />
     <Compile Include="Assets\Scripts\NonPlayerCharacters\NPC.cs" />
-    <Compile Include="Assets\Scripts\NonPlayerCharacters\NPCstats.cs" />
+    <Compile Include="Assets\Scripts\NonPlayerCharacters\NPCStats.cs" />
     <Compile Include="Assets\Scripts\Player\InventorySystem\InventoryEventSystem.cs" />
     <Compile Include="Assets\Scripts\Player\InventorySystem\ItemSlot.cs" />
     <Compile Include="Assets\Scripts\Player\InventorySystem\ModifiableStats.cs" />

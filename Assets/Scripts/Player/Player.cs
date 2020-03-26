@@ -37,7 +37,7 @@ public class Player : MonoBehaviour {
 		itemStats.SetBasedOnEquipment(equipment);
 		fullStats.UpdateFullStats(baseStats, itemStats);
 		// update skills
-		skills.equipmentSkills = equipment.GetAllSkills();
+		//skills.equipmentSkills = equipment.GetAllSkills();
 
 		InventoryEventSystem.StatsChanged();
 	}

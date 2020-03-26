@@ -5,7 +5,6 @@ using UnityEngine;
 [RequireComponent(typeof(Player))]
 public class PlayerAttackManager : MonoBehaviour {
 
-	[SerializeField]
 	private Player player;
 	private PlayerSkills playerSkills;
 

@@ -30,6 +30,7 @@ public class PlayerController : MonoBehaviour {
 
 	private Quaternion playerGfxRotation;
 
+	private Vector2 scrollInput;
 
 	[Header("DEBUG:")]
 	public Vector3 velocity;
@@ -63,17 +64,6 @@ public class PlayerController : MonoBehaviour {
 		//playerGfx.transform.SetParent(null);
 	}
 
-	private void UnparentCameraStart() {
-
-		// gets cameraAnchor through the assinged camera
-		cameraAnchor = playerCamera.transform.parent;
-		// set initial camera AnchorRotation rotation
-		rotation.x = cameraAnchor.localRotation.eulerAngles.x;
-		rotation.y = cameraAnchor.localRotation.eulerAngles.y;
-		// stores original offset
-		cameraAnchor.SetParent(null);
-	}
-
 	void Update() {
 		GetInput();
 
@@ -104,11 +94,14 @@ public class PlayerController : MonoBehaviour {
 			}
 			showCursor = !showCursor;
 		}
+
+		scrollInput = Input.mouseScrollDelta;
 	}
 
 	private void FixedUpdate() {
 
 		CameraRotation();
+		CameraZoom();
 
 		WASDMovement();
 
@@ -219,6 +212,12 @@ public class PlayerController : MonoBehaviour {
 		// smooth rotation effect to current player rotation
 		//playerGfx.transform.rotation = Quaternion.Lerp(playerGfx.transform.rotation, Quaternion.Euler(playerGfx.transform.rotation.x, cameraAnchor.rotation.eulerAngles.y, playerGfx.transform.rotation.z), playerSettings.playerGfxRotationSpeed);
 	}
+
+	public void CameraZoom() {
+		float newZ = playerCamera.transform.localPosition.z + scrollInput.y * playerSettings.scrollSpeed;
+		newZ = Mathf.Clamp(newZ, -playerSettings.maxCameraDistance, -playerSettings.minCameraDistance);
+		playerCamera.transform.localPosition = new Vector3(playerCamera.transform.localPosition.x, playerCamera.transform.localPosition.y, newZ);
+	}
 }
 
 [System.Serializable]
@@ -242,7 +241,11 @@ public class PlayerSettings {
 	public Vector2 sensetivityAxisMultiplier = new Vector2(1f, 1f);
 	public float cameraYRotMax = 80f;
 	public float cameraYRotMin = 5f;
+
+	[Header("Zoom:")]
 	public float scrollSpeed = 1f;
+	public float minCameraDistance = 3f;
+	public float maxCameraDistance = 15;
 
 	[Header("Player Graphics:")]
 	public float playerGfxRotationSpeed = 0.1f;

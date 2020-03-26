@@ -6,14 +6,16 @@ using UnityEngine;
 public class RangedSkill : Skill {
 
 	//public GameObject projectile;
-	public float damageDelay = 0.2f;
+	public GameObject effect;
+	public float range = 20;
 
 	public override void Activate(Player origin, NPC target) {
-		
-	}
 
-	private IEnumerator dealDamage(NPC target, float delay) {
-		yield return new WaitForSeconds(delay);
+		if ((origin.transform.position - target.transform.position).magnitude <= range) {
 
+			target.stats.ChangeHealth(-damage); // <---------------------------------------------------------- i hate that FUCK
+			GameObject temp = Instantiate(effect, target.transform.position, effect.transform.rotation);
+			Destroy(temp, 3f);
+		}
 	}
 }

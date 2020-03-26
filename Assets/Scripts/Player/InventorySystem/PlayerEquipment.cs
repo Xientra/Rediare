@@ -111,11 +111,15 @@ public class PlayerEquipment {
 	public List<ItemModifier> GetAllModifiers() {
 		List<ItemModifier> result = new List<ItemModifier>();
 
-		result.AddRange(((HeadArmor)headSlot.Item).Modifiers);
-		result.AddRange(((ChestArmor)chestSlot.Item).Modifiers);
-		result.AddRange(((LegArmor)legsSlot.Item).Modifiers);
+		if (headSlot.IsEmpty() == false)
+			result.AddRange(((HeadArmor)headSlot.Item).Modifiers);
+		if (chestSlot.IsEmpty() == false)
+			result.AddRange(((ChestArmor)chestSlot.Item).Modifiers);
+		if (legsSlot.IsEmpty() == false)
+			result.AddRange(((LegArmor)legsSlot.Item).Modifiers);
 
-		result.AddRange(((Weapon)weaponSlot.Item).Modifiers);
+		if (weaponSlot.IsEmpty() == false)
+			result.AddRange(((Weapon)weaponSlot.Item).Modifiers);
 		return result;
 	}
 

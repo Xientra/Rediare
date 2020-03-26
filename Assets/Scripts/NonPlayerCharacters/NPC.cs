@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class NPC : MonoBehaviour {
 
+	public string npcName;
+	
+	public NPCStats stats;
+
+	[SerializeField]
+	private bool isHostile = true;
+
 	void Start() {
 
 	}
