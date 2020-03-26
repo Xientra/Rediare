@@ -9,11 +9,5 @@ public abstract class Weapon : EquippableItem {
 
     public float damage = 10f;
 
-	[Header("Modifiers:")]
-	[SerializeField]
-	private ItemModifier[] modifiers = new ItemModifier[0];
-	/// <summary>
-	/// Returns a copy of the modifiers Array. (modifying the copy will not change the acual values of this Item)
-	/// </summary>
-	public ItemModifier[] Modifiers { get => (ItemModifier[])modifiers.Clone(); }
+
 }

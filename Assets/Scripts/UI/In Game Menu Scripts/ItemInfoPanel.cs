@@ -80,11 +80,11 @@ public class ItemInfoPanel : MonoBehaviour {
 		if (item is EquippableItem) {
 			EquippableItem ei = (EquippableItem)item;
 
-			strReqLabel.text = strReqText + ei.requiredStrength;
+			strReqLabel.text = strReqText + ei.requirements.strength;
 			strReqLabel.gameObject.SetActive(true);
-			dexReqLabel.text = dexReqText + ei.requiredDexterity;
+			dexReqLabel.text = dexReqText + ei.requirements.dexterity;
 			dexReqLabel.gameObject.SetActive(true);
-			intReqLabel.text = intReqText + ei.requiredIntelligence;
+			intReqLabel.text = intReqText + ei.requirements.intelligence;
 			intReqLabel.gameObject.SetActive(true);
 
 			requirementsLabel.gameObject.SetActive(true);

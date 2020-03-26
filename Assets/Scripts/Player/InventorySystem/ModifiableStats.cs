@@ -111,6 +111,7 @@ public class ModifiableStats {
 
 		Clear();
 
+		// add armor defence
 		if (equipment.HeadSlot.IsEmpty() == false) {
 			HeadArmor ha = (HeadArmor)equipment.HeadSlot.Item;
 			defence += ha.defence;
@@ -124,15 +125,15 @@ public class ModifiableStats {
 			defence += la.defence;
 		}
 
+		// add weapon(s) attack
 		if (equipment.WeaponSlot.IsEmpty() == false) {
 			Weapon w = (Weapon)equipment.WeaponSlot.Item;
 			attack += w.damage;
+		}
 
-			//once implemented: equipment.GetAllModifiers();
-			ItemModifier[] mods = w.Modifiers;
-			for (int i = 0; i < mods.Length; i++) {
-				AddItemModifier(mods[i]);
-			}
+		// add other modifiers
+		foreach (ItemModifier mod in equipment.GetAllModifiers()) {
+			AddItemModifier(mod);
 		}
 	}
 

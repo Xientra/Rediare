@@ -12,6 +12,12 @@
 
 -a random loot system (drops, chests)
 
+Skill Categories:
+- melee 
+- aoe melee
+- ranged
+- aoe ranged
+- ranged effect on hit
 
 Primary Gameplay Loop:
 [X] player with stats and equipment 

@@ -36,7 +36,7 @@ public class PlayerEquipment {
 
 		// -------------------------------- pls think of a way so that the editor is not ignored and overwritten (i don't think there is a way, i'll just have to save them myself PepeHands)
 
-		
+
 		headSlot = new ItemSlot();
 		chestSlot = new ItemSlot();
 		legsSlot = new ItemSlot();
@@ -47,11 +47,11 @@ public class PlayerEquipment {
 		for (int i = 0; i < inventory.Length; i++) {
 			inventory[i] = new ItemSlot();
 		}
-		
+
 	}
 
-	private void SetSlot(Item item, int position) { 
-		
+	private void SetSlot(Item item, int position) {
+
 	}
 
 	public ItemSlot GetItemSlot(int i) {
@@ -108,8 +108,15 @@ public class PlayerEquipment {
 		InGameMenu.instance.inventoryWindow.UpdateUI();
 	}
 
-	public ItemModifier[] GetAllModifiers() {
-		throw new System.NotImplementedException("GetAllModifiers is not implemented yet.");
+	public List<ItemModifier> GetAllModifiers() {
+		List<ItemModifier> result = new List<ItemModifier>();
+
+		result.AddRange(((HeadArmor)headSlot.Item).Modifiers);
+		result.AddRange(((ChestArmor)chestSlot.Item).Modifiers);
+		result.AddRange(((LegArmor)legsSlot.Item).Modifiers);
+
+		result.AddRange(((Weapon)weaponSlot.Item).Modifiers);
+		return result;
 	}
 
 	public List<Skill> GetAllSkills() {
