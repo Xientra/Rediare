@@ -14,4 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 10
   cooldown: 5
-  effect: {fileID: 6789079394641149731, guid: 2a6036cc35614694884181f3d0ca7a02, type: 3}
+  projectilePrefab: {fileID: 594198696878668683, guid: 82b7a8a8bb0c23741b4d2bb97150ee61,
+    type: 3}
+  range: 20
+  duration: 0.5

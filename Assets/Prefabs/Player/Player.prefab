@@ -216,6 +216,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f74b4894f6c54c849bd1f2db21154e1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  center: {fileID: 973902648902978502}
   baseStats:
     maxHP: 0
     maxMP: 0
@@ -335,6 +336,8 @@ MonoBehaviour:
     cameraYRotMax: 80
     cameraYRotMin: 5
     scrollSpeed: 1
+    minCameraDistance: 3
+    maxCameraDistance: 15
     playerGfxRotationSpeed: 0.1
   velocity: {x: 0, y: 0, z: 0}
 --- !u!114 &7806742015678425644
@@ -349,7 +352,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd6952967f8f87847896ca875fe87fa8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
   target: {fileID: 0}
 --- !u!1001 &973902649287167888
 PrefabInstance:

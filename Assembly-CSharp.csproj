@@ -63,6 +63,21 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Entites\Entity.cs" />
+    <Compile Include="Assets\Scripts\Entites\NonPlayerCharacters\NPC.cs" />
+    <Compile Include="Assets\Scripts\Entites\NonPlayerCharacters\NPCStats.cs" />
+    <Compile Include="Assets\Scripts\Entites\Player\InventorySystem\InventoryEventSystem.cs" />
+    <Compile Include="Assets\Scripts\Entites\Player\InventorySystem\ItemSlot.cs" />
+    <Compile Include="Assets\Scripts\Entites\Player\InventorySystem\ModifiableStats.cs" />
+    <Compile Include="Assets\Scripts\Entites\Player\InventorySystem\PlayerEquipment.cs" />
+    <Compile Include="Assets\Scripts\Entites\Player\InventorySystem\PlayerStats.cs" />
+    <Compile Include="Assets\Scripts\Entites\Player\Player.cs" />
+    <Compile Include="Assets\Scripts\Entites\Player\PlayerAttackManager.cs" />
+    <Compile Include="Assets\Scripts\Entites\Player\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\Entites\Player\PlayerSkills.cs" />
+    <Compile Include="Assets\Scripts\Entites\Player\Skills\MeleeSkill.cs" />
+    <Compile Include="Assets\Scripts\Entites\Player\Skills\RangedSkill.cs" />
+    <Compile Include="Assets\Scripts\Entites\Player\Skills\Skill.cs" />
     <Compile Include="Assets\Scripts\Items\Modifiers\ItemModifier.cs" />
     <Compile Include="Assets\Scripts\Items\Modifiers\ItemModifiers.cs" />
     <Compile Include="Assets\Scripts\Items\ScriptableObjects\Armor.cs" />
@@ -75,20 +90,8 @@
     <Compile Include="Assets\Scripts\Items\ScriptableObjects\Staff.cs" />
     <Compile Include="Assets\Scripts\Items\ScriptableObjects\Sword.cs" />
     <Compile Include="Assets\Scripts\Items\ScriptableObjects\Weapon.cs" />
-    <Compile Include="Assets\Scripts\NonPlayerCharacters\NPC.cs" />
-    <Compile Include="Assets\Scripts\NonPlayerCharacters\NPCStats.cs" />
-    <Compile Include="Assets\Scripts\Player\InventorySystem\InventoryEventSystem.cs" />
-    <Compile Include="Assets\Scripts\Player\InventorySystem\ItemSlot.cs" />
-    <Compile Include="Assets\Scripts\Player\InventorySystem\ModifiableStats.cs" />
-    <Compile Include="Assets\Scripts\Player\InventorySystem\PlayerEquipment.cs" />
-    <Compile Include="Assets\Scripts\Player\InventorySystem\PlayerStats.cs" />
-    <Compile Include="Assets\Scripts\Player\Player.cs" />
-    <Compile Include="Assets\Scripts\Player\PlayerAttackManager.cs" />
-    <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
-    <Compile Include="Assets\Scripts\Player\PlayerSkills.cs" />
-    <Compile Include="Assets\Scripts\Player\Skills\MeleeSkill.cs" />
-    <Compile Include="Assets\Scripts\Player\Skills\RangedSkill.cs" />
-    <Compile Include="Assets\Scripts\Player\Skills\Skill.cs" />
+    <Compile Include="Assets\Scripts\Projectile Behaviours\HomingProjectile.cs" />
+    <Compile Include="Assets\Scripts\Projectile Behaviours\Projectile.cs" />
     <Compile Include="Assets\Scripts\UI\In Game Menu Scripts\DragAndDrop\DragAndDropManager.cs" />
     <Compile Include="Assets\Scripts\UI\In Game Menu Scripts\DragAndDrop\UIItemSlot.cs" />
     <Compile Include="Assets\Scripts\UI\In Game Menu Scripts\EquipmentWindow.cs" />
