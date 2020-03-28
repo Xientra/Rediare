@@ -28,7 +28,7 @@ public class Player : Entity {
 	}
 
 	private void Start() {
-		InventoryEventSystem.OnItemChanged += UpdateStats;
+		InGameMenuEventSystem.OnItemChanged += UpdateStats;
 	}
 
 	/// <summary>
@@ -41,7 +41,7 @@ public class Player : Entity {
 		// update skills
 		//skills.equipmentSkills = equipment.GetAllSkills();
 
-		InventoryEventSystem.StatsChanged();
+		InGameMenuEventSystem.StatsChanged();
 	}
 
 	private void Update() {
@@ -53,7 +53,7 @@ public class Player : Entity {
 	}
 
 	private void OnValidate() {
-		InventoryEventSystem.ItemChanged(null);
-		InventoryEventSystem.StatsChanged();
+		InGameMenuEventSystem.ItemChanged(null);
+		InGameMenuEventSystem.StatsChanged();
 	}
 }

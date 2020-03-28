@@ -15,6 +15,7 @@ public class UIItemSlot : MonoBehaviour {
 		get => itemSlot;
 		set {
 			itemSlot = value;
+			UpdateValues();
 		}
 	}
 
@@ -27,7 +28,7 @@ public class UIItemSlot : MonoBehaviour {
 	private void Start() {
 		UpdateValues();
 
-		InventoryEventSystem.OnItemChanged += UpdateValues;
+		InGameMenuEventSystem.OnItemChanged += UpdateValues;
 	}
 
 	private void UpdateValues(ItemSlot itemSlot) {
@@ -56,7 +57,7 @@ public class UIItemSlot : MonoBehaviour {
 		UpdateValues();
 	}
 
-
+	#region Drag and Drop 
 	public void OnDragTrigger() {
 		DragAndDropManager.instance.OnDrag();
 	}
@@ -67,16 +68,6 @@ public class UIItemSlot : MonoBehaviour {
 
 	public void OnEndDragTrigger() {
 		DragAndDropManager.instance.OnEndDrag();
-	}
-
-	public void OnPointerEnter() {
-		if (itemSlot.IsEmpty() == false)
-			InGameMenu.instance.itemInfoPanel.Enable(itemSlot.Item, image.GetComponent<RectTransform>().position);
-	}
-
-	public void OnPointerExit() {
-		if (itemSlot.IsEmpty() == false)
-			InGameMenu.instance.itemInfoPanel.Disable();
 	}
 
 	// is called whenever the mouse button is released over the game object (i think)
@@ -97,4 +88,17 @@ public class UIItemSlot : MonoBehaviour {
 			}
 		}
 	}
+	#endregion
+
+	#region hover effect for ItemInfoPanel
+	public void OnPointerEnter() {
+		if (itemSlot.IsEmpty() == false)
+			InGameMenu.instance.itemInfoPanel.Enable(itemSlot.Item, image.GetComponent<RectTransform>().position);
+	}
+
+	public void OnPointerExit() {
+		if (itemSlot.IsEmpty() == false)
+			InGameMenu.instance.itemInfoPanel.Disable();
+	}
+	#endregion
 }

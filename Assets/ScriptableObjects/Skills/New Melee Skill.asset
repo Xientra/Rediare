@@ -12,3 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa3c03688d207fd4c9af11129c0cc9fd, type: 3}
   m_Name: New Melee Skill
   m_EditorClassIdentifier: 
+  name: Fireball i suppose?
+  image: {fileID: 21300000, guid: 4bf8646d7fa58dd46a91498b17b3aece, type: 3}
+  damage: 10
+  cooldown: 5

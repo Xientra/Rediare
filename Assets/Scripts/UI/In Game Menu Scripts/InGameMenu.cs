@@ -8,6 +8,8 @@ public class InGameMenu : MonoBehaviour {
 
 	public Player player;
 
+	public GameObject content;
+
 	[Space(5)]
 
     public DragAndDropManager dragAndDropManager;
@@ -17,6 +19,7 @@ public class InGameMenu : MonoBehaviour {
 	public EquipmentWindow equipmentWindow;
 	public InventoryWindow inventoryWindow;
 	public StatsWindow statsWindow;
+	public SkillsWindow skillsWindow;
 
 	[Space(3)]
 	public ItemInfoPanel itemInfoPanel;
@@ -34,18 +37,27 @@ public class InGameMenu : MonoBehaviour {
 	private void Start() {
 		UpdateUI();
 
-		gameObject.SetActive(false);
+		content.SetActive(false);
 	}
 
 	private void Update() {
 		if (Input.GetKeyDown(KeyCode.Escape)) {
-			InGameMenu.instance.gameObject.SetActive(!InGameMenu.instance.gameObject.activeSelf);
+			InGameMenu.instance.content.SetActive(!InGameMenu.instance.content.activeSelf);
 		}
+	}
+
+	public void Show() { 
+		
+	}
+
+	public void Hide() { 
+	
 	}
 
 	public void UpdateUI() {
 		equipmentWindow.UpdateUI();
 		inventoryWindow.UpdateUI();
 		statsWindow.UpdateUI();
+		skillsWindow.UpdateUI();
 	}
 }

@@ -66,7 +66,7 @@
     <Compile Include="Assets\Scripts\Entites\Entity.cs" />
     <Compile Include="Assets\Scripts\Entites\NonPlayerCharacters\NPC.cs" />
     <Compile Include="Assets\Scripts\Entites\NonPlayerCharacters\NPCStats.cs" />
-    <Compile Include="Assets\Scripts\Entites\Player\InventorySystem\InventoryEventSystem.cs" />
+    <Compile Include="Assets\Scripts\Entites\Player\InventorySystem\InGameMenuEventSystem.cs" />
     <Compile Include="Assets\Scripts\Entites\Player\InventorySystem\ItemSlot.cs" />
     <Compile Include="Assets\Scripts\Entites\Player\InventorySystem\ModifiableStats.cs" />
     <Compile Include="Assets\Scripts\Entites\Player\InventorySystem\PlayerEquipment.cs" />
@@ -94,10 +94,13 @@
     <Compile Include="Assets\Scripts\Projectile Behaviours\Projectile.cs" />
     <Compile Include="Assets\Scripts\UI\In Game Menu Scripts\DragAndDrop\DragAndDropManager.cs" />
     <Compile Include="Assets\Scripts\UI\In Game Menu Scripts\DragAndDrop\UIItemSlot.cs" />
+    <Compile Include="Assets\Scripts\UI\In Game Menu Scripts\DragAndDrop\UISkillSlot.cs" />
+    <Compile Include="Assets\Scripts\UI\In Game Menu Scripts\DragAndDrop\UISlot.cs" />
     <Compile Include="Assets\Scripts\UI\In Game Menu Scripts\EquipmentWindow.cs" />
     <Compile Include="Assets\Scripts\UI\In Game Menu Scripts\InGameMenu.cs" />
     <Compile Include="Assets\Scripts\UI\In Game Menu Scripts\InventoryWindow.cs" />
     <Compile Include="Assets\Scripts\UI\In Game Menu Scripts\ItemInfoPanel.cs" />
+    <Compile Include="Assets\Scripts\UI\In Game Menu Scripts\SkillsWindow.cs" />
     <Compile Include="Assets\Scripts\UI\In Game Menu Scripts\StatsWindow.cs" />
     <Compile Include="Assets\Scripts\UI\ValueDisplayBar.cs" />
     <Compile Include="Assets\Scripts\WorldObjects\ItemPickup.cs" />

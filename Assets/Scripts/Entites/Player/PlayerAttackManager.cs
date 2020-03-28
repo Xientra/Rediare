@@ -53,13 +53,13 @@ public class PlayerAttackManager : MonoBehaviour {
 			return;
 
 		if (Input.GetKeyDown(KeyCode.Alpha1)) {
-			playerSkills.equipedSkills[1 - 1].Activate(player, target);
+			//playerSkills.equipedSkills[1 - 1].Activate(player, target);
 		}
 		if (Input.GetKeyDown(KeyCode.Alpha2)) {
-			playerSkills.equipedSkills[2 - 1].Activate(player, target);
+			//playerSkills.equipedSkills[2 - 1].Activate(player, target);
 		}
 		if (Input.GetKeyDown(KeyCode.Alpha3)) {
-			playerSkills.equipedSkills[3 - 1].Activate(player, target);
+			//playerSkills.equipedSkills[3 - 1].Activate(player, target);
 		}
 	}
 

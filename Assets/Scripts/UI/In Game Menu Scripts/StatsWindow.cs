@@ -33,7 +33,7 @@ public class StatsWindow : MonoBehaviour {
 
 	void Start() {
 		playerStats = InGameMenu.instance.player.fullStats;
-		InventoryEventSystem.OnStatsChanged += UpdateUI;
+		InGameMenuEventSystem.OnStatsChanged += UpdateUI;
 
 		healthPointsText = healthPointsLabel.text;
 		magicPointsText = magicPointsLabel.text;

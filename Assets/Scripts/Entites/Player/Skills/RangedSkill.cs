@@ -6,6 +6,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Ranged Skill", menuName = "Skills/RangedSkill")]
 public class RangedSkill : Skill {
 
+	[Header("Ranged Settings:")]
+
 	public Projectile projectilePrefab;
 	public float range = 20;
 	[Tooltip("The duration for a full range shoot.")]

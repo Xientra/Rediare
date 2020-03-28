@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
+/// <summary>
+/// ItemSlot is a wrapper for the Item class.
+/// It's meant to be usable for both inventory slots and Equipment slots by beeing able to set what item types to accept.
+/// </summary>
 [Serializable]
 public class ItemSlot {
 
@@ -26,7 +30,7 @@ public class ItemSlot {
 	public bool SetItem(Item item) {
 		if (Accepts(item)) {
 			this.item = item;
-			InventoryEventSystem.ItemChanged(this);
+			InGameMenuEventSystem.ItemChanged(this);
 			return true;
 		}
 		return false;
