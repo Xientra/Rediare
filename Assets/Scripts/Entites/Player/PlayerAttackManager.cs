@@ -26,18 +26,32 @@ public class PlayerAttackManager : MonoBehaviour {
 
 	private void TargetSelection() { // <---------------------------------------------------- gets only the nearest(?) enemy
 		if (Input.GetKeyDown(KeyCode.Tab)) {
-			RaycastHit[] hits = Physics.SphereCastAll(transform.position, targetSelectionRange, Vector3.zero, 0.001f, LayerMask.NameToLayer("NPC"));
-			foreach (RaycastHit hit in hits) {
-				NPC npc = hit.transform.GetComponent<NPC>();
-				if (npc.IsHostile) {
-					target = npc;
-					return;
-				}
-			}
+			TargetNPC();
 		}
 	}
 
+	private void TargetNPC() {
+		Collider[] hits = Physics.OverlapSphere(transform.position, targetSelectionRange, 1 << LayerMask.NameToLayer("NPCs"));
+
+		NPC closestNpc = null;
+		foreach (Collider hit in hits) {
+			NPC npc = hit.transform.GetComponent<NPC>();
+			if (npc != null && npc.IsHostile) {
+				target = npc;
+				if (closestNpc == null || (-transform.position + npc.transform.position).sqrMagnitude < (-transform.position + closestNpc.transform.position).sqrMagnitude) {
+					closestNpc = npc;
+				}
+			}
+		}
+		target = closestNpc;
+	}
+
 	private void ActivateSkills() {
+		if (target == null)
+			TargetNPC();
+		if (target == null)
+			return;
+
 		if (Input.GetKeyDown(KeyCode.Alpha1)) {
 			playerSkills.equipedSkills[1 - 1].Activate(player, target);
 		}
@@ -47,5 +61,9 @@ public class PlayerAttackManager : MonoBehaviour {
 		if (Input.GetKeyDown(KeyCode.Alpha3)) {
 			playerSkills.equipedSkills[3 - 1].Activate(player, target);
 		}
+	}
+
+	private void OnDrawGizmosSelected() {
+		Gizmos.DrawWireSphere(transform.position, targetSelectionRange);
 	}
 }

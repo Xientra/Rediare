@@ -16,6 +16,15 @@ public class NPC : Entity {
 	}
 
 	void Update() {
-
+		
+		// DEBUG
+		transform.position += transform.forward * Mathf.Sin(Time.time) * sinSpeed * Time.deltaTime;
 	}
+
+
+
+	/* -== DEBUG ==- */
+	[Header("DEBUG:")]
+	public float sinSpeed = 2;
+
 }

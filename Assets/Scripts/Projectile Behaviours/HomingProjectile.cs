@@ -8,7 +8,7 @@ public class HomingProjectile : Projectile {
     public GameObject hitEffect;
 
     private Vector3 startPoint;
-    private NPC target;
+    private Entity target;
     private float duration;
     private float time = 0;
     private Action onFinish;
@@ -19,7 +19,7 @@ public class HomingProjectile : Projectile {
         startPoint = transform.position;
     }
 
-    public override void Fire(NPC target, float duration, Action onFinish) {
+    public override void Fire(Entity target, float duration, Action onFinish) {
         this.target = target;
         this.duration = duration;
         this.onFinish = onFinish;
@@ -50,7 +50,10 @@ public class HomingProjectile : Projectile {
         // create hit effect
         GameObject temp = Instantiate(hitEffect, target.Center, transform.rotation);
         Destroy(temp, 3f);
-        
+
+        // parent projectile to target (so it sticks)
+        transform.SetParent(target.transform);
+
         // destroy this object
         Destroy(this.gameObject, 3f);
     }

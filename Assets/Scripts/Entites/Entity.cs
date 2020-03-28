@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Entity : MonoBehaviour {
 
+#pragma warning disable 0649
 	/// <summary>
 	/// A visual center of the Entity used as a target for projectiles for example.
 	/// Returns transform.position if none is assinged.
@@ -23,4 +24,6 @@ public class Entity : MonoBehaviour {
 			return transform.position;
 		}
 	}
+#pragma warning restore 0649
+
 }
