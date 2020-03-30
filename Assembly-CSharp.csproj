@@ -93,6 +93,7 @@
     <Compile Include="Assets\Scripts\Projectile Behaviours\HomingProjectile.cs" />
     <Compile Include="Assets\Scripts\Projectile Behaviours\Projectile.cs" />
     <Compile Include="Assets\Scripts\UI\In Game Menu Scripts\DragAndDrop\DragAndDropManager.cs" />
+    <Compile Include="Assets\Scripts\UI\In Game Menu Scripts\DragAndDrop\UIActionSlot.cs" />
     <Compile Include="Assets\Scripts\UI\In Game Menu Scripts\DragAndDrop\UIItemSlot.cs" />
     <Compile Include="Assets\Scripts\UI\In Game Menu Scripts\DragAndDrop\UISkillSlot.cs" />
     <Compile Include="Assets\Scripts\UI\In Game Menu Scripts\DragAndDrop\UISlot.cs" />

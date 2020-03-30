@@ -121,7 +121,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 2741496758713048173}
           m_MethodName: OnBeginDragTrigger
           m_Mode: 1
           m_Arguments:
@@ -136,7 +136,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 2741496758713048173}
           m_MethodName: OnDragTrigger
           m_Mode: 1
           m_Arguments:
@@ -151,7 +151,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 2741496758713048173}
           m_MethodName: OnEndDragTrigger
           m_Mode: 1
           m_Arguments:
@@ -166,7 +166,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 2741496758713048173}
           m_MethodName: OnDrop
           m_Mode: 1
           m_Arguments:
@@ -181,7 +181,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 2741496758713048173}
           m_MethodName: OnPointerEnter
           m_Mode: 1
           m_Arguments:
@@ -196,7 +196,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 2741496758713048173}
           m_MethodName: OnPointerExit
           m_Mode: 1
           m_Arguments:
@@ -219,9 +219,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9227e5233fd5df4d910c632d0846996, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skill: {fileID: 0}
   text: {fileID: 1589993743034846075}
   image: {fileID: 1893411455890697478}
+  skill: {fileID: 0}
 --- !u!1 &6909979211250072836
 GameObject:
   m_ObjectHideFlags: 0

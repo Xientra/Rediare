@@ -4,17 +4,12 @@ using TMPro;
 using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(EventTrigger))]
-public class UISkillSlot : MonoBehaviour {
+public class UISkillSlot : UISlot {
 
-	[Header("UI References:")]
-	public TextMeshProUGUI text;
-	public Image image;
-
-	public const string EMPTY_TEXT = "[Empty]";
-
-	[Tooltip("Reference to the equipment slot, represented.")]
+	[Tooltip("The skill this UISlot represents.")]
 	[SerializeField]
 	private Skill skill;
+	
 	public Skill Skill {
 		get => skill;
 		set {
@@ -22,6 +17,7 @@ public class UISkillSlot : MonoBehaviour {
 			UpdateValues();
 		}
 	}
+	
 
 	private void Start() {
 		UpdateValues();
@@ -29,7 +25,7 @@ public class UISkillSlot : MonoBehaviour {
 		InGameMenuEventSystem.OnSkillsChanged += UpdateValues;
 	}
 
-	public void UpdateValues() {
+	public override void UpdateValues() {
 		if (skill != null) {
 			text.text = skill.name;
 			image.enabled = true;
@@ -42,52 +38,44 @@ public class UISkillSlot : MonoBehaviour {
 		}
 	}
 
-	public void OnValidate() {
-		UpdateValues();
+	public override bool IsEmpty() {
+		return true; // can never be emty
 	}
 
-	/* later
-	#region Drag and Drop 
-	public void OnDragTrigger() {
-		DragAndDropManager.instance.OnDrag();
-	}
-
-	public void OnBeginDragTrigger() {
-		DragAndDropManager.instance.OnBeginDrag(this.gameObject);
-	}
-
-	public void OnEndDragTrigger() {
-		DragAndDropManager.instance.OnEndDrag();
-	}
-
-	// is called whenever the mouse button is released over the game object (i think)
-	public void OnDrop() {
+	public override void OnDrop() {
 		if (DragAndDropManager.instance.dragging == true) {
-			UISkillSlot itemElementOrigin = DragAndDropManager.instance.itemElementOrigin;
 
-			//Debug.Log(itemSlot.Accepts(itemElementOrigin.itemSlot.Item));
+			// :=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=://
+			// UISKillSlot wont accept any drag and drop, for now //
+			// :=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=://
 
-			if (itemSlot.Accepts(itemElementOrigin.itemSlot.Item)) {
+			/*
+			// checks what the dragOrigin is
+			if (DragAndDropManager.instance.dragOrigin is UIItemSlot) {
+				UIItemSlot uiItemSlotOrigin = (UIItemSlot)DragAndDropManager.instance.dragOrigin;
 
-				//swaps items in this UIItemElements slot and the DragAndDrop origin UIItemElement
-				ItemSlot.SwapItems(itemSlot, itemElementOrigin.itemSlot);
+				// check if this itemSlot accepts the item from the other item slot
+				if (itemSlot.Accepts(uiItemSlotOrigin.itemSlot.Item)) {
 
-				// update all changed elements
-				itemElementOrigin.UpdateValues();
-				UpdateValues();
+					//swaps items in this UIItemElements slot and the DragAndDrop origin UIItemElement
+					ItemSlot.SwapItems(itemSlot, uiItemSlotOrigin.itemSlot);
+
+					// update all changed elements
+					uiItemSlotOrigin.UpdateValues();
+					UpdateValues();
+				}
 			}
+			*/
 		}
 	}
-	#endregion
 
 	#region hover effect for SkillInfoPanel
-	public void OnPointerEnter() {
-		Debug.LogError("OnPointerEnter for UISkillSlot has not been implemented yet.");
+	public override void OnPointerEnter() {
+		Debug.LogWarning("OnPointerEnter for UISkillSlot has not been implemented yet.");
 	}
 
-	public void OnPointerExit() {
-		Debug.LogError("OnPointerExit for UISkillSlot has not been implemented yet.");
+	public override void OnPointerExit() {
+		Debug.LogWarning("OnPointerExit for UISkillSlot has not been implemented yet.");
 	}
 	#endregion
-	*/
 }

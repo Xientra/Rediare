@@ -25,6 +25,7 @@ public class SkillsWindow : MonoBehaviour {
 	public void SetSkillSlots() {
 		SetNaturalSkillSlots();
 		SetEquipmentSkillSlots();
+		//Canvas.ForceUpdateCanvases();
 	}
 
 	private void SetNaturalSkillSlots() {

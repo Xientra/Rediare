@@ -9,7 +9,7 @@ public class DragAndDropManager : MonoBehaviour {
 
 	[Header("Drag And Drop:")]
 	[Tooltip("The UIItemSlot where the Drag was initiated from.")]
-	public UIItemSlot itemElementOrigin;
+	public UISlot dragOrigin;
 
 	public GameObject draggerGraphicPrefab;
 	private GameObject draggerGraphic;
@@ -31,16 +31,16 @@ public class DragAndDropManager : MonoBehaviour {
 
 	#region Drag And Drop
 
-	public void OnBeginDrag(GameObject toDrag) {
+	public void OnBeginDrag(UISlot origin) {
 
-		itemElementOrigin = toDrag.GetComponent<UIItemSlot>();
+		if (origin.IsEmpty() == false) {
 
-		if (itemElementOrigin.ItemSlot.IsEmpty() == false) {
+			dragOrigin = origin;
 
 			// create dragger graphic
 			draggerGraphic = Instantiate(draggerGraphicPrefab, InGameMenu.instance.transform);
 			Image draggerImage = draggerGraphic.GetComponent<Image>();
-			draggerImage.sprite = itemElementOrigin.ItemSlot.Item.image;
+			draggerImage.sprite = dragOrigin.image.sprite; // <--------------------------------------------------------------------------- how the image is accesd will prob change
 			draggerImage.color = new Color(draggerImage.color.r, draggerImage.color.g, draggerImage.color.b, draggerAlphaValue);
 			draggerGraphic.transform.localScale = new Vector3(draggerScale, draggerScale, draggerScale);
 
@@ -49,7 +49,7 @@ public class DragAndDropManager : MonoBehaviour {
 		}
 	}
 
-	// called every frame something is being dragged
+	// called every frame if something is being dragged
 	public void OnDrag() {
 		if (dragging == true) {
 			draggerGraphic.transform.position = Input.mousePosition;
@@ -62,18 +62,7 @@ public class DragAndDropManager : MonoBehaviour {
 			Destroy(draggerGraphic);
 			dragging = false;
 		}
-		itemElementOrigin = null;
-	}
-	#endregion
-
-	#region Hover Event
-
-	public void OnPointerEnter() { 
-	
-	}
-
-	public void OnPointerExit() {
-		
+		dragOrigin = null;
 	}
 	#endregion
 }

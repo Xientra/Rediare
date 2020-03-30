@@ -4,9 +4,13 @@ using TMPro;
 using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(EventTrigger))]
-public class UIItemSlot : MonoBehaviour {
+public class UIItemSlot : UISlot {
 
-	public const string EMPTY_TEXT = "[Empty]";
+	/*
+	[Header("UI References:")]
+	public TextMeshProUGUI text;
+	public Image image;
+	*/
 
 	[Tooltip("Reference to the equipment slot, represented.")]
 	[SerializeField]
@@ -19,16 +23,14 @@ public class UIItemSlot : MonoBehaviour {
 		}
 	}
 
-	[Header("UI References:")]
-
-	public TextMeshProUGUI text;
-	public Image image;
-
-
 	private void Start() {
 		UpdateValues();
 
 		InGameMenuEventSystem.OnItemChanged += UpdateValues;
+	}
+
+	public override bool IsEmpty() {
+		return itemSlot.IsEmpty();
 	}
 
 	private void UpdateValues(ItemSlot itemSlot) {
@@ -37,7 +39,7 @@ public class UIItemSlot : MonoBehaviour {
 		}
 	}
 
-	public void UpdateValues() {
+	public override void UpdateValues() {
 		if (itemSlot != null) {
 			Item item = itemSlot.Item;
 			if (item != null) {
@@ -53,52 +55,61 @@ public class UIItemSlot : MonoBehaviour {
 		}
 	}
 
-	public void OnValidate() {
-		UpdateValues();
-	}
+
 
 	#region Drag and Drop 
+	/*
 	public void OnDragTrigger() {
 		DragAndDropManager.instance.OnDrag();
 	}
 
 	public void OnBeginDragTrigger() {
-		DragAndDropManager.instance.OnBeginDrag(this.gameObject);
+		DragAndDropManager.instance.OnBeginDrag(this);
 	}
 
 	public void OnEndDragTrigger() {
 		DragAndDropManager.instance.OnEndDrag();
 	}
+	*/
 
 	// is called whenever the mouse button is released over the game object (i think)
-	public void OnDrop() {
+	public override void OnDrop() {
 		if (DragAndDropManager.instance.dragging == true) {
-			UIItemSlot itemElementOrigin = DragAndDropManager.instance.itemElementOrigin;
 
-			//Debug.Log(itemSlot.Accepts(itemElementOrigin.itemSlot.Item));
+			// checks if the to drag Slot is a item slot (bc UIItemSlot can only acept other UIItemSlots)
+			if (DragAndDropManager.instance.dragOrigin is UIItemSlot) {
+				UIItemSlot uiItemSlotOrigin = (UIItemSlot)DragAndDropManager.instance.dragOrigin;
 
-			if (itemSlot.Accepts(itemElementOrigin.itemSlot.Item)) {
+				// check if this itemSlot accepts the item from the other item slot
+				if (itemSlot.Accepts(uiItemSlotOrigin.itemSlot.Item)) {
 
-				//swaps items in this UIItemElements slot and the DragAndDrop origin UIItemElement
-				ItemSlot.SwapItems(itemSlot, itemElementOrigin.itemSlot);
+					//swaps items in this UIItemElements slot and the DragAndDrop origin UIItemElement
+					ItemSlot.SwapItems(itemSlot, uiItemSlotOrigin.itemSlot);
 
-				// update all changed elements
-				itemElementOrigin.UpdateValues();
-				UpdateValues();
+					// update all changed elements
+					uiItemSlotOrigin.UpdateValues();
+					UpdateValues();
+				}
 			}
 		}
 	}
 	#endregion
 
 	#region hover effect for ItemInfoPanel
-	public void OnPointerEnter() {
+	public override void OnPointerEnter() {
 		if (itemSlot.IsEmpty() == false)
 			InGameMenu.instance.itemInfoPanel.Enable(itemSlot.Item, image.GetComponent<RectTransform>().position);
 	}
 
-	public void OnPointerExit() {
+	public override void OnPointerExit() {
 		if (itemSlot.IsEmpty() == false)
 			InGameMenu.instance.itemInfoPanel.Disable();
 	}
+
+
 	#endregion
+
+	//public void OnValidate() {
+	//	UpdateValues();
+	//}
 }
