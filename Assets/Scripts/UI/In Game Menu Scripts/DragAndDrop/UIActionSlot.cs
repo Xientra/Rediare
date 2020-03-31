@@ -6,53 +6,72 @@ using TMPro;
 
 public class UIActionSlot : UISlot {
 
-	private UISlot referenceSlot;
-
-	public override bool IsEmpty() {
-		return referenceSlot.IsEmpty();
-	}
-
-	public override void OnDrop() {
-		if (DragAndDropManager.instance.dragging == true) {
-
-			// checks what the dragOrigin is
-			if (DragAndDropManager.instance.dragOrigin is UIItemSlot) {
-				UIItemSlot uiItemSlotOrigin = (UIItemSlot)DragAndDropManager.instance.dragOrigin;
-
-				// check if this itemSlot accepts the item from the other item slot
-				if (itemSlot.Accepts(uiItemSlotOrigin.itemSlot.Item)) {
-
-					//swaps items in this UIItemElements slot and the DragAndDrop origin UIItemElement
-					ItemSlot.SwapItems(itemSlot, uiItemSlotOrigin.itemSlot);
-
-					// update all changed elements
-					uiItemSlotOrigin.UpdateValues();
-					UpdateValues();
-				}
-			}
-			else if (DragAndDropManager.instance.dragOrigin is UISkillSlot) {
-
-			}
-		}
-	}
-
-	public override void OnPointerEnter() {
-		referenceSlot.OnPointerEnter();
-	}
-
-	public override void OnPointerExit() {
-		referenceSlot.OnPointerExit();
-	}
-
-	public override void UpdateValues() {
-		//throw new System.NotImplementedException();
-	}
-
-	//private Usable usable; ?
+	private PlayerAttackManager playerAttackManager;
+	private int actionBarIndex;
 
 	private void Start() {
 		UpdateValues();
 	}
 
+	public override void UpdateValues() {
+		if (playerAttackManager != null && playerAttackManager.equipedSkills[actionBarIndex] != null) {
+			image.sprite = playerAttackManager.equipedSkills[actionBarIndex].image;
+			image.enabled = true;
+		}
+		else {
+			image.enabled = false;
+		}
+	}
 
+	public void Initialize(PlayerAttackManager playerAttackManager, int actionBarIndex) {
+		this.playerAttackManager = playerAttackManager;
+		this.actionBarIndex = actionBarIndex;
+	}
+
+	public override bool IsEmpty() {
+		return playerAttackManager.equipedSkills[actionBarIndex] == null;
+	}
+
+	public void OnClick() {
+		playerAttackManager.ActivateSkill(actionBarIndex);
+	}
+
+	public override void OnDrop() {
+		Debug.Log("OnDrop");
+
+		if (DragAndDropManager.instance.dragging == true) {
+			// checks what the dragOrigin is
+			if (DragAndDropManager.instance.dragOrigin is UISkillSlot uiSkillSlotOrigin) {
+
+				playerAttackManager.equipedSkills[actionBarIndex] = uiSkillSlotOrigin.Skill;
+				UpdateValues();
+			}
+			else if (DragAndDropManager.instance.dragOrigin is UIActionSlot uiActionSlotOrigin) {
+
+				playerAttackManager.SwapEquipedSkills(actionBarIndex, uiActionSlotOrigin.actionBarIndex); // <---------------------this does not work bc OnEmptyDrop is allways called
+
+				UpdateValues();
+				uiActionSlotOrigin.UpdateValues();
+			}
+			else if (DragAndDropManager.instance.dragOrigin is UIItemSlot) {
+				// UIActionSlot does not support the equipping of items yet
+			}
+		}
+	}
+
+	/// <summary>
+	/// Called by the DragAndDropManager whenever a drag from a Action Slot ends over nothing
+	/// </summary>
+	public void OnEmptyDrop() {
+		playerAttackManager.equipedSkills[actionBarIndex] = null;
+		UpdateValues();
+	}
+
+	public override void OnPointerEnter() {
+		//referencedSlot.OnPointerEnter();
+	}
+
+	public override void OnPointerExit() {
+		//referencedSlot.OnPointerExit();
+	}
 }

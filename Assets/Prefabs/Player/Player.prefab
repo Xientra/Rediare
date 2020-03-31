@@ -296,19 +296,9 @@ MonoBehaviour:
     - item: {fileID: 0}
       slotType: 0
   skills:
-    skills: []
+    naturalSkills: []
     equipmentSkills: []
-    equipedSkills:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
+  attackManager: {fileID: 7806742015678425644}
 --- !u!114 &973902650193979694
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -353,6 +343,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+  targetSelectionRange: 20
+  equipedSkills:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1001 &973902649287167888
 PrefabInstance:
   m_ObjectHideFlags: 0

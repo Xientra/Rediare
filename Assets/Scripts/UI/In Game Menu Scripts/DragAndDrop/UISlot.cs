@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.EventSystems;
+using System;
 
 [RequireComponent(typeof(EventTrigger))]
 public abstract class UISlot : MonoBehaviour {
@@ -12,19 +13,13 @@ public abstract class UISlot : MonoBehaviour {
 	public TextMeshProUGUI text;
 	public Image image;
 
-
+	//public event Action ValueChanged;
 
 	private void Start() {
 		UpdateValues();
 	}
 
-
 	public abstract void UpdateValues();
-
-
-	//public abstract void UpdateBasedOnContent();
-
-	//public abstract bool IsUsable();
 
 	public abstract bool IsEmpty();
 

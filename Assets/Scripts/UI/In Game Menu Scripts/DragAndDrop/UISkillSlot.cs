@@ -39,7 +39,7 @@ public class UISkillSlot : UISlot {
 	}
 
 	public override bool IsEmpty() {
-		return true; // can never be emty
+		return false; // can never be emty
 	}
 
 	public override void OnDrop() {
@@ -49,23 +49,6 @@ public class UISkillSlot : UISlot {
 			// UISKillSlot wont accept any drag and drop, for now //
 			// :=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=://
 
-			/*
-			// checks what the dragOrigin is
-			if (DragAndDropManager.instance.dragOrigin is UIItemSlot) {
-				UIItemSlot uiItemSlotOrigin = (UIItemSlot)DragAndDropManager.instance.dragOrigin;
-
-				// check if this itemSlot accepts the item from the other item slot
-				if (itemSlot.Accepts(uiItemSlotOrigin.itemSlot.Item)) {
-
-					//swaps items in this UIItemElements slot and the DragAndDrop origin UIItemElement
-					ItemSlot.SwapItems(itemSlot, uiItemSlotOrigin.itemSlot);
-
-					// update all changed elements
-					uiItemSlotOrigin.UpdateValues();
-					UpdateValues();
-				}
-			}
-			*/
 		}
 	}
 

@@ -61,8 +61,16 @@ public class DragAndDropManager : MonoBehaviour {
 		if (dragging == true) {
 			Destroy(draggerGraphic);
 			dragging = false;
+
+			SpecialOnEndDrag();
 		}
 		dragOrigin = null;
+	}
+
+	private void SpecialOnEndDrag() {
+		if (dragOrigin is UIActionSlot actionSlotOrigin) {
+			actionSlotOrigin.OnEmptyDrop();
+		}
 	}
 	#endregion
 }

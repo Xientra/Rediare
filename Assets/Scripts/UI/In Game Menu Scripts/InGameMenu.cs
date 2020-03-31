@@ -22,7 +22,13 @@ public class InGameMenu : MonoBehaviour {
 	public SkillsWindow skillsWindow;
 
 	[Space(3)]
+
+	public ActionBarPanel actionBarPanel;
+
+	[Space(3)]
+
 	public ItemInfoPanel itemInfoPanel;
+	public SkillInfoPanel skillInfoPanel;
 
     private void Awake() {
         if (instance == null) {

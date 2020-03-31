@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-//[RequireComponent(typeof(PlayerAttackManager))]
+[RequireComponent(typeof(PlayerAttackManager))]
 public class Player : Entity {
 
 	[Header("Stats:")]
@@ -15,6 +15,7 @@ public class Player : Entity {
 	public PlayerEquipment equipment = new PlayerEquipment(10);
 
 	public PlayerSkills skills;
+	public PlayerAttackManager attackManager;
 
 	private void Awake() {
 

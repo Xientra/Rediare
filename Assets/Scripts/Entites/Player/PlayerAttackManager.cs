@@ -13,6 +13,8 @@ public class PlayerAttackManager : MonoBehaviour {
 
 	public float targetSelectionRange = 20f;
 
+	public Skill[] equipedSkills = new Skill[9];
+
 	void Start() {
 		player = GetComponent<Player>();
 
@@ -53,14 +55,42 @@ public class PlayerAttackManager : MonoBehaviour {
 			return;
 
 		if (Input.GetKeyDown(KeyCode.Alpha1)) {
-			//playerSkills.equipedSkills[1 - 1].Activate(player, target);
+			equipedSkills[1 - 1]?.Activate(player, target);
 		}
 		if (Input.GetKeyDown(KeyCode.Alpha2)) {
-			//playerSkills.equipedSkills[2 - 1].Activate(player, target);
+			equipedSkills[2 - 1]?.Activate(player, target);
 		}
 		if (Input.GetKeyDown(KeyCode.Alpha3)) {
-			//playerSkills.equipedSkills[3 - 1].Activate(player, target);
+			equipedSkills[3 - 1]?.Activate(player, target);
 		}
+		if (Input.GetKeyDown(KeyCode.Alpha4)) {
+			equipedSkills[4 - 1]?.Activate(player, target);
+		}
+		if (Input.GetKeyDown(KeyCode.Alpha5)) {
+			equipedSkills[5 - 1]?.Activate(player, target);
+		}
+		if (Input.GetKeyDown(KeyCode.Alpha6)) {
+			equipedSkills[6 - 1]?.Activate(player, target);
+		}
+		if (Input.GetKeyDown(KeyCode.Alpha7)) {
+			equipedSkills[7 - 1]?.Activate(player, target);
+		}
+		if (Input.GetKeyDown(KeyCode.Alpha8)) {
+			equipedSkills[8 - 1]?.Activate(player, target);
+		}
+		if (Input.GetKeyDown(KeyCode.Alpha9)) {
+			equipedSkills[9 - 1]?.Activate(player, target);
+		}
+	}
+
+	public void ActivateSkill(int index) {
+		equipedSkills[index]?.Activate(player, target);
+	}
+
+	public void SwapEquipedSkills(int a, int b) {
+		Skill s = equipedSkills[a];
+		equipedSkills[a] = equipedSkills[b];
+		equipedSkills[b] = s;
 	}
 
 	private void OnDrawGizmosSelected() {
