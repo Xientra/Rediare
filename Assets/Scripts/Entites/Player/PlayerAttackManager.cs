@@ -14,6 +14,8 @@ public class PlayerAttackManager : MonoBehaviour {
 	public float targetSelectionRange = 20f;
 
 	public Skill[] equipedSkills = new Skill[9];
+	[SerializeField]
+	private float[] cooldowns = new float[9]; 
 
 	void Start() {
 		player = GetComponent<Player>();
@@ -55,36 +57,59 @@ public class PlayerAttackManager : MonoBehaviour {
 			return;
 
 		if (Input.GetKeyDown(KeyCode.Alpha1)) {
-			equipedSkills[1 - 1]?.Activate(player, target);
+			ActivateSkill(1 - 1);
 		}
 		if (Input.GetKeyDown(KeyCode.Alpha2)) {
-			equipedSkills[2 - 1]?.Activate(player, target);
+			ActivateSkill(2 - 1);
 		}
 		if (Input.GetKeyDown(KeyCode.Alpha3)) {
-			equipedSkills[3 - 1]?.Activate(player, target);
+			ActivateSkill(3 - 1);
 		}
 		if (Input.GetKeyDown(KeyCode.Alpha4)) {
-			equipedSkills[4 - 1]?.Activate(player, target);
+			ActivateSkill(4 - 1);
 		}
 		if (Input.GetKeyDown(KeyCode.Alpha5)) {
-			equipedSkills[5 - 1]?.Activate(player, target);
+			ActivateSkill(5 - 1);
 		}
 		if (Input.GetKeyDown(KeyCode.Alpha6)) {
-			equipedSkills[6 - 1]?.Activate(player, target);
+			ActivateSkill(6 - 1);
 		}
 		if (Input.GetKeyDown(KeyCode.Alpha7)) {
-			equipedSkills[7 - 1]?.Activate(player, target);
+			ActivateSkill(7 - 1);
 		}
 		if (Input.GetKeyDown(KeyCode.Alpha8)) {
-			equipedSkills[8 - 1]?.Activate(player, target);
+			ActivateSkill(8 - 1);
 		}
 		if (Input.GetKeyDown(KeyCode.Alpha9)) {
-			equipedSkills[9 - 1]?.Activate(player, target);
+			ActivateSkill(9 - 1);
 		}
 	}
 
 	public void ActivateSkill(int index) {
-		equipedSkills[index]?.Activate(player, target);
+		if (index >= 0 && index <= 9 && equipedSkills[index] != null) {
+			if (cooldowns[index] == 0) {
+				equipedSkills[index].Activate(player, target);
+				StartCoroutine(Cooldown(index, equipedSkills[index].cooldown));
+			}
+		}
+	}
+
+	private IEnumerator Cooldown(int index, float seconds) {
+		cooldowns[index] = seconds; 
+		while (cooldowns[index] > 0) {
+			cooldowns[index] -= Time.deltaTime;
+			yield return null;
+		}
+		cooldowns[index] = 0;
+	}
+
+	public float GetSkillsCooldown(int index) {
+		if (index >= 0 && index <= 9) {
+			return cooldowns[index];
+		}
+		else {
+			throw new System.ArgumentOutOfRangeException("The cooldowns array goes from 0 to " + (cooldowns.Length - 1));
+		}
 	}
 
 	public void SwapEquipedSkills(int a, int b) {

@@ -6,6 +6,8 @@ using TMPro;
 
 public class UIActionSlot : UISlot {
 
+	public Image cooldownImage;
+
 	private PlayerAttackManager playerAttackManager;
 	private int actionBarIndex;
 
@@ -21,6 +23,13 @@ public class UIActionSlot : UISlot {
 		else {
 			image.enabled = false;
 		}
+	}
+
+	public void DisplayCooldown(float cooldownPercent) {
+		cooldownPercent = Mathf.Clamp01(cooldownPercent);
+		Vector3 newScale = cooldownImage.GetComponent<RectTransform>().localScale;
+		newScale = new Vector3(newScale.x, 25 * cooldownPercent, newScale.z);
+		cooldownImage.GetComponent<RectTransform>().localScale = newScale;
 	}
 
 	public void Initialize(PlayerAttackManager playerAttackManager, int actionBarIndex) {

@@ -6,6 +6,8 @@ public class InGameMenu : MonoBehaviour {
 
     public static InGameMenu instance;
 
+	public KeyCode openKey = KeyCode.Tab;
+
 	public Player player;
 
 	public GameObject content;
@@ -47,7 +49,7 @@ public class InGameMenu : MonoBehaviour {
 	}
 
 	private void Update() {
-		if (Input.GetKeyDown(KeyCode.Escape)) {
+		if (Input.GetKeyDown(openKey)) {
 			InGameMenu.instance.content.SetActive(!InGameMenu.instance.content.activeSelf);
 		}
 	}

@@ -45,9 +45,9 @@ public class UISkillSlot : UISlot {
 	public override void OnDrop() {
 		if (DragAndDropManager.instance.dragging == true) {
 
-			// :=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=://
-			// UISKillSlot wont accept any drag and drop, for now //
-			// :=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=://
+			// :=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=: //
+			// UISKillSlot wont accept any drag and drop, for now  //
+			// :=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=: //
 
 		}
 	}

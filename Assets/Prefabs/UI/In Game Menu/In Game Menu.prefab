@@ -115,6 +115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22e4f1a2a3d0a304f8a3d76b22c90a12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  openKey: 9
   player: {fileID: 0}
   content: {fileID: 5236504538678088277}
   dragAndDropManager: {fileID: 2063919395101570814}
