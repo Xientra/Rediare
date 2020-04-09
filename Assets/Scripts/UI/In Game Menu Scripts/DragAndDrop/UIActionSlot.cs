@@ -25,10 +25,13 @@ public class UIActionSlot : UISlot {
 		}
 	}
 
-	public void DisplayCooldown(float cooldownPercent) {
+	public void DisplayCooldown() {
+		DisplayCooldown(playerAttackManager.GetCooldown01(actionBarIndex));
+	}
+	private void DisplayCooldown(float cooldownPercent) {
 		cooldownPercent = Mathf.Clamp01(cooldownPercent);
 		Vector3 newScale = cooldownImage.GetComponent<RectTransform>().localScale;
-		newScale = new Vector3(newScale.x, 25 * cooldownPercent, newScale.z);
+		newScale = new Vector3(newScale.x, cooldownPercent, newScale.z);
 		cooldownImage.GetComponent<RectTransform>().localScale = newScale;
 	}
 
@@ -46,7 +49,7 @@ public class UIActionSlot : UISlot {
 	}
 
 	public override void OnDrop() {
-		Debug.Log("OnDrop");
+		Debug.LogWarning("OnDrop");
 
 		if (DragAndDropManager.instance.dragging == true) {
 			// checks what the dragOrigin is

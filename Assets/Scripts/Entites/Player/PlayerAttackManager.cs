@@ -13,6 +13,8 @@ public class PlayerAttackManager : MonoBehaviour {
 
 	public float targetSelectionRange = 20f;
 
+
+	//public ActionBarSlot[] actionBarSlots = new ActionBarSlot[9];
 	public Skill[] equipedSkills = new Skill[9];
 	[SerializeField]
 	private float[] cooldowns = new float[9]; 
@@ -24,6 +26,8 @@ public class PlayerAttackManager : MonoBehaviour {
 	}
 
 	void Update() {
+		Debug.Log(Time.deltaTime);
+
 		TargetSelection();
 		ActivateSkills();
 	}
@@ -98,14 +102,24 @@ public class PlayerAttackManager : MonoBehaviour {
 		cooldowns[index] = seconds; 
 		while (cooldowns[index] > 0) {
 			cooldowns[index] -= Time.deltaTime;
+			InGameMenuEventSystem.ActionBarChanged(index);
 			yield return null;
 		}
 		cooldowns[index] = 0;
 	}
 
-	public float GetSkillsCooldown(int index) {
+	public float GetCooldown(int index) {
 		if (index >= 0 && index <= 9) {
 			return cooldowns[index];
+		}
+		else {
+			throw new System.ArgumentOutOfRangeException("The cooldowns array goes from 0 to " + (cooldowns.Length - 1));
+		}
+	}
+
+	public float GetCooldown01(int index) {
+		if (index >= 0 && index <= 9) {
+			return cooldowns[index] / equipedSkills[index].cooldown;
 		}
 		else {
 			throw new System.ArgumentOutOfRangeException("The cooldowns array goes from 0 to " + (cooldowns.Length - 1));

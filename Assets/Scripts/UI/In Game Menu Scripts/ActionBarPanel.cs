@@ -12,6 +12,10 @@ public class ActionBarPanel : MonoBehaviour {
 	private void Start() {
 		playerAttackManager = InGameMenu.instance.player.attackManager;
 		SetActionSlotsIndexes();
+
+		// add action bar update listener
+		InGameMenuEventSystem.OnActionBarChanged += UpdateUIActionSlot;
+
 		UpdateUI();
 	}
 
@@ -25,5 +29,9 @@ public class ActionBarPanel : MonoBehaviour {
 		for (int i = 0; i < actionSlots.Length; i++) {
 			actionSlots[i].UpdateValues();
 		}
+	}
+
+	private void UpdateUIActionSlot(int index) {
+		actionSlots[index].DisplayCooldown();
 	}
 }

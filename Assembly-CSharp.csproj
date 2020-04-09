@@ -66,6 +66,7 @@
     <Compile Include="Assets\Scripts\Entites\Entity.cs" />
     <Compile Include="Assets\Scripts\Entites\NonPlayerCharacters\NPC.cs" />
     <Compile Include="Assets\Scripts\Entites\NonPlayerCharacters\NPCStats.cs" />
+    <Compile Include="Assets\Scripts\Entites\Player\ActionBarSlot.cs" />
     <Compile Include="Assets\Scripts\Entites\Player\InventorySystem\InGameMenuEventSystem.cs" />
     <Compile Include="Assets\Scripts\Entites\Player\InventorySystem\ItemSlot.cs" />
     <Compile Include="Assets\Scripts\Entites\Player\InventorySystem\ModifiableStats.cs" />

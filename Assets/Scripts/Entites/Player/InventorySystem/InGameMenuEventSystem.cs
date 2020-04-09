@@ -18,7 +18,11 @@ public class InGameMenuEventSystem {
 
 	public static event Action OnSkillsChanged;
 	public static void SkillsChanged() {
-		if (OnSkillsChanged != null) 
-			OnSkillsChanged();
+		OnSkillsChanged?.Invoke();
+	}
+
+	public static event Action<int> OnActionBarChanged;
+	public static void ActionBarChanged(int i) {
+		OnActionBarChanged?.Invoke(i);
 	}
 }
