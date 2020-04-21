@@ -15,7 +15,7 @@ public class RangedSkill : Skill {
 
 
 
-	public override void Activate(Player origin, NPC target) { // <----------------------------------- OH GOD NO THIS SHOULD WORK FOR JUST ENTITIES
+	public override bool Activate(Player origin, NPC target) { // <----------------------------------- OH GOD NO THIS SHOULD WORK FOR JUST ENTITIES
 
 		if ((origin.transform.position - target.transform.position).magnitude <= range) {
 
@@ -23,7 +23,9 @@ public class RangedSkill : Skill {
 
 			// v = s / t  t = s / v
 			p.Fire(target, (-origin.Center + target.Center).magnitude / (range / projectileDuration), () => DealDamage(target));
+			return true;
 		}
+		else return false;
 	}
 
 	private void DealDamage(NPC target) {

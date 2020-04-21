@@ -6,7 +6,7 @@ public class InGameMenu : MonoBehaviour {
 
     public static InGameMenu instance;
 
-	public KeyCode openKey = KeyCode.Tab;
+	public KeyCode openKey = KeyCode.Escape;
 
 	public Player player;
 
@@ -31,6 +31,9 @@ public class InGameMenu : MonoBehaviour {
 
 	public ItemInfoPanel itemInfoPanel;
 	public SkillInfoPanel skillInfoPanel;
+
+	[Header("DEBUG:")]
+	public bool showStats = false;
 
     private void Awake() {
         if (instance == null) {
@@ -67,5 +70,15 @@ public class InGameMenu : MonoBehaviour {
 		inventoryWindow.UpdateUI();
 		statsWindow.UpdateUI();
 		skillsWindow.UpdateUI();
+	}
+
+	private void OnGUI() {
+		if (showStats == true) {
+			string fps = "Fps: " + Time.frameCount / Time.time;
+			string deltatime = "Delta Time: " + Time.deltaTime;
+
+
+			GUI.Label(new Rect(3, 3, 500, 50), fps + " " + deltatime);
+		}
 	}
 }

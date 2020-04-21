@@ -26,8 +26,6 @@ public class PlayerAttackManager : MonoBehaviour {
 	}
 
 	void Update() {
-		Debug.Log(Time.deltaTime);
-
 		TargetSelection();
 		ActivateSkills();
 	}
@@ -60,40 +58,49 @@ public class PlayerAttackManager : MonoBehaviour {
 		if (target == null)
 			return;
 
-		if (Input.GetKeyDown(KeyCode.Alpha1)) {
-			ActivateSkill(1 - 1);
-		}
-		if (Input.GetKeyDown(KeyCode.Alpha2)) {
-			ActivateSkill(2 - 1);
-		}
-		if (Input.GetKeyDown(KeyCode.Alpha3)) {
-			ActivateSkill(3 - 1);
-		}
-		if (Input.GetKeyDown(KeyCode.Alpha4)) {
-			ActivateSkill(4 - 1);
-		}
-		if (Input.GetKeyDown(KeyCode.Alpha5)) {
-			ActivateSkill(5 - 1);
-		}
-		if (Input.GetKeyDown(KeyCode.Alpha6)) {
-			ActivateSkill(6 - 1);
-		}
-		if (Input.GetKeyDown(KeyCode.Alpha7)) {
-			ActivateSkill(7 - 1);
-		}
-		if (Input.GetKeyDown(KeyCode.Alpha8)) {
-			ActivateSkill(8 - 1);
-		}
-		if (Input.GetKeyDown(KeyCode.Alpha9)) {
-			ActivateSkill(9 - 1);
-		}
+		if (cooldowns[1 - 1] == 0)
+			if (Input.GetKey(KeyCode.Alpha1))
+				ActivateSkill(1 - 1);
+
+		if (cooldowns[2 - 1] == 0)
+			if (Input.GetKey(KeyCode.Alpha2))
+				ActivateSkill(2 - 1);
+
+		if (cooldowns[3 - 1] == 0)
+			if (Input.GetKey(KeyCode.Alpha3))
+				ActivateSkill(3 - 1);
+
+		if (cooldowns[4 - 1] == 0)
+			if (Input.GetKey(KeyCode.Alpha4))
+				ActivateSkill(4 - 1);
+
+		if (cooldowns[5 - 1] == 0)
+			if (Input.GetKey(KeyCode.Alpha5))
+				ActivateSkill(5 - 1);
+
+		if (cooldowns[6 - 1] == 0)
+			if (Input.GetKey(KeyCode.Alpha6))
+				ActivateSkill(6 - 1);
+
+		if (cooldowns[7 - 1] == 0)
+			if (Input.GetKey(KeyCode.Alpha7))
+				ActivateSkill(7 - 1);
+
+		if (cooldowns[8 - 1] == 0)
+			if (Input.GetKey(KeyCode.Alpha8))
+				ActivateSkill(8 - 1);
+
+		if (cooldowns[9 - 1] == 0)
+			if (Input.GetKey(KeyCode.Alpha9))
+				ActivateSkill(9 - 1);
 	}
 
 	public void ActivateSkill(int index) {
 		if (index >= 0 && index <= 9 && equipedSkills[index] != null) {
 			if (cooldowns[index] == 0) {
-				equipedSkills[index].Activate(player, target);
-				StartCoroutine(Cooldown(index, equipedSkills[index].cooldown));
+				bool result = equipedSkills[index].Activate(player, target);
+				if (result == true)
+					StartCoroutine(Cooldown(index, equipedSkills[index].cooldown));
 			}
 		}
 	}
