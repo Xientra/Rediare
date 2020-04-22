@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class NPC : Entity {
 
-	public string npcName;
-
-	public NPCStats stats;
+	[Header("NPC Stats:")]
 
 	[SerializeField]
 	private bool isHostile = true;
 	public bool IsHostile { get => isHostile; }
+
+
 	void Start() {
 
 	}
@@ -22,9 +22,7 @@ public class NPC : Entity {
 	}
 
 
-
 	/* -== DEBUG ==- */
 	[Header("DEBUG:")]
 	public float sinSpeed = 2;
-
 }

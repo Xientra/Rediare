@@ -12,6 +12,8 @@ public class HomingProjectile : Projectile {
     private float time = 0;
     [Tooltip("How long the Projectile is stuck in the target after it hit.")]
     public float stuckTime = 0;
+
+    private float trailRetractionTime = 1f;
     
     // will be executed once the projectile hit
     private Action onFinish;
@@ -59,7 +61,7 @@ public class HomingProjectile : Projectile {
             transform.SetParent(target.transform);
 
         // makes the trailRenderer disappear
-        /*
+        
         TrailRenderer trailRenderer = GetComponentInChildren<TrailRenderer>();
         if (trailRenderer == null) {
             StartCoroutine(RetractTrailRenderer(trailRenderer));
@@ -67,7 +69,7 @@ public class HomingProjectile : Projectile {
             //trailRenderer.transform.SetParent(null, true);
             //Destroy(trailRenderer.gameObject, 2f);
         }
-        */
+        
 
         // destroy this object
         Destroy(this.gameObject, stuckTime);
@@ -77,8 +79,7 @@ public class HomingProjectile : Projectile {
 
         float trStartTime = tr.time;
 
-        float duration = 2f;
-        float t = duration;
+        float t = trailRetractionTime;
 
 
         while (t > 0) {

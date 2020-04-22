@@ -14,6 +14,6 @@ public abstract class Skill : ScriptableObject {
 	public float cooldown = 5;
 
 
-	public abstract bool Activate(Player origin, NPC target);
+	public abstract bool Activate(Player origin, Entity target);
 
 }

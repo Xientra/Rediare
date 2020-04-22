@@ -6,32 +6,49 @@ using TMPro;
 
 public class ValueDisplayBar : MonoBehaviour {
 
-    public Slider slider;
-    public TextMeshProUGUI text;
-    //[Range(0, 100)]
-    //public float clampedValue;
-    public string textPrestring;
+#pragma warning disable 0649
+	[SerializeField]
+	private Slider slider;
+	[SerializeField]
+	private TextMeshProUGUI text;
+#pragma warning restore 0649
 
-    public float maxValue = 100;
-    public float currentValue = 100;
+	//[Range(0, 100)]
+	//public float clampedValue;
+	[SerializeField]
+	private string textPrestring;
+	public string TextPrestring {
+		get => textPrestring;
+		set {
+			textPrestring = value;
+			UpdateUI();
+		}
+	}
+	[SerializeField]
+	private float maxValue = 100;
+	public float MaxValue {
+		get => maxValue;
+		set {
+			maxValue = value;
+			UpdateUI();
+		}
+	}
+	[SerializeField]
+	private float currentValue = 100;
+	public float CurrentValue {
+		get => currentValue;
+		set {
+			currentValue = value;
+			UpdateUI();
+		}
+	}
 
+	public void UpdateUI() {
+		slider.value = (100 / maxValue) * currentValue;
+		text.text = textPrestring + Mathf.Round(currentValue).ToString() + "/" + Mathf.Round(maxValue).ToString();
+	}
 
-    void Start() {
-
-    }
-
-
-    public void ChangeValue(float value) {
-        currentValue = value;
-        UpdateUIElements();
-    }
-
-    public void UpdateUIElements() {
-        slider.value = (100 / maxValue) * currentValue;
-        text.text = textPrestring + Mathf.Round(currentValue).ToString() + "/" + Mathf.Round(maxValue).ToString();
-    }
-
-    void OnValidate() {
-        UpdateUIElements();
-    }
+	private void OnValidate() {
+		UpdateUI();
+	}
 }

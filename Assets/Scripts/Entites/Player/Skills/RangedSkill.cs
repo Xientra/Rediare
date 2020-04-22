@@ -15,7 +15,7 @@ public class RangedSkill : Skill {
 
 
 
-	public override bool Activate(Player origin, NPC target) { // <----------------------------------- OH GOD NO THIS SHOULD WORK FOR JUST ENTITIES
+	public override bool Activate(Player origin, Entity target) { // <----------------------------------- OH GOD NO THIS SHOULD WORK FOR JUST ENTITIES
 
 		if ((origin.transform.position - target.transform.position).magnitude <= range) {
 
@@ -28,7 +28,10 @@ public class RangedSkill : Skill {
 		else return false;
 	}
 
-	private void DealDamage(NPC target) {
-		target.stats.ChangeHealth(-damage);
+	//private void DealDamage(NPC target) {
+	//	target.stats.ChangeHealth(-damage);
+	//}
+	private void DealDamage(Entity target) {
+		target.DealDamage(damage);
 	}
 }
