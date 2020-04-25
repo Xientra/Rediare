@@ -44,6 +44,7 @@ public abstract class Entity : MonoBehaviour {
 	}
 
 	/* =:=:=:=:=:=: Base Stats :=:=:=:=:=:=:= */
+	#region base stats
 	[Header("Base Stats:")]
 
 	[SerializeField]
@@ -54,9 +55,9 @@ public abstract class Entity : MonoBehaviour {
 	}
 
 	[SerializeField]
-	private float experience;
+	protected float experience;
 	public float Experience { get => experience; }
-	public float AddExp(float amount) {
+	public float GainExp(float amount) {
 		experience += amount;
 		return experience;
 	}
@@ -69,13 +70,20 @@ public abstract class Entity : MonoBehaviour {
 	public virtual float MaxHP { get => maxHP; }
 
 	[SerializeField]
-	protected float health = 100;
-	public float Health { get => health; }
-	public void DealDamage(float amount) {
-		health -= amount;
+	protected float healthPoints = 100;
+	public float HealthPoints { get => healthPoints; }
+	public void DealDamage(float amount, Entity source) {
+		healthPoints -= amount;
+		if (healthPoints < 0) {
+			healthPoints = 0;
+			OnDeath(source);
+		}
 	}
-	public void Heal(float amount) {
-		health += amount;
+	public void Heal(float amount, Entity source) {
+		healthPoints += amount;
+		if (healthPoints < maxHP) {
+			healthPoints = maxHP;
+		}
 	}
 
 	[SerializeField]
@@ -91,10 +99,10 @@ public abstract class Entity : MonoBehaviour {
 	public void RestoreMP(float amount) {
 		magicPoints += amount;
 	}
+	#endregion
 
-
-	/* =:=:=:=:=:=: Combat Stats :=:=:=:=:=:=:= */
-
+	/* -=:=:=:=:=:=: Combat Stats :=:=:=:=:=:=:=- */
+	#region combat stats
 	[SerializeField]
 	protected float attack = 10;
 	public virtual float Attack { get => attack; }
@@ -114,5 +122,8 @@ public abstract class Entity : MonoBehaviour {
 	[SerializeField]
 	protected float criticalHitMulipier;
 	public virtual float CriticalHitMulipier { get => criticalHitMulipier; }
+	#endregion
 
+
+	public abstract void OnDeath(Entity killer);
 }

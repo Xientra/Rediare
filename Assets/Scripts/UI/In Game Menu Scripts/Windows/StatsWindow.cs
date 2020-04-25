@@ -6,7 +6,7 @@ using TMPro;
 
 public class StatsWindow : MonoBehaviour {
 
-	PlayerStats playerStats;
+	Player playerStats;
 
 
 	public TextMeshProUGUI healthPointsLabel;
@@ -29,10 +29,12 @@ public class StatsWindow : MonoBehaviour {
 	private string criticalHitMulipierText;
 	public TextMeshProUGUI hpRecoveryLabel;
 	private string hpRecoveryText;
+	public TextMeshProUGUI mpRecoveryLabel;
+	private string mpRecoveryText;
 
 
 	void Start() {
-		playerStats = InGameMenu.instance.player.fullStats;
+		playerStats = InGameMenu.instance.player;
 		InGameMenuEventSystem.OnStatsChanged += UpdateUI;
 
 		healthPointsText = healthPointsLabel.text;
@@ -45,6 +47,7 @@ public class StatsWindow : MonoBehaviour {
 		criticalHitChanceText = criticalHitChanceLabel.text;
 		criticalHitMulipierText = criticalHitMulipierLabel.text;
 		hpRecoveryText = hpRecoveryLabel.text;
+		mpRecoveryText = mpRecoveryLabel.text;
 
 		UpdateUI();
 	}
@@ -61,6 +64,7 @@ public class StatsWindow : MonoBehaviour {
 		defenceLabel.text = defenceText + playerStats.Defence;
 		criticalHitChanceLabel.text = criticalHitChanceText + playerStats.CriticalHitChance;
 		criticalHitMulipierLabel.text = criticalHitMulipierText + playerStats.CriticalHitMulipier;
-		hpRecoveryLabel.text = hpRecoveryText + playerStats.HPRecovery;
+		hpRecoveryLabel.text = hpRecoveryText + playerStats.HealthRecovery;
+		mpRecoveryLabel.text = mpRecoveryText + playerStats.MagicRecovery;
 	}
 }

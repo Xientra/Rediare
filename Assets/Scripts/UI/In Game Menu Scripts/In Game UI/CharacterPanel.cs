@@ -12,22 +12,21 @@ public class CharacterPanel : MonoBehaviour {
 	public ValueDisplayBar hpBar;
 	public ValueDisplayBar mpBar;
 
-	private PlayerStats statsToDisplay;
+	private Player player;
 
 	void Start() {
-		Player p = InGameMenu.instance.player;
-		statsToDisplay = p.fullStats;
+		player = InGameMenu.instance.player;
 
-		nameLabel.text = p.name;
+		nameLabel.text = player.name;
 	}
 
 	void Update() {
-		levelLabel.text = statsToDisplay.Level.ToString();
+		levelLabel.text = player.Level.ToString();
 		//expBar.MaxValue = statsToDisplay.ExperienceNeeded();
-		expBar.CurrentValue = statsToDisplay.Experience;
-		hpBar.MaxValue = statsToDisplay.MaxHP;
-		hpBar.CurrentValue = statsToDisplay.HealthPoints;
-		mpBar.MaxValue = statsToDisplay.MaxMP;
-		mpBar.CurrentValue = statsToDisplay.MagicPoints;
+		expBar.CurrentValue = player.Experience;
+		hpBar.MaxValue = player.MaxHP;
+		hpBar.CurrentValue = player.HealthPoints;
+		mpBar.MaxValue = player.MaxMP;
+		mpBar.CurrentValue = player.MagicPoints;
 	}
 }

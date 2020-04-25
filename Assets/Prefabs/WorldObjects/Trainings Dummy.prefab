@@ -90,14 +90,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   center: {fileID: 8998268333404634870}
-  npcName: Trainings Dummy
-  stats:
-    health: 9999999
-    attack: 10
-    defence: 10
-    level: 1
-    expDrop: 10
+  id: 0
+  name: '[Name]'
+  level: 1
+  experience: 0
+  maxHP: 100
+  healthPoints: 100
+  maxMP: 100
+  magicPoints: 100
+  attack: 10
+  defence: 10
+  evasion: 10
+  criticalHitChance: 0
+  criticalHitMulipier: 0
   isHostile: 1
+  deathEffect: {fileID: 3591406336557673656, guid: 560681506cb15d14284c51e112906827,
+    type: 3}
+  sinSpeed: 2
 --- !u!1001 &9097251235714581635
 PrefabInstance:
   m_ObjectHideFlags: 0

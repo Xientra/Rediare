@@ -31,6 +31,11 @@ public class HomingProjectile : Projectile {
     }
 
     void Update() {
+        if (target == null) {
+            Destroy(this.gameObject);
+            return;
+        }
+
         // move
         if (done == false) {
             time += Time.deltaTime;
