@@ -48,18 +48,14 @@ public abstract class Entity : MonoBehaviour {
 	[Header("Base Stats:")]
 
 	[SerializeField]
-	protected float level = 1;
-	public float Level { get => level; set => level = value; }
-	public void LevelUp() {
-		level++;
-	}
+	protected int level = 1;
+	public int Level { get => level; }
 
 	[SerializeField]
 	protected float experience;
 	public float Experience { get => experience; }
-	public float GainExp(float amount) {
+	public virtual void GainExp(float amount) {
 		experience += amount;
-		return experience;
 	}
 	public void LoseExp(float amount) {
 		experience -= amount;
@@ -73,8 +69,12 @@ public abstract class Entity : MonoBehaviour {
 	protected float healthPoints = 100;
 	public float HealthPoints { get => healthPoints; }
 	public void DealDamage(float amount, Entity source) {
+		// if allready dead do nothing
+		if (healthPoints == 0) return;
+
 		healthPoints -= amount;
-		if (healthPoints < 0) {
+		
+		if (healthPoints <= 0) {
 			healthPoints = 0;
 			OnDeath(source);
 		}
@@ -123,7 +123,6 @@ public abstract class Entity : MonoBehaviour {
 	protected float criticalHitMulipier;
 	public virtual float CriticalHitMulipier { get => criticalHitMulipier; }
 	#endregion
-
 
 	public abstract void OnDeath(Entity killer);
 }

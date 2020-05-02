@@ -22,7 +22,7 @@ public class CharacterPanel : MonoBehaviour {
 
 	void Update() {
 		levelLabel.text = player.Level.ToString();
-		//expBar.MaxValue = statsToDisplay.ExperienceNeeded();
+		expBar.MaxValue = GlobalValues.GetRequireredExpForNextLevel(player.Level);
 		expBar.CurrentValue = player.Experience;
 		hpBar.MaxValue = player.MaxHP;
 		hpBar.CurrentValue = player.HealthPoints;

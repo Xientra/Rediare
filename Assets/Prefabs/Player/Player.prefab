@@ -217,7 +217,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   center: {fileID: 973902648902978502}
-  baseStats:
+  id: 0
+  name: '[Name]'
+  level: 1
+  experience: 0
+  maxHP: 100
+  healthPoints: 100
+  maxMP: 100
+  magicPoints: 100
+  attack: 10
+  defence: 10
+  evasion: 10
+  criticalHitChance: 0
+  criticalHitMulipier: 0
+  strength: 0
+  dexterity: 0
+  intelligence: 0
+  healthRecovery: 0
+  magicRecovery: 0
+  equipmentStatBonuses:
     maxHP: 0
     maxMP: 0
     strength: 0
@@ -225,42 +243,11 @@ MonoBehaviour:
     intelligence: 0
     attack: 0
     defence: 0
-    hpRecovery: 0
-    criticalHitChance: 0
-    criticalHitMulipier: 0
-    inventorySize: 0
-    level: 0
-    experience: 0
-    healthPoints: 0
-    magicPoints: 0
-  itemStats:
-    maxHP: 0
-    maxMP: 0
-    strength: 0
-    dexterity: 0
-    intelligence: 0
-    attack: 0
-    defence: 0
-    hpRecovery: 0
-    criticalHitChance: 0
-    criticalHitMulipier: 0
-    inventorySize: 0
-  fullStats:
-    maxHP: 0
-    maxMP: 0
-    strength: 0
-    dexterity: 0
-    intelligence: 0
-    attack: 0
-    defence: 0
-    hpRecovery: 0
-    criticalHitChance: 0
-    criticalHitMulipier: 0
-    inventorySize: 0
-    level: 0
-    experience: 0
-    healthPoints: 0
-    magicPoints: 0
+    evasion: 10
+    healthRecovery: 0
+    magicRecovery: 0
+    criticalHitChance: 1
+    criticalHitMulipier: 1
   equipment:
     headSlot:
       item: {fileID: 0}
@@ -299,6 +286,10 @@ MonoBehaviour:
     naturalSkills: []
     equipmentSkills: []
   attackManager: {fileID: 7806742015678425644}
+  playerEffect:
+    LevelUp: {fileID: 6287245161815700117, guid: 9da40ed7c9e161f40b3f89592dfea084,
+      type: 3}
+  hi: 0
 --- !u!114 &973902650193979694
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -354,6 +345,16 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  cooldowns:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
 --- !u!1001 &973902649287167888
 PrefabInstance:
   m_ObjectHideFlags: 0

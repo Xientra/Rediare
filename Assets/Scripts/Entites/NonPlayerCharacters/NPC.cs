@@ -13,6 +13,10 @@ public class NPC : Entity {
 	private Collider col;
 	private MeshRenderer meshRenderer;
 
+	public override void GainExp(float amount) {
+		Debug.LogWarning("NPCs cannot gain exp! On: " + gameObject.name + " name: " + name);
+	}
+
 	[Header("Enemy References:")]
 	public GameObject deathEffect;
 
@@ -28,6 +32,8 @@ public class NPC : Entity {
 	}
 
 	public override void OnDeath(Entity killer) {
+
+		// give exp to killer
 		killer.GainExp(experience);
 
 		// play death animation
@@ -39,7 +45,7 @@ public class NPC : Entity {
 		// spawn loot
 
 		// destroy self
-		Destroy(this.gameObject, 5);
+		Destroy(this.gameObject);
 	}
 
 	/* -== DEBUG ==- */

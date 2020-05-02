@@ -7,7 +7,7 @@ using UnityEditor;
 public class Player : Entity {
 
 	[Header("Player Stats:")]
-	#region player stats
+	#region player stats with equipment combination
 
 	[SerializeField]
 	protected int strength;
@@ -48,6 +48,13 @@ public class Player : Entity {
 
 	#endregion
 
+	public override void GainExp(float amount) {
+		experience += amount;
+		if (experience >= GlobalValues.GetRequireredExpForNextLevel(level)) {
+			OnLevelUp(experience - GlobalValues.GetRequireredExpForNextLevel(level));
+		}
+	}
+
 	[Header("Equipment:")]
 
 	public PlayerEquipment equipment = new PlayerEquipment(10);
@@ -55,6 +62,10 @@ public class Player : Entity {
 	[Header("Player Skills:")]
 	public PlayerSkills skills;
 	public PlayerAttackManager attackManager;
+	
+
+	[Header("Effects: ")]
+	public PlayerEffects playerEffect;
 
 	private void Awake() {
 
@@ -77,7 +88,7 @@ public class Player : Entity {
 		equipmentStatBonuses.SetBasedOnEquipment(equipment);
 
 		// update skills
-		skills.equipmentSkills = equipment.GetAllSkills();
+		//skills.equipmentSkills = equipment.GetAllSkills();
 
 		InGameMenuEventSystem.StatsChanged();
 	}
@@ -98,4 +109,21 @@ public class Player : Entity {
 	public override void OnDeath(Entity killer) {
 		throw new System.NotImplementedException();
 	}
+
+	public void OnLevelUp(float remainingExp) {
+		level++;
+
+		GameObject temp = Instantiate(playerEffect.LevelUp, transform);
+		Destroy(temp, 3f);
+
+		// increase stats and such
+
+		experience = 0;
+		GainExp(remainingExp);
+	}
+}
+
+[System.Serializable]
+public struct PlayerEffects {
+	public GameObject LevelUp;
 }
