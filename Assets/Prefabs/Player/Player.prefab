@@ -228,13 +228,13 @@ MonoBehaviour:
   attack: 10
   defence: 10
   evasion: 10
-  criticalHitChance: 0
-  criticalHitMulipier: 0
-  strength: 0
-  dexterity: 0
-  intelligence: 0
-  healthRecovery: 0
-  magicRecovery: 0
+  criticalHitChance: 0.2
+  criticalHitMulipier: 1.5
+  strength: 5
+  dexterity: 5
+  intelligence: 5
+  healthRecovery: 0.005
+  magicRecovery: 0.005
   equipmentStatBonuses:
     maxHP: 0
     maxMP: 0
@@ -289,7 +289,6 @@ MonoBehaviour:
   playerEffect:
     LevelUp: {fileID: 6287245161815700117, guid: 9da40ed7c9e161f40b3f89592dfea084,
       type: 3}
-  hi: 0
 --- !u!114 &973902650193979694
 MonoBehaviour:
   m_ObjectHideFlags: 0

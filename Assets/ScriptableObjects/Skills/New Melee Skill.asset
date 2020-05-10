@@ -15,4 +15,8 @@ MonoBehaviour:
   name: Fireball i suppose?
   image: {fileID: 21300000, guid: 4bf8646d7fa58dd46a91498b17b3aece, type: 3}
   damage: 10
-  cooldown: 5
+  cooldown: 0.3
+  slashPrefab: {fileID: 6719046259487576319, guid: f5d430097b688474caae6726b4a02522,
+    type: 3}
+  range: 2
+  lingeringDuration: 1

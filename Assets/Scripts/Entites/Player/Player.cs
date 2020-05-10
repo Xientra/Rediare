@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using System.Timers;
 
 [RequireComponent(typeof(PlayerAttackManager))]
 public class Player : Entity {
@@ -55,6 +56,8 @@ public class Player : Entity {
 		}
 	}
 
+	Timer regenerationTimer = new Timer();
+
 	[Header("Equipment:")]
 
 	public PlayerEquipment equipment = new PlayerEquipment(10);
@@ -77,6 +80,18 @@ public class Player : Entity {
 
 	private void Start() {
 		InGameMenuEventSystem.OnItemChanged += UpdateStats;
+
+		regenerationTimer.Interval = 1000;
+		regenerationTimer.Elapsed += RegenerateHealth;
+		regenerationTimer.Start();
+	}
+
+	private void Update() {
+
+	}
+
+	private void OnDestroy() {
+		regenerationTimer.Stop();
 	}
 
 	/// <summary>
@@ -93,8 +108,10 @@ public class Player : Entity {
 		InGameMenuEventSystem.StatsChanged();
 	}
 
-	private void Update() {
+	public void RegenerateHealth(object sender, ElapsedEventArgs e) {
 
+		healthPoints = healthPoints < MaxHP ? healthPoints + (healthRecovery * MaxHP) : MaxHP;
+		magicPoints = magicPoints < MaxMP ? magicPoints + (magicRecovery * MaxMP) : MaxMP;
 	}
 
 	public void PickupItem(Item item) {
