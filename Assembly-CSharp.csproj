@@ -79,6 +79,7 @@
     <Compile Include="Assets\Scripts\Entites\Skills\SwordAttackSkill.cs" />
     <Compile Include="Assets\Scripts\Entites\Stats\CombatStats.cs" />
     <Compile Include="Assets\Scripts\Entites\Stats\EquipmentStatBonuses.cs" />
+    <Compile Include="Assets\Scripts\Items\ItemGenerator.cs" />
     <Compile Include="Assets\Scripts\Items\Modifiers\ItemModifier.cs" />
     <Compile Include="Assets\Scripts\Items\Modifiers\ItemModifiers.cs" />
     <Compile Include="Assets\Scripts\Items\ScriptableObjects\Armor.cs" />

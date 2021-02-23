@@ -28,6 +28,6 @@ public abstract class EquippableItem : Item {
 	/// <summary>
 	/// Returns a copy of the modifiers Array. (modifying the copy will not change the acual values of this Item)
 	/// </summary>
-	public ItemModifier[] Modifiers { get => (ItemModifier[])modifiers.Clone(); }
+	public ItemModifier[] Modifiers { get => (ItemModifier[])modifiers.Clone(); set => modifiers = value; }
 
 }
